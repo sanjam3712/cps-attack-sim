@@ -12,9 +12,16 @@ import numpy as np
 
 from src.ctmc import SECURE, COMPROMISED, FAILED, build_ctmc_nodes
 from src.graph import build_smart_grid
+from src.stats import wilson_confidence_interval
 
 ENTRY_POINT = "corporate_network"
 TARGET_NODE = "physical_equipment"
+
+# Horizons (hours) at which P(physical_equipment fails by t) is reported,
+# in addition to the overall P(fail by t_max). A run's failure (if any)
+# only ever gets counted at thresholds >= t_max is meaningless if
+# threshold > t_max - see run_monte_carlo's docstring.
+FAILURE_TIME_THRESHOLDS_HOURS = (3, 6, 12, 24)
 
 
 def run_attack_simulation(graph, ctmc_nodes, t_max=24, t_steps=100, rng=None):
@@ -96,10 +103,24 @@ def run_attack_simulation(graph, ctmc_nodes, t_max=24, t_steps=100, rng=None):
 def run_monte_carlo(graph, ctmc_nodes, n_runs=1000, t_max=24, t_steps=100, seed=None):
     """Run run_attack_simulation n_runs times and aggregate failure stats.
 
-    Returns a dict with 'probability_of_failure' (fraction of runs
-    where physical_equipment reached FAILED), 'mean_time_to_failure'
-    (mean over runs that failed, or None if none did), and
-    'failure_times' (list of failure times from runs that failed).
+    A single P(fail by t_max) point estimate hides *when* a defense
+    helps - a combo can look identical to another at t_max=24h while
+    one of them buys much more time before failure. To make that
+    visible, this also reports P(fail by t) at several shorter horizons
+    (FAILURE_TIME_THRESHOLDS_HOURS), each with a 95% Wilson CI.
+    Thresholds greater than t_max are meaningless (no run can be
+    observed failing after t_max) and are silently skipped.
+
+    Returns a dict with:
+      'probability_of_failure': fraction of runs where physical_equipment
+        reached FAILED by t_max (unchanged from before, for backward
+        compatibility with existing callers),
+      'mean_time_to_failure': mean over runs that failed, or None if none did,
+      'failure_times': list of failure times from runs that failed,
+      'p_fail_by_t': {threshold_hours: {'p', 'ci_low', 'ci_high'}} for each
+        threshold in FAILURE_TIME_THRESHOLDS_HOURS that is <= t_max
+        (includes t_max itself when t_max is one of the thresholds, in
+        which case p == probability_of_failure).
     """
     rng = np.random.default_rng(seed)
     failure_times = []
@@ -113,10 +134,20 @@ def run_monte_carlo(graph, ctmc_nodes, n_runs=1000, t_max=24, t_steps=100, seed=
     probability_of_failure = len(failure_times) / n_runs
     mean_time_to_failure = float(np.mean(failure_times)) if failure_times else None
 
+    p_fail_by_t = {}
+    for threshold in FAILURE_TIME_THRESHOLDS_HOURS:
+        if threshold > t_max:
+            continue
+        n_failed_by_threshold = sum(1 for ft in failure_times if ft <= threshold)
+        p = n_failed_by_threshold / n_runs
+        ci_low, ci_high = wilson_confidence_interval(p, n_runs)
+        p_fail_by_t[threshold] = {"p": p, "ci_low": ci_low, "ci_high": ci_high}
+
     return {
         "probability_of_failure": probability_of_failure,
         "mean_time_to_failure": mean_time_to_failure,
         "failure_times": failure_times,
+        "p_fail_by_t": p_fail_by_t,
     }
 
 
@@ -133,3 +164,8 @@ if __name__ == "__main__":
     else:
         print("  Mean time to failure = N/A (no failures observed)")
     print(f"  Number of failed runs = {len(mc_results['failure_times'])} / 1000")
+    for threshold, stats in mc_results["p_fail_by_t"].items():
+        print(
+            f"  P(fail by {threshold}h) = {stats['p']:.4f}  "
+            f"95% CI=[{stats['ci_low']:.4f}, {stats['ci_high']:.4f}]"
+        )

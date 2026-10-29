@@ -16,7 +16,7 @@ import numpy as np
 
 from src.ctmc import SECURE, COMPROMISED, FAILED, STATE_NAMES, build_ctmc_nodes
 from src.graph import build_smart_grid
-from src.optimization import DEFAULT_N_RUNS, DEFAULT_SEED, optimize_defense
+from src.optimization import DEFAULT_N_RUNS, DEFAULT_SEED, optimize_defense, rank_by_metric
 from src.simulation import TARGET_NODE, run_attack_simulation, run_monte_carlo
 
 RESULTS_DIR = "results"
@@ -184,6 +184,58 @@ def plot_defense_comparison(
     ax.set_ylabel(f"P({TARGET_NODE} fails)")
     ax.set_title(f"{title}\n(error bars = 95% Wilson CI)")
     ax.grid(True, axis="y", alpha=0.3)
+
+    fig.tight_layout()
+    fig.savefig(os.path.join(RESULTS_DIR, filename), dpi=150)
+    plt.close(fig)
+
+
+def plot_sensitivity_heatmap(
+    combo_cache,
+    reductions,
+    budgets,
+    metric="p_fail_6h",
+    filename="sensitivity_heatmap.png",
+):
+    """Heatmap of the best-combo P(fail by 6h) across defense reduction
+    (rows) and budget (columns).
+
+    combo_cache: {(reduction, budget): detailed_list} as produced by
+    evaluate_combinations - i.e. one Monte Carlo evaluation per combo,
+    shared across metrics. For each cell, combinations are ranked by
+    `metric` and the resulting best combo's P(fail by 6h) is plotted,
+    with the combo itself annotated in the cell. Saves to
+    results/<filename>.
+    """
+    os.makedirs(RESULTS_DIR, exist_ok=True)
+
+    matrix = np.zeros((len(reductions), len(budgets)))
+    annotations = [["" for _ in budgets] for _ in reductions]
+
+    for i, reduction in enumerate(reductions):
+        for j, budget in enumerate(budgets):
+            detailed = combo_cache[(reduction, budget)]
+            best = rank_by_metric(detailed, metric)[0]
+            matrix[i, j] = best["p_fail_by_t"][6]["p"]
+            annotations[i][j] = "+".join(_abbreviate(n) for n in best["combo"])
+
+    fig, ax = plt.subplots(figsize=(max(6, len(budgets) * 2.2), max(5, len(reductions) * 1.6)))
+    im = ax.imshow(matrix, cmap="RdYlGn_r", vmin=0, vmax=1, aspect="auto")
+
+    ax.set_xticks(range(len(budgets)))
+    ax.set_xticklabels([f"budget={b}" for b in budgets])
+    ax.set_yticks(range(len(reductions)))
+    ax.set_yticklabels([f"reduction={r}" for r in reductions])
+
+    for i in range(len(reductions)):
+        for j in range(len(budgets)):
+            ax.text(
+                j, i, f"{matrix[i, j]:.3f}\n{annotations[i][j]}",
+                ha="center", va="center", fontsize=7, color="black",
+            )
+
+    fig.colorbar(im, ax=ax, label=f"Best-combo P(fail by 6h)  (best picked by {metric})")
+    ax.set_title("Sensitivity: best-combo P(fail by 6h) vs defense reduction and budget")
 
     fig.tight_layout()
     fig.savefig(os.path.join(RESULTS_DIR, filename), dpi=150)
