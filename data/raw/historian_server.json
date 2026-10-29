@@ -1,0 +1,522 @@
+{
+  "node": "historian_server",
+  "component_type": "AVEVA / OSIsoft PI Server (PI Server, PI Data Archive)",
+  "queries": [
+    {
+      "params": {
+        "virtualMatchString": "cpe:2.3:a:osisoft:pi_server"
+      },
+      "raw_count": 2
+    },
+    {
+      "params": {
+        "virtualMatchString": "cpe:2.3:a:aveva:pi_server"
+      },
+      "raw_count": 2
+    },
+    {
+      "params": {
+        "virtualMatchString": "cpe:2.3:a:osisoft:pi_data_archive"
+      },
+      "raw_count": 11
+    }
+  ],
+  "retrieved": "2026-10-29",
+  "vulnerabilities": [
+    {
+      "cve": {
+        "id": "CVE-2009-0209",
+        "published": "2009-10-01T15:30:00.217",
+        "lastModified": "2026-06-16T23:04:30.207",
+        "description": "PI Server in OSIsoft PI System before 3.4.380.x does not properly use encryption in the default authentication process, which allows remote attackers to read or modify information in databases via unspecified vectors.",
+        "metrics": {}
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2015-1013",
+        "published": "2015-05-26T01:59:01.743",
+        "lastModified": "2026-06-17T00:21:38.487",
+        "description": "OSIsoft PI AF 2.6 and 2.7 and PI SQL for AF 2.1.2.19 do not ensure that the PI SQL (AF) Trusted Users group lacks the Everyone account, which allows remote authenticated users to bypass intended command restrictions via SQL statements.",
+        "metrics": {}
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2023-31274",
+        "published": "2024-01-18T18:15:08.253",
+        "lastModified": "2026-06-17T05:56:41.943",
+        "description": "\nAVEVA PI Server versions 2023 and 2018 SP3 P05 and prior contain a vulnerability that could allow an unauthenticated user to cause the PI Message Subsystem of a PI Server to consume available memory resulting in throttled processing of new PI Data Archive events and a partial denial-of-service condition.\n\n\n\n\n",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "ics-cert@hq.dhs.gov",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+                "baseScore": 5.3,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "LOW"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 1.4
+            },
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+                "baseScore": 5.3,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "LOW"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 1.4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2023-34348",
+        "published": "2024-01-18T18:15:08.457",
+        "lastModified": "2026-06-17T06:03:26.927",
+        "description": "\nAVEVA PI Server versions 2023 and 2018 SP3 P05 and prior contain a vulnerability that could allow an unauthenticated user to remotely crash the PI Message Subsystem of a PI Server, resulting in a denial-of-service condition.\n\n\n\n\n",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "ics-cert@hq.dhs.gov",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 7.5,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 3.6
+            },
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 7.5,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2017-7930",
+        "published": "2017-08-25T19:29:00.333",
+        "lastModified": "2026-06-17T01:25:30.083",
+        "description": "An Improper Authentication issue was discovered in OSIsoft PI Server 2017 PI Data Archive versions prior to 2017. PI Data Archive has protocol flaws with the potential to expose change records in the clear and allow a malicious party to spoof a server within a collective.",
+        "metrics": {
+          "cvssMetricV30": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.0",
+                "vectorString": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+                "baseScore": 7.4,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "HIGH",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "NONE"
+              },
+              "exploitabilityScore": 2.2,
+              "impactScore": 5.2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2017-7934",
+        "published": "2017-08-25T19:29:00.380",
+        "lastModified": "2026-06-17T01:25:30.543",
+        "description": "An Improper Authentication issue was discovered in OSIsoft PI Server 2017 PI Data Archive versions prior to 2017. PI Network Manager using older protocol versions contains a flaw that could allow a malicious user to authenticate with a server and then cause PI Network Manager to behave in an undefined manner.",
+        "metrics": {
+          "cvssMetricV30": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.0",
+                "vectorString": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 5.9,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "NETWORK",
+                "attackComplexity": "HIGH",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 2.2,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2018-7529",
+        "published": "2018-03-14T18:29:00.670",
+        "lastModified": "2026-06-17T02:03:18.750",
+        "description": "A Deserialization of Untrusted Data issue was discovered in OSIsoft PI Data Archive versions 2017 and prior. Unauthenticated users may modify deserialized data to send custom requests that crash the server.",
+        "metrics": {
+          "cvssMetricV30": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.0",
+                "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 7.5,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2018-7531",
+        "published": "2018-03-14T18:29:00.733",
+        "lastModified": "2026-06-17T02:03:18.983",
+        "description": "An Improper Input Validation issue was discovered in OSIsoft PI Data Archive versions 2017 and prior. Unauthenticated users may use unvalidated custom requests to crash the server.",
+        "metrics": {
+          "cvssMetricV30": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.0",
+                "vectorString": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 5.9,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "NETWORK",
+                "attackComplexity": "HIGH",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 2.2,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2018-7533",
+        "published": "2018-03-14T18:29:00.780",
+        "lastModified": "2026-06-17T02:03:19.213",
+        "description": "An Incorrect Default Permissions issue was discovered in OSIsoft PI Data Archive versions 2017 and prior. Insecure default configuration may allow escalation of privileges that gives the actor full control over the system.",
+        "metrics": {
+          "cvssMetricV30": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.0",
+                "vectorString": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+                "baseScore": 7.8,
+                "baseSeverity": "HIGH",
+                "attackVector": "LOCAL",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "LOW",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 1.8,
+              "impactScore": 5.9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2016-8365",
+        "published": "2018-04-03T14:29:00.247",
+        "lastModified": "2026-06-17T00:54:13.597",
+        "description": "OSIsoft PI System software (Applications using PI Asset Framework (AF) Client versions prior to PI AF Client 2016, Version 2.8.0; Applications using PI Software Development Kit (SDK) versions prior to PI SDK 2016, Version 1.4.6; PI Buffer Subsystem, versions prior to and including, Version 4.4; and PI Data Archive versions prior to PI Data Archive 2015, Version 3.4.395.64) operates between endpoints without a complete model of endpoint features potentially causing the product to perform actions based on this incomplete model, which could result in a denial of service. OSIsoft reports that in order to exploit the vulnerability an attacker would need to be locally connected to a server. A CVSS v3 base score of 7.1 has been calculated; the CVSS vector string is (AV:L/AC:L/PR:N/UI:N/S:C/C:N/I:N/A:H)",
+        "metrics": {
+          "cvssMetricV30": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.0",
+                "vectorString": "CVSS:3.0/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 5.5,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "LOCAL",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "LOW",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 1.8,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2020-10600",
+        "published": "2020-07-24T23:15:11.690",
+        "lastModified": "2026-06-17T02:48:04.483",
+        "description": "An authenticated remote attacker could crash PI Archive Subsystem when the subsystem is working under memory pressure. This can result in blocking queries to PI Data Archive (2018 SP2 and prior versions).",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "ics-cert@hq.dhs.gov",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:L/A:H",
+                "baseScore": 5.9,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "NETWORK",
+                "attackComplexity": "HIGH",
+                "privilegesRequired": "LOW",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "LOW",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 1.6,
+              "impactScore": 4.2
+            },
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:H",
+                "baseScore": 7.1,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "LOW",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "LOW",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 2.8,
+              "impactScore": 4.2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2020-10606",
+        "published": "2020-07-24T23:15:11.830",
+        "lastModified": "2026-06-17T02:48:05.260",
+        "description": "In OSIsoft PI System multiple products and versions, a local attacker can exploit incorrect permissions set by affected PI System software. This exploitation can result in unauthorized information disclosure, deletion, or modification if the local computer also processes PI System data from other users, such as from a shared workstation or terminal server deployment.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+                "baseScore": 7.8,
+                "baseSeverity": "HIGH",
+                "attackVector": "LOCAL",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "LOW",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 1.8,
+              "impactScore": 5.9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2020-10608",
+        "published": "2020-07-24T23:15:11.877",
+        "lastModified": "2026-06-17T02:48:05.467",
+        "description": "In OSIsoft PI System multiple products and versions, a local attacker can plant a binary and bypass a code integrity check for loading PI System libraries. This exploitation can target another local user of PI System software on the computer to escalate privilege and result in unauthorized information disclosure, deletion, or modification.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+                "baseScore": 7.8,
+                "baseSeverity": "HIGH",
+                "attackVector": "LOCAL",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "LOW",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 1.8,
+              "impactScore": 5.9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2020-10610",
+        "published": "2020-07-24T23:15:11.940",
+        "lastModified": "2026-06-17T02:48:05.690",
+        "description": "In OSIsoft PI System multiple products and versions, a local attacker can modify a search path and plant a binary to exploit the affected PI System software to take control of the local computer at Windows system privilege level, resulting in unauthorized information disclosure, deletion, or modification.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+                "baseScore": 7.8,
+                "baseSeverity": "HIGH",
+                "attackVector": "LOCAL",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "LOW",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 1.8,
+              "impactScore": 5.9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2020-10604",
+        "published": "2020-07-25T00:15:12.047",
+        "lastModified": "2026-06-17T02:48:05.043",
+        "description": "In OSIsoft PI System multiple products and versions, a remote, unauthenticated attacker could crash PI Network Manager service through specially crafted requests. This can result in blocking connections and queries to PI Data Archive.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 7.5,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "_note": "This file is a pruned projection of the raw NVD CVE API 2.0 response: only cve.id, cve.published, cve.lastModified, the English description, and cvssMetricV31/V30 are kept (dropped: non-English descriptions, configurations/CPE-match arrays, references, weaknesses, CISA KEV tags). These are exactly the fields used to compute the stats in data/vulnerabilities.json; nothing was altered or re-scored."
+}

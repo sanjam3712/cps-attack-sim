@@ -1,0 +1,941 @@
+{
+  "node": "intelligent_electronic_device",
+  "component_type": "Siemens SIPROTEC protection relay IED",
+  "queries": [
+    {
+      "params": {
+        "keywordSearch": "SIPROTEC"
+      },
+      "raw_count": 29
+    }
+  ],
+  "retrieved": "2026-10-29",
+  "vulnerabilities": [
+    {
+      "cve": {
+        "id": "CVE-2015-5374",
+        "published": "2015-07-18T10:59:04.117",
+        "lastModified": "2026-06-17T00:29:02.490",
+        "description": "A vulnerability has been identified in Firmware variant PROFINET IO for EN100 Ethernet module : All versions < V1.04.01; Firmware variant Modbus TCP for EN100 Ethernet module : All versions < V1.11.00; Firmware variant DNP3 TCP for EN100 Ethernet module : All versions < V1.03; Firmware variant IEC 104 for EN100 Ethernet module : All versions < V1.21; EN100 Ethernet module included in SIPROTEC Merging Unit 6MU80 : All versions < 1.02.02. Specially crafted packets sent to port 50000/UDP could cause a denial-of-service of the affected device. A manual reboot may be required to recover the service of the device.",
+        "metrics": {}
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2016-4784",
+        "published": "2016-05-31T01:59:12.993",
+        "lastModified": "2026-06-17T00:48:12.807",
+        "description": "A vulnerability has been identified in firmware variant PROFINET IO for EN100 Ethernet module : All versions < V1.04.01; Firmware variant Modbus TCP for EN100 Ethernet module : All versions < V1.11.00; Firmware variant DNP3 TCP for EN100 Ethernet module : All versions < V1.03; Firmware variant IEC 104 for EN100 Ethernet module : All versions < V1.21; EN100 Ethernet module included in SIPROTEC Merging Unit 6MU80 : All versions < 1.02.02; SIPROTEC 7SJ686 : All versions < V 4.83; SIPROTEC 7UT686 : All versions < V 4.01; SIPROTEC 7SD686 : All versions < V 4.03; SIPROTEC 7SJ66 : All versions < V 4.20. The integrated web server (port 80/tcp) of the affected devices could allow remote attackers to obtain sensitive device information if network access was obtained.",
+        "metrics": {
+          "cvssMetricV30": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.0",
+                "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+                "baseScore": 5.3,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "LOW",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "NONE"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 1.4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2016-4785",
+        "published": "2016-05-31T01:59:14.227",
+        "lastModified": "2026-06-17T00:48:12.937",
+        "description": "A vulnerability has been identified in Firmware variant PROFINET IO for EN100 Ethernet module : All versions < V1.04.01; Firmware variant Modbus TCP for EN100 Ethernet module : All versions < V1.11.00; Firmware variant DNP3 TCP for EN100 Ethernet module : All versions < V1.03; Firmware variant IEC 104 for EN100 Ethernet module : All versions < V1.21; EN100 Ethernet module included in SIPROTEC Merging Unit 6MU80 : All versions < 1.02.02. The integrated web server (port 80/tcp) of the affected devices could allow remote attackers to obtain a limited amount of device memory content if network access was obtained. This vulnerability only affects EN100 Ethernet module included in SIPROTEC4 and SIPROTEC Compact devices.",
+        "metrics": {
+          "cvssMetricV30": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.0",
+                "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+                "baseScore": 5.3,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "LOW",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "NONE"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 1.4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2016-7112",
+        "published": "2016-09-06T00:59:00.117",
+        "lastModified": "2026-06-17T00:52:36.630",
+        "description": "A vulnerability has been identified in Firmware variant PROFINET IO for EN100 Ethernet module : All versions < V1.04.01; Firmware variant Modbus TCP for EN100 Ethernet module : All versions < V1.11.00; Firmware variant DNP3 TCP for EN100 Ethernet module : All versions < V1.03; Firmware variant IEC 104 for EN100 Ethernet module : All versions < V1.21; EN100 Ethernet module included in SIPROTEC Merging Unit 6MU80 : All versions < 1.02.02. Attackers with network access to the device's web interface (port 80/tcp) could possibly circumvent authentication and perform certain administrative operations.",
+        "metrics": {
+          "cvssMetricV30": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.0",
+                "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+                "baseScore": 9.8,
+                "baseSeverity": "CRITICAL",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 5.9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2016-7113",
+        "published": "2016-09-06T00:59:01.883",
+        "lastModified": "2026-06-17T00:52:36.750",
+        "description": "A vulnerability has been identified in Firmware variant PROFINET IO for EN100 Ethernet module : All versions < V1.04.01; Firmware variant Modbus TCP for EN100 Ethernet module : All versions < V1.11.00; Firmware variant DNP3 TCP for EN100 Ethernet module : All versions < V1.03; Firmware variant IEC 104 for EN100 Ethernet module : All versions < V1.21; EN100 Ethernet module included in SIPROTEC Merging Unit 6MU80 : All versions < 1.02.02. Specially crafted packets sent to port 80/tcp could cause the affected device to go into defect mode.",
+        "metrics": {
+          "cvssMetricV30": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.0",
+                "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 7.5,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2016-7114",
+        "published": "2016-09-06T00:59:02.977",
+        "lastModified": "2026-06-17T00:52:36.870",
+        "description": "A vulnerability has been identified in Firmware variant PROFINET IO for EN100 Ethernet module : All versions < V1.04.01; Firmware variant Modbus TCP for EN100 Ethernet module : All versions < V1.11.00; Firmware variant DNP3 TCP for EN100 Ethernet module : All versions < V1.03; Firmware variant IEC 104 for EN100 Ethernet module : All versions < V1.21; EN100 Ethernet module included in SIPROTEC Merging Unit 6MU80 : All versions < 1.02.02; SIPROTEC 7SJ686 : All versions < V 4.87; SIPROTEC 7UT686 : All versions < V 4.02; SIPROTEC 7SD686 : All versions < V 4.05; SIPROTEC 7SJ66 : All versions < V 4.30. Attackers with network access to the device's web interface (port 80/tcp) could possibly circumvent authentication and perform certain administrative operations. A legitimate user must be logged into the web interface for the attack to be successful.",
+        "metrics": {
+          "cvssMetricV30": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.0",
+                "vectorString": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+                "baseScore": 8.8,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "LOW",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 2.8,
+              "impactScore": 5.9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2018-4839",
+        "published": "2018-03-08T17:29:00.257",
+        "lastModified": "2026-06-17T01:59:08.720",
+        "description": "A vulnerability has been identified in DIGSI 4 (All versions < V4.92), EN100 Ethernet module DNP3 variant (All versions < V1.05.00), EN100 Ethernet module IEC 104 variant (All versions), EN100 Ethernet module IEC 61850 variant (All versions < V4.30), EN100 Ethernet module Modbus TCP variant (All versions), EN100 Ethernet module PROFINET IO variant (All versions), Other SIPROTEC 4 relays (All versions), Other SIPROTEC Compact relays (All versions), SIPROTEC 4 7SD80 (All versions < V4.70), SIPROTEC 4 7SJ61 (All versions < V4.96), SIPROTEC 4 7SJ62 (All versions < V4.96), SIPROTEC 4 7SJ64 (All versions < V4.96), SIPROTEC 4 7SJ66 (All versions < V4.30), SIPROTEC Compact 7SJ80 (All versions < V4.77), SIPROTEC Compact 7SK80 (All versions < V4.77). An attacker with local access to the engineering system or in a privileged network position and able to obtain certain network traffic could possibly reconstruct access authorization passwords.",
+        "metrics": {
+          "cvssMetricV30": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.0",
+                "vectorString": "CVSS:3.0/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N",
+                "baseScore": 5.3,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "NETWORK",
+                "attackComplexity": "HIGH",
+                "privilegesRequired": "LOW",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "NONE"
+              },
+              "exploitabilityScore": 1.6,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2018-11451",
+        "published": "2018-07-23T21:29:00.237",
+        "lastModified": "2026-06-17T01:35:57.693",
+        "description": "A vulnerability has been identified in Firmware variant IEC 61850 for EN100 Ethernet module (All versions < V4.33), Firmware variant PROFINET IO for EN100 Ethernet module (All versions), Firmware variant Modbus TCP for EN100 Ethernet module (All versions), Firmware variant DNP3 TCP for EN100 Ethernet module (All versions), Firmware variant IEC104 for EN100 Ethernet module (All versions < V1.22), SIPROTEC 5 relays with CPU variants CP300 and CP100 and the respective Ethernet communication modules (All versions < V7.80), SIPROTEC 5 relays with CPU variants CP200 and the respective Ethernet communication modules (All versions < V7.58). Specially crafted packets to port 102/tcp could cause a denial-of-service condition in the affected products. A manual restart is required to recover the EN100 module functionality of the affected devices. Successful exploitation requires an attacker with network access to send multiple packets to the affected products or modules. As a precondition the IEC 61850-MMS communication needs to be activated on the affected products or modules. No user interaction or privileges are required to exploit the vulnerability. The vulnerability could allow causing a Denial-of-Service condition of the network functionality of the device, compromising the availability of the system. At the time of advisory publication no public exploitation of this security vulnerability was known.",
+        "metrics": {
+          "cvssMetricV30": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.0",
+                "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 7.5,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2018-16563",
+        "published": "2019-03-21T16:00:22.420",
+        "lastModified": "2026-06-17T01:44:29.750",
+        "description": "A vulnerability has been identified in Firmware variant IEC 61850 for EN100 Ethernet module (All versions < V4.35), Firmware variant MODBUS TCP for EN100 Ethernet module (All versions), Firmware variant DNP3 TCP for EN100 Ethernet module (All versions), Firmware variant IEC104 for EN100 Ethernet module (All versions), Firmware variant Profinet IO for EN100 Ethernet module (All versions), SIPROTEC 5 relays with CPU variants CP300 and CP100 and the respective Ethernet communication modules (All versions < V7.82), SIPROTEC 5 relays with CPU variants CP200 and the respective Ethernet communication modules (All versions < V7.58). Specially crafted packets to port 102/tcp could cause a denial-of-service condition in the affected products. A manual restart is required to recover the EN100 module functionality of the affected devices. Successful exploitation requires an attacker with network access to send multiple packets to the affected products or modules. As a precondition the IEC 61850-MMS communication needs to be activated on the affected products or modules. No user interaction or privileges are required to exploit the vulnerability. The vulnerability could allow causing a Denial-of-Service condition of the network functionality of the device, compromising the availability of the system. At the time of advisory publication no public exploitation of this security vulnerability was known.",
+        "metrics": {
+          "cvssMetricV30": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.0",
+                "vectorString": "CVSS:3.0/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 5.9,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "NETWORK",
+                "attackComplexity": "HIGH",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 2.2,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2019-10930",
+        "published": "2019-07-11T22:15:11.560",
+        "lastModified": "2026-06-17T02:11:55.953",
+        "description": "A vulnerability has been identified in All other SIPROTEC 5 device types with CPU variants CP300 and CP100 and the respective Ethernet communication modules (All versions ), DIGSI 5 engineering software (All versions < V7.90), SIPROTEC 5 device types 6MD85, 6MD86, 6MD89, 7UM85, 7SA87, 7SD87, 7SL87, 7VK87, 7SA82, 7SA86, 7SD82, 7SD86, 7SL82, 7SL86, 7SJ86, 7SK82, 7SK85, 7SJ82, 7SJ85, 7UT82, 7UT85, 7UT86, 7UT87 and 7VE85 with CPU variants CP300 and CP100 and the respective Ethernet communication modules (All versions < V7.90), SIPROTEC 5 device types 7SS85 and 7KE85 (All versions < V8.01), SIPROTEC 5 device types with CPU variants CP200 and the respective Ethernet communication modules (All versions). A remote attacker could use specially crafted packets sent to port 443/TCP to upload, download or delete files in certain parts of the file system.",
+        "metrics": {
+          "cvssMetricV30": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.0",
+                "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+                "baseScore": 7.5,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "NONE"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2019-10931",
+        "published": "2019-07-11T22:15:11.640",
+        "lastModified": "2026-06-17T02:11:56.093",
+        "description": "A vulnerability has been identified in All other SIPROTEC 5 device types with CPU variants CP300 and CP100 and the respective Ethernet communication modules (All versions ), DIGSI 5 engineering software (All versions < V7.90), SIPROTEC 5 device types 6MD85, 6MD86, 6MD89, 7UM85, 7SA87, 7SD87, 7SL87, 7VK87, 7SA82, 7SA86, 7SD82, 7SD86, 7SL82, 7SL86, 7SJ86, 7SK82, 7SK85, 7SJ82, 7SJ85, 7UT82, 7UT85, 7UT86, 7UT87 and 7VE85 with CPU variants CP300 and CP100 and the respective Ethernet communication modules (All versions < V7.90), SIPROTEC 5 device types 7SS85 and 7KE85 (All versions < V8.01), SIPROTEC 5 device types with CPU variants CP200 and the respective Ethernet communication modules (All versions < V7.59), SIPROTEC 5 relays with CPU variants CP200 and the respective Ethernet communication modules (All versions < V7.59). Specially crafted packets sent to port 443/TCP could cause a Denial of Service condition.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 7.5,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2019-10938",
+        "published": "2019-08-02T14:15:14.147",
+        "lastModified": "2026-06-17T02:11:57.287",
+        "description": "A vulnerability has been identified in SIPROTEC 5 devices with CPU variants CP200 (All versions < V7.59), SIPROTEC 5 devices with CPU variants CP300 and CP100 (All versions < V8.01), Siemens Power Meters Series 9410 (All versions < V2.2.1), Siemens Power Meters Series 9810 (All versions). An unauthenticated attacker with network access to the device could potentially insert arbitrary code which is executed before firmware verification in the device. At the time of advisory publication no public exploitation of this security vulnerability was known.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+                "baseScore": 9.8,
+                "baseSeverity": "CRITICAL",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 5.9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2019-19279",
+        "published": "2020-03-10T20:15:18.807",
+        "lastModified": "2026-06-17T02:26:25.390",
+        "description": "A vulnerability has been identified in SIPROTEC 4 and SIPROTEC Compact relays equipped with EN100 Ethernet communication modules (All versions). Specially crafted packets sent to port 50000/UDP of the EN100 Ethernet communication modules could cause a Denial-of-Service of the affected device. A manual reboot is required to recover the service of the device. At the time of advisory publication no public exploitation of this security vulnerability was known to Siemens.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 7.5,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2021-33719",
+        "published": "2021-09-14T11:15:24.447",
+        "lastModified": "2026-06-17T03:55:06.140",
+        "description": "A vulnerability has been identified in SIPROTEC 5 relays with CPU variants CP050 (All versions < V8.80), SIPROTEC 5 relays with CPU variants CP100 (All versions < V8.80), SIPROTEC 5 relays with CPU variants CP300 (All versions < V8.80). Specially crafted packets sent to port 4443/tcp could cause a Denial-of-Service condition or potential remote code execution.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+                "baseScore": 9.8,
+                "baseSeverity": "CRITICAL",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 5.9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2021-33720",
+        "published": "2021-09-14T11:15:24.540",
+        "lastModified": "2026-06-17T03:55:06.260",
+        "description": "A vulnerability has been identified in SIPROTEC 5 relays with CPU variants CP050 (All versions < V8.80), SIPROTEC 5 relays with CPU variants CP100 (All versions < V8.80), SIPROTEC 5 relays with CPU variants CP300 (All versions < V8.80). Specially crafted packets sent to port 4443/tcp could cause a Denial-of-Service condition.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 7.5,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2021-37206",
+        "published": "2021-09-14T11:15:26.547",
+        "lastModified": "2026-06-17T04:00:16.097",
+        "description": "A vulnerability has been identified in SIPROTEC 5 relays with CPU variants CP050 (All versions < V8.80), SIPROTEC 5 relays with CPU variants CP100 (All versions < V8.80), SIPROTEC 5 relays with CPU variants CP300 (All versions < V8.80). Received webpackets are not properly processed. An unauthenticated remote attacker with access to any of the Ethernet interfaces could send specially crafted packets to force a restart of the target device.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 7.5,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2021-41769",
+        "published": "2022-01-11T12:15:10.037",
+        "lastModified": "2026-06-17T04:08:53.333",
+        "description": "A vulnerability has been identified in SIPROTEC 5 6MD85 devices (CPU variant CP300) (All versions < V8.83), SIPROTEC 5 6MD86 devices (CPU variant CP300) (All versions < V8.83), SIPROTEC 5 6MD89 devices (CPU variant CP300) (All versions < V8.83), SIPROTEC 5 6MU85 devices (CPU variant CP300) (All versions < V8.83), SIPROTEC 5 7KE85 devices (CPU variant CP300) (All versions < V8.83), SIPROTEC 5 7SA82 devices (CPU variant CP100) (All versions < V8.83), SIPROTEC 5 7SA86 devices (CPU variant CP300) (All versions < V8.83), SIPROTEC 5 7SA87 devices (CPU variant CP300) (All versions < V8.83), SIPROTEC 5 7SD82 devices (CPU variant CP100) (All versions < V8.83), SIPROTEC 5 7SD86 devices (CPU variant CP300) (All versions < V8.83), SIPROTEC 5 7SD87 devices (CPU variant CP300) (All versions < V8.83), SIPROTEC 5 7SJ81 devices (CPU variant CP100) (All versions < V8.83), SIPROTEC 5 7SJ82 devices (CPU variant CP100) (All versions < V8.83), SIPROTEC 5 7SJ85 devices (CPU variant CP300) (All versions < V8.83), SIPROTEC 5 7SJ86 devices (CPU variant CP300) (All versions < V8.83), SIPROTEC 5 7SK82 devices (CPU variant CP100) (All versions < V8.83), SIPROTEC 5 7SK85 devices (CPU variant CP300) (All versions < V8.83), SIPROTEC 5 7SL82 devices (CPU variant CP100) (All versions < V8.83), SIPROTEC 5 7SL86 devices (CPU variant CP300) (All versions < V8.83), SIPROTEC 5 7SL87 devices (CPU variant CP300) (All versions < V8.83), SIPROTEC 5 7SS85 devices (CPU variant CP300) (All versions < V8.83), SIPROTEC 5 7ST85 devices (CPU variant CP300) (All versions < V8.83), SIPROTEC 5 7SX85 devices (CPU variant CP300) (All versions < V8.83), SIPROTEC 5 7UM85 devices (CPU variant CP300) (All versions < V8.83), SIPROTEC 5 7UT82 devices (CPU variant CP100) (All versions < V8.83), SIPROTEC 5 7UT85 devices (CPU variant CP300) (All versions < V8.83), SIPROTEC 5 7UT86 devices (CPU variant CP300) (All versions < V8.83), SIPROTEC 5 7UT87 devices (CPU variant CP300) (All versions < V8.83), SIPROTEC 5 7VE85 devices (CPU variant CP300) (All versions < V8.83), SIPROTEC 5 7VK87 devices (CPU variant CP300) (All versions < V8.83), SIPROTEC 5 Compact 7SX800 devices (CPU variant CP050) (All versions < V8.83). An improper input validation vulnerability in the web server could allow an unauthenticated user to access device information.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+                "baseScore": 7.5,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "NONE"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2022-45044",
+        "published": "2022-12-13T16:15:24.617",
+        "lastModified": "2026-06-17T05:09:14.317",
+        "description": "A vulnerability has been identified in SIPROTEC 5 6MD84 (CP300) (All versions < V9.50), SIPROTEC 5 6MD85 (CP200) (All versions), SIPROTEC 5 6MD85 (CP300) (All versions < V9.50), SIPROTEC 5 6MD86 (CP200) (All versions), SIPROTEC 5 6MD86 (CP300) (All versions < V9.50), SIPROTEC 5 6MD89 (CP300) (All versions < V9.64), SIPROTEC 5 6MU85 (CP300) (All versions < V9.50), SIPROTEC 5 7KE85 (CP200) (All versions), SIPROTEC 5 7KE85 (CP300) (All versions < V9.64), SIPROTEC 5 7SA82 (CP100) (All versions < V8.90), SIPROTEC 5 7SA82 (CP150) (All versions < V9.50), SIPROTEC 5 7SA84 (CP200) (All versions), SIPROTEC 5 7SA86 (CP200) (All versions), SIPROTEC 5 7SA86 (CP300) (All versions < V9.50), SIPROTEC 5 7SA87 (CP200) (All versions), SIPROTEC 5 7SA87 (CP300) (All versions < V9.50), SIPROTEC 5 7SD82 (CP100) (All versions < V8.90), SIPROTEC 5 7SD82 (CP150) (All versions < V9.50), SIPROTEC 5 7SD84 (CP200) (All versions), SIPROTEC 5 7SD86 (CP200) (All versions), SIPROTEC 5 7SD86 (CP300) (All versions < V9.50), SIPROTEC 5 7SD87 (CP200) (All versions), SIPROTEC 5 7SD87 (CP300) (All versions < V9.50), SIPROTEC 5 7SJ81 (CP100) (All versions < V8.89), SIPROTEC 5 7SJ81 (CP150) (All versions < V9.50), SIPROTEC 5 7SJ82 (CP100) (All versions < V8.89), SIPROTEC 5 7SJ82 (CP150) (All versions < V9.50), SIPROTEC 5 7SJ85 (CP200) (All versions), SIPROTEC 5 7SJ85 (CP300) (All versions < V9.50), SIPROTEC 5 7SJ86 (CP200) (All versions), SIPROTEC 5 7SJ86 (CP300) (All versions < V9.50), SIPROTEC 5 7SK82 (CP100) (All versions < V8.89), SIPROTEC 5 7SK82 (CP150) (All versions < V9.50), SIPROTEC 5 7SK85 (CP200) (All versions), SIPROTEC 5 7SK85 (CP300) (All versions < V9.50), SIPROTEC 5 7SL82 (CP100) (All versions < V8.90), SIPROTEC 5 7SL82 (CP150) (All versions < V9.50), SIPROTEC 5 7SL86 (CP200) (All versions), SIPROTEC 5 7SL86 (CP300) (All versions < V9.50), SIPROTEC 5 7SL87 (CP200) (All versions), SIPROTEC 5 7SL87 (CP300) (All versions < V9.50), SIPROTEC 5 7SS85 (CP200) (All versions), SIPROTEC 5 7SS85 (CP300) (All versions < V9.50), SIPROTEC 5 7ST85 (CP200) (All versions), SIPROTEC 5 7ST85 (CP300) (All versions < V9.64), SIPROTEC 5 7ST86 (CP300) (All versions < V9.64), SIPROTEC 5 7SX82 (CP150) (All versions < V9.50), SIPROTEC 5 7SX85 (CP300) (All versions < V9.50), SIPROTEC 5 7UM85 (CP300) (All versions < V9.50), SIPROTEC 5 7UT82 (CP100) (All versions < V8.90), SIPROTEC 5 7UT82 (CP150) (All versions < V9.50), SIPROTEC 5 7UT85 (CP200) (All versions), SIPROTEC 5 7UT85 (CP300) (All versions < V9.50), SIPROTEC 5 7UT86 (CP200) (All versions), SIPROTEC 5 7UT86 (CP300) (All versions < V9.50), SIPROTEC 5 7UT87 (CP200) (All versions), SIPROTEC 5 7UT87 (CP300) (All versions < V9.50), SIPROTEC 5 7VE85 (CP300) (All versions < V9.50), SIPROTEC 5 7VK87 (CP200) (All versions), SIPROTEC 5 7VK87 (CP300) (All versions < V9.50), SIPROTEC 5 7VU85 (CP300) (All versions < V9.50), SIPROTEC 5 Communication Module ETH-BA-2EL (Rev.1) (All versions installed on CP200 devices), SIPROTEC 5 Communication Module ETH-BA-2EL (Rev.1) (All versions < V9.50 installed on CP150 and CP300 devices), SIPROTEC 5 Communication Module ETH-BA-2EL (Rev.1) (All versions < V8.89 installed on CP100 devices), SIPROTEC 5 Communication Module ETH-BB-2FO (Rev. 1) (All versions installed on CP200 devices), SIPROTEC 5 Communication Module ETH-BB-2FO (Rev. 1) (All versions < V9.50 installed on CP150 and CP300 devices), SIPROTEC 5 Communication Module ETH-BB-2FO (Rev. 1) (All versions < V8.89 installed on CP100 devices), SIPROTEC 5 Communication Module ETH-BD-2FO (All versions < V9.50), SIPROTEC 5 Compact 7SX800 (CP050) (All versions < V9.50). Affected devices do not properly restrict secure client-initiated renegotiations within the SSL and TLS protocols. This could allow an attacker to create a denial of service condition on the ports 443/tcp and 4443/tcp for the duration of the attack.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "productcert@siemens.com",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+                "baseScore": 5.3,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "LOW"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 1.4
+            },
+            {
+              "source": "nvd@nist.gov",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 7.5,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2023-28766",
+        "published": "2023-04-11T10:15:18.337",
+        "lastModified": "2026-06-17T05:48:43.330",
+        "description": "A vulnerability has been identified in SIPROTEC 5 6MD85 (CP300) (All versions >= V7.80 < V9.40), SIPROTEC 5 6MD86 (CP300) (All versions >= V7.80 < V9.40), SIPROTEC 5 6MD89 (CP300) (All versions >= V7.80 < V9.64), SIPROTEC 5 6MU85 (CP300) (All versions >= V7.80 < V9.40), SIPROTEC 5 7KE85 (CP300) (All versions >= V7.80 < V9.40), SIPROTEC 5 7SA82 (CP100) (All versions < V8.90), SIPROTEC 5 7SA82 (CP150) (All versions < V9.40), SIPROTEC 5 7SA86 (CP300) (All versions >= V7.80 < V9.40), SIPROTEC 5 7SA87 (CP300) (All versions >= V7.80 < V9.40), SIPROTEC 5 7SD82 (CP100) (All versions < V8.90), SIPROTEC 5 7SD82 (CP150) (All versions < V9.40), SIPROTEC 5 7SD86 (CP300) (All versions >= V7.80 < V9.40), SIPROTEC 5 7SD87 (CP300) (All versions >= V7.80 < V9.40), SIPROTEC 5 7SJ81 (CP100) (All versions < V8.89), SIPROTEC 5 7SJ81 (CP150) (All versions < V9.40), SIPROTEC 5 7SJ82 (CP100) (All versions < V8.89), SIPROTEC 5 7SJ82 (CP150) (All versions < V9.40), SIPROTEC 5 7SJ85 (CP300) (All versions >= V7.80 < V9.40), SIPROTEC 5 7SJ86 (CP300) (All versions >= V7.80 < V9.40), SIPROTEC 5 7SK82 (CP100) (All versions < V8.89), SIPROTEC 5 7SK82 (CP150) (All versions < V9.40), SIPROTEC 5 7SK85 (CP300) (All versions >= V7.80 < V9.40), SIPROTEC 5 7SL82 (CP100) (All versions < V8.90), SIPROTEC 5 7SL82 (CP150) (All versions < V9.40), SIPROTEC 5 7SL86 (CP300) (All versions >= V7.80 < V9.40), SIPROTEC 5 7SL87 (CP300) (All versions >= V7.80 < V9.40), SIPROTEC 5 7SS85 (CP300) (All versions >= V7.80 < V9.40), SIPROTEC 5 7ST85 (CP300) (All versions >= V7.80 < V9.64), SIPROTEC 5 7ST86 (CP300) (All versions >= V7.80 < V9.40), SIPROTEC 5 7SX82 (CP150) (All versions < V9.40), SIPROTEC 5 7SX85 (CP300) (All versions >= V7.80 < V9.40), SIPROTEC 5 7UM85 (CP300) (All versions >= V7.80 < V9.40), SIPROTEC 5 7UT82 (CP100) (All versions < V8.90), SIPROTEC 5 7UT82 (CP150) (All versions < V9.40), SIPROTEC 5 7UT85 (CP300) (All versions >= V7.80 < V9.40), SIPROTEC 5 7UT86 (CP300) (All versions >= V7.80 < V9.40), SIPROTEC 5 7UT87 (CP300) (All versions >= V7.80 < V9.40), SIPROTEC 5 7VE85 (CP300) (All versions >= V7.80 < V9.40), SIPROTEC 5 7VK87 (CP300) (All versions >= V7.80 < V9.40), SIPROTEC 5 7VU85 (CP300) (All versions >= V7.80 < V9.40), SIPROTEC 5 Communication Module ETH-BA-2EL (Rev.1) (All versions < V9.40 installed on CP150 and CP300 devices), SIPROTEC 5 Communication Module ETH-BA-2EL (Rev.1) (All versions < V8.89 installed on CP100 devices), SIPROTEC 5 Communication Module ETH-BB-2FO (Rev. 1) (All versions < V9.40 installed on CP150 and CP300 devices), SIPROTEC 5 Communication Module ETH-BB-2FO (Rev. 1) (All versions < V8.89 installed on CP100 devices), SIPROTEC 5 Communication Module ETH-BD-2FO (All versions < V9.40), SIPROTEC 5 Compact 7SX800 (CP050) (All versions < V9.40). Affected devices lack proper validation of http request parameters of the hosted web service.\r\nAn unauthenticated remote attacker could send specially crafted packets that could cause denial of service condition of the target device.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "productcert@siemens.com",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 7.5,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2024-38867",
+        "published": "2024-07-09T12:15:15.750",
+        "lastModified": "2026-06-17T07:41:09.743",
+        "description": "A vulnerability has been identified in SIPROTEC 5 6MD84 (CP300) (All versions < V9.64), SIPROTEC 5 6MD85 (CP200) (All versions), SIPROTEC 5 6MD85 (CP300) (All versions < V9.64), SIPROTEC 5 6MD86 (CP200) (All versions), SIPROTEC 5 6MD86 (CP300) (All versions < V9.64), SIPROTEC 5 6MD89 (CP300) (All versions < V9.64), SIPROTEC 5 6MU85 (CP300) (All versions < V9.64), SIPROTEC 5 7KE85 (CP200) (All versions), SIPROTEC 5 7KE85 (CP300) (All versions < V9.64), SIPROTEC 5 7SA82 (CP100) (All versions < V8.90), SIPROTEC 5 7SA82 (CP150) (All versions < V9.65), SIPROTEC 5 7SA84 (CP200) (All versions), SIPROTEC 5 7SA86 (CP200) (All versions), SIPROTEC 5 7SA86 (CP300) (All versions < V9.65), SIPROTEC 5 7SA87 (CP200) (All versions), SIPROTEC 5 7SA87 (CP300) (All versions < V9.65), SIPROTEC 5 7SD82 (CP100) (All versions < V8.90), SIPROTEC 5 7SD82 (CP150) (All versions < V9.65), SIPROTEC 5 7SD84 (CP200) (All versions), SIPROTEC 5 7SD86 (CP200) (All versions), SIPROTEC 5 7SD86 (CP300) (All versions < V9.65), SIPROTEC 5 7SD87 (CP200) (All versions), SIPROTEC 5 7SD87 (CP300) (All versions < V9.65), SIPROTEC 5 7SJ81 (CP100) (All versions < V8.89), SIPROTEC 5 7SJ81 (CP150) (All versions < V9.65), SIPROTEC 5 7SJ82 (CP100) (All versions < V8.89), SIPROTEC 5 7SJ82 (CP150) (All versions < V9.65), SIPROTEC 5 7SJ85 (CP200) (All versions), SIPROTEC 5 7SJ85 (CP300) (All versions < V9.65), SIPROTEC 5 7SJ86 (CP200) (All versions), SIPROTEC 5 7SJ86 (CP300) (All versions < V9.65), SIPROTEC 5 7SK82 (CP100) (All versions < V8.89), SIPROTEC 5 7SK82 (CP150) (All versions < V9.65), SIPROTEC 5 7SK85 (CP200) (All versions), SIPROTEC 5 7SK85 (CP300) (All versions < V9.65), SIPROTEC 5 7SL82 (CP100) (All versions < V8.90), SIPROTEC 5 7SL82 (CP150) (All versions < V9.65), SIPROTEC 5 7SL86 (CP200) (All versions), SIPROTEC 5 7SL86 (CP300) (All versions < V9.65), SIPROTEC 5 7SL87 (CP200) (All versions), SIPROTEC 5 7SL87 (CP300) (All versions < V9.65), SIPROTEC 5 7SS85 (CP200) (All versions), SIPROTEC 5 7SS85 (CP300) (All versions < V9.64), SIPROTEC 5 7ST85 (CP200) (All versions), SIPROTEC 5 7ST85 (CP300) (All versions < V9.64), SIPROTEC 5 7ST86 (CP300) (All versions < V9.64), SIPROTEC 5 7SX82 (CP150) (All versions < V9.65), SIPROTEC 5 7SX85 (CP300) (All versions < V9.65), SIPROTEC 5 7UM85 (CP300) (All versions < V9.64), SIPROTEC 5 7UT82 (CP100) (All versions < V8.90), SIPROTEC 5 7UT82 (CP150) (All versions < V9.65), SIPROTEC 5 7UT85 (CP200) (All versions), SIPROTEC 5 7UT85 (CP300) (All versions < V9.65), SIPROTEC 5 7UT86 (CP200) (All versions), SIPROTEC 5 7UT86 (CP300) (All versions < V9.65), SIPROTEC 5 7UT87 (CP200) (All versions), SIPROTEC 5 7UT87 (CP300) (All versions < V9.65), SIPROTEC 5 7VE85 (CP300) (All versions < V9.64), SIPROTEC 5 7VK87 (CP200) (All versions), SIPROTEC 5 7VK87 (CP300) (All versions < V9.65), SIPROTEC 5 7VU85 (CP300) (All versions < V9.64), SIPROTEC 5 Communication Module ETH-BA-2EL (Rev.1) (All versions < V9.62 installed on CP150 and CP300 devices), SIPROTEC 5 Communication Module ETH-BA-2EL (Rev.1) (All versions installed on CP200 devices), SIPROTEC 5 Communication Module ETH-BA-2EL (Rev.1) (All versions < V8.89 installed on CP100 devices), SIPROTEC 5 Communication Module ETH-BB-2FO (Rev. 1) (All versions installed on CP200 devices), SIPROTEC 5 Communication Module ETH-BB-2FO (Rev. 1) (All versions < V9.62 installed on CP150 and CP300 devices), SIPROTEC 5 Communication Module ETH-BB-2FO (Rev. 1) (All versions < V8.89 installed on CP100 devices), SIPROTEC 5 Communication Module ETH-BD-2FO (All versions < V9.62), SIPROTEC 5 Compact 7SX800 (CP050) (All versions < V9.64). The affected devices are supporting weak ciphers on several ports (443/tcp for web, 4443/tcp for DIGSI 5 and configurable port for syslog over TLS). \r\nThis could allow an unauthorized attacker in a man-in-the-middle position to decrypt any data passed over to and from those ports.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "productcert@siemens.com",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+                "baseScore": 5.9,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "NETWORK",
+                "attackComplexity": "HIGH",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "NONE"
+              },
+              "exploitabilityScore": 2.2,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2024-53649",
+        "published": "2025-01-14T11:15:16.820",
+        "lastModified": "2026-06-17T08:09:03.997",
+        "description": "A vulnerability has been identified in SIPROTEC 5 6MD84 (CP300) (All versions < V9.80), SIPROTEC 5 6MD85 (CP300) (All versions >= V7.80 < V9.80), SIPROTEC 5 6MD86 (CP300) (All versions >= V7.80 < V9.80), SIPROTEC 5 6MD89 (CP300) (All versions >= V7.80 < V9.68), SIPROTEC 5 6MU85 (CP300) (All versions >= V7.80 < V9.80), SIPROTEC 5 7KE85 (CP300) (All versions >= V7.80 < V9.80), SIPROTEC 5 7SA82 (CP100) (All versions >= V7.80 < V8.90), SIPROTEC 5 7SA82 (CP150) (All versions < V9.80), SIPROTEC 5 7SA86 (CP300) (All versions >= V7.80 < V9.80), SIPROTEC 5 7SA87 (CP300) (All versions >= V7.80 < V9.80), SIPROTEC 5 7SD82 (CP100) (All versions >= V7.80 < V8.90), SIPROTEC 5 7SD82 (CP150) (All versions < V9.80), SIPROTEC 5 7SD86 (CP300) (All versions >= V7.80 < V9.80), SIPROTEC 5 7SD87 (CP300) (All versions >= V7.80 < V9.80), SIPROTEC 5 7SJ81 (CP100) (All versions >= V7.80 < V8.90), SIPROTEC 5 7SJ81 (CP150) (All versions < V9.80), SIPROTEC 5 7SJ82 (CP100) (All versions >= V7.80 < V8.90), SIPROTEC 5 7SJ82 (CP150) (All versions < V9.80), SIPROTEC 5 7SJ85 (CP300) (All versions >= V7.80 < V9.80), SIPROTEC 5 7SJ86 (CP300) (All versions >= V7.80 < V9.80), SIPROTEC 5 7SK82 (CP100) (All versions >= V7.80 < V8.90), SIPROTEC 5 7SK82 (CP150) (All versions < V9.80), SIPROTEC 5 7SK85 (CP300) (All versions >= V7.80 < V9.80), SIPROTEC 5 7SL82 (CP100) (All versions >= V7.80 < V8.90), SIPROTEC 5 7SL82 (CP150) (All versions < V9.80), SIPROTEC 5 7SL86 (CP300) (All versions >= V7.80 < V9.80), SIPROTEC 5 7SL87 (CP300) (All versions >= V7.80 < V9.80), SIPROTEC 5 7SS85 (CP300) (All versions >= V7.80 < V9.80), SIPROTEC 5 7ST85 (CP300) (All versions < V9.68), SIPROTEC 5 7ST86 (CP300) (All versions < V9.80), SIPROTEC 5 7SX82 (CP150) (All versions < V9.80), SIPROTEC 5 7SX85 (CP300) (All versions < V9.80), SIPROTEC 5 7SY82 (CP150) (All versions < V9.80), SIPROTEC 5 7UM85 (CP300) (All versions >= V7.80 < V9.80), SIPROTEC 5 7UT82 (CP100) (All versions >= V7.80 < V8.90), SIPROTEC 5 7UT82 (CP150) (All versions < V9.80), SIPROTEC 5 7UT85 (CP300) (All versions >= V7.80 < V9.80), SIPROTEC 5 7UT86 (CP300) (All versions >= V7.80 < V9.80), SIPROTEC 5 7UT87 (CP300) (All versions >= V7.80 < V9.80), SIPROTEC 5 7VE85 (CP300) (All versions >= V7.80 < V9.80), SIPROTEC 5 7VK87 (CP300) (All versions >= V7.80 < V9.80), SIPROTEC 5 7VU85 (CP300) (All versions < V9.80), SIPROTEC 5 Compact 7SX800 (CP050) (All versions < V9.80). Affected devices do not properly limit the path accessible via their webserver.  This could allow an authenticated remote attacker to read arbitrary files from the filesystem of affected devices.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "productcert@siemens.com",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+                "baseScore": 6.5,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "LOW",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "NONE"
+              },
+              "exploitabilityScore": 2.8,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2024-53648",
+        "published": "2025-02-11T11:15:14.460",
+        "lastModified": "2026-06-17T08:09:03.710",
+        "description": "A vulnerability has been identified in SIPROTEC 5 6MD84 (CP300) (All versions < V9.90), SIPROTEC 5 6MD85 (CP200) (All versions), SIPROTEC 5 6MD85 (CP300) (All versions < V9.90), SIPROTEC 5 6MD86 (CP200) (All versions), SIPROTEC 5 6MD86 (CP300) (All versions < V9.90), SIPROTEC 5 6MD89 (CP300) (All versions < V9.90), SIPROTEC 5 6MU85 (CP300) (All versions < V9.90), SIPROTEC 5 7KE85 (CP200) (All versions), SIPROTEC 5 7KE85 (CP300) (All versions < V10.0), SIPROTEC 5 7SA82 (CP100) (All versions < V8.90), SIPROTEC 5 7SA82 (CP150) (All versions < V9.90), SIPROTEC 5 7SA86 (CP200) (All versions), SIPROTEC 5 7SA86 (CP300) (All versions < V9.90), SIPROTEC 5 7SA87 (CP200) (All versions), SIPROTEC 5 7SA87 (CP300) (All versions < V9.90), SIPROTEC 5 7SD82 (CP100) (All versions < V8.90), SIPROTEC 5 7SD82 (CP150) (All versions < V9.90), SIPROTEC 5 7SD86 (CP200) (All versions), SIPROTEC 5 7SD86 (CP300) (All versions < V9.90), SIPROTEC 5 7SD87 (CP200) (All versions), SIPROTEC 5 7SD87 (CP300) (All versions < V9.90), SIPROTEC 5 7SJ81 (CP100) (All versions < V8.90), SIPROTEC 5 7SJ81 (CP150) (All versions < V9.90), SIPROTEC 5 7SJ82 (CP100) (All versions < V8.90), SIPROTEC 5 7SJ82 (CP150) (All versions < V9.90), SIPROTEC 5 7SJ85 (CP200) (All versions), SIPROTEC 5 7SJ85 (CP300) (All versions < V9.90), SIPROTEC 5 7SJ86 (CP200) (All versions), SIPROTEC 5 7SJ86 (CP300) (All versions < V9.90), SIPROTEC 5 7SK82 (CP100) (All versions < V8.90), SIPROTEC 5 7SK82 (CP150) (All versions < V9.90), SIPROTEC 5 7SK85 (CP200) (All versions), SIPROTEC 5 7SK85 (CP300) (All versions < V9.90), SIPROTEC 5 7SL82 (CP100) (All versions < V8.90), SIPROTEC 5 7SL82 (CP150) (All versions < V9.90), SIPROTEC 5 7SL86 (CP200) (All versions), SIPROTEC 5 7SL86 (CP300) (All versions < V9.90), SIPROTEC 5 7SL87 (CP200) (All versions), SIPROTEC 5 7SL87 (CP300) (All versions < V9.90), SIPROTEC 5 7SS85 (CP200) (All versions), SIPROTEC 5 7SS85 (CP300) (All versions < V9.90), SIPROTEC 5 7ST85 (CP200) (All versions), SIPROTEC 5 7ST85 (CP300) (All versions < V10.0), SIPROTEC 5 7ST86 (CP300) (All versions < V10.0), SIPROTEC 5 7SX82 (CP150) (All versions < V9.90), SIPROTEC 5 7SX85 (CP300) (All versions < V9.90), SIPROTEC 5 7SY82 (CP150) (All versions < V9.90), SIPROTEC 5 7UM85 (CP300) (All versions < V9.90), SIPROTEC 5 7UT82 (CP100) (All versions < V8.90), SIPROTEC 5 7UT82 (CP150) (All versions < V9.90), SIPROTEC 5 7UT85 (CP200) (All versions), SIPROTEC 5 7UT85 (CP300) (All versions < V9.90), SIPROTEC 5 7UT86 (CP200) (All versions), SIPROTEC 5 7UT86 (CP300) (All versions < V9.90), SIPROTEC 5 7UT87 (CP200) (All versions), SIPROTEC 5 7UT87 (CP300) (All versions < V9.90), SIPROTEC 5 7VE85 (CP300) (All versions < V9.90), SIPROTEC 5 7VK87 (CP200) (All versions), SIPROTEC 5 7VK87 (CP300) (All versions < V9.90), SIPROTEC 5 7VU85 (CP300) (All versions < V9.90), SIPROTEC 5 Compact 7SX800 (CP050) (All versions < V9.90). Affected devices do not properly limit access to a development shell accessible over a physical interface. This could allow an unauthenticated attacker with physical access to the device to execute arbitrary commands on the device.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "productcert@siemens.com",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+                "baseScore": 6.8,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "PHYSICAL",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 0.9,
+              "impactScore": 5.9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2024-53651",
+        "published": "2025-02-11T11:15:14.880",
+        "lastModified": "2026-06-17T08:09:04.197",
+        "description": "A vulnerability has been identified in SIPROTEC 5 6MD84 (CP300) (All versions), SIPROTEC 5 6MD85 (CP200) (All versions), SIPROTEC 5 6MD85 (CP300) (All versions), SIPROTEC 5 6MD86 (CP200) (All versions), SIPROTEC 5 6MD86 (CP300) (All versions), SIPROTEC 5 6MD89 (CP300) (All versions), SIPROTEC 5 6MU85 (CP300) (All versions), SIPROTEC 5 7KE85 (CP200) (All versions), SIPROTEC 5 7KE85 (CP300) (All versions), SIPROTEC 5 7SA82 (CP100) (All versions), SIPROTEC 5 7SA82 (CP150) (All versions), SIPROTEC 5 7SA86 (CP200) (All versions), SIPROTEC 5 7SA86 (CP300) (All versions), SIPROTEC 5 7SA87 (CP200) (All versions), SIPROTEC 5 7SA87 (CP300) (All versions), SIPROTEC 5 7SD82 (CP100) (All versions), SIPROTEC 5 7SD82 (CP150) (All versions), SIPROTEC 5 7SD86 (CP200) (All versions), SIPROTEC 5 7SD86 (CP300) (All versions), SIPROTEC 5 7SD87 (CP200) (All versions), SIPROTEC 5 7SD87 (CP300) (All versions), SIPROTEC 5 7SJ81 (CP100) (All versions), SIPROTEC 5 7SJ81 (CP150) (All versions), SIPROTEC 5 7SJ82 (CP100) (All versions), SIPROTEC 5 7SJ82 (CP150) (All versions), SIPROTEC 5 7SJ85 (CP200) (All versions), SIPROTEC 5 7SJ85 (CP300) (All versions), SIPROTEC 5 7SJ86 (CP200) (All versions), SIPROTEC 5 7SJ86 (CP300) (All versions), SIPROTEC 5 7SK82 (CP100) (All versions), SIPROTEC 5 7SK82 (CP150) (All versions), SIPROTEC 5 7SK85 (CP200) (All versions), SIPROTEC 5 7SK85 (CP300) (All versions), SIPROTEC 5 7SL82 (CP100) (All versions), SIPROTEC 5 7SL82 (CP150) (All versions), SIPROTEC 5 7SL86 (CP200) (All versions), SIPROTEC 5 7SL86 (CP300) (All versions), SIPROTEC 5 7SL87 (CP200) (All versions), SIPROTEC 5 7SL87 (CP300) (All versions), SIPROTEC 5 7SS85 (CP200) (All versions), SIPROTEC 5 7SS85 (CP300) (All versions), SIPROTEC 5 7ST85 (CP200) (All versions), SIPROTEC 5 7ST85 (CP300) (All versions), SIPROTEC 5 7ST86 (CP300) (All versions), SIPROTEC 5 7SX82 (CP150) (All versions), SIPROTEC 5 7SX85 (CP300) (All versions), SIPROTEC 5 7SY82 (CP150) (All versions), SIPROTEC 5 7UM85 (CP300) (All versions), SIPROTEC 5 7UT82 (CP100) (All versions), SIPROTEC 5 7UT82 (CP150) (All versions), SIPROTEC 5 7UT85 (CP200) (All versions), SIPROTEC 5 7UT85 (CP300) (All versions), SIPROTEC 5 7UT86 (CP200) (All versions), SIPROTEC 5 7UT86 (CP300) (All versions), SIPROTEC 5 7UT87 (CP200) (All versions), SIPROTEC 5 7UT87 (CP300) (All versions), SIPROTEC 5 7VE85 (CP300) (All versions), SIPROTEC 5 7VK87 (CP200) (All versions), SIPROTEC 5 7VK87 (CP300) (All versions), SIPROTEC 5 7VU85 (CP300) (All versions), SIPROTEC 5 Compact 7SX800 (CP050) (All versions). Affected devices do not encrypt certain data within the on-board flash storage on their PCB.  This could allow an attacker with physical access to read the entire filesystem of the device.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "productcert@siemens.com",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+                "baseScore": 4.6,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "PHYSICAL",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "NONE"
+              },
+              "exploitabilityScore": 0.9,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2024-54015",
+        "published": "2025-02-11T11:15:15.227",
+        "lastModified": "2026-06-17T08:09:40.413",
+        "description": "A vulnerability has been identified in SIPROTEC 5 6MD84 (CP300) (All versions < V9.90), SIPROTEC 5 6MD85 (CP300) (All versions >= V8.80 < V9.90), SIPROTEC 5 6MD86 (CP300) (All versions >= V8.80 < V9.90), SIPROTEC 5 6MD89 (CP300) (All versions >= V8.80 < V9.90), SIPROTEC 5 6MD89 (CP300) V9.6x (All versions < V9.68), SIPROTEC 5 6MU85 (CP300) (All versions >= V8.80 < V9.90), SIPROTEC 5 7KE85 (CP300) (All versions >= V8.80 < V10.0), SIPROTEC 5 7SA82 (CP150) (All versions < V9.90), SIPROTEC 5 7SA86 (CP300) (All versions >= V8.80 < V9.90), SIPROTEC 5 7SA87 (CP300) (All versions >= V8.80 < V9.90), SIPROTEC 5 7SD82 (CP150) (All versions < V9.90), SIPROTEC 5 7SD86 (CP300) (All versions >= V8.80 < V9.90), SIPROTEC 5 7SD87 (CP300) (All versions >= V8.80 < V9.90), SIPROTEC 5 7SJ81 (CP150) (All versions < V9.90), SIPROTEC 5 7SJ82 (CP150) (All versions < V9.90), SIPROTEC 5 7SJ85 (CP300) (All versions >= V8.80 < V9.90), SIPROTEC 5 7SJ86 (CP300) (All versions >= V8.80 < V9.90), SIPROTEC 5 7SK82 (CP150) (All versions < V9.90), SIPROTEC 5 7SK85 (CP300) (All versions >= V8.80 < V9.90), SIPROTEC 5 7SL82 (CP150) (All versions < V9.90), SIPROTEC 5 7SL86 (CP300) (All versions >= V8.80 < V9.90), SIPROTEC 5 7SL87 (CP300) (All versions >= V8.80 < V9.90), SIPROTEC 5 7SS85 (CP300) (All versions >= V8.80 < V9.90), SIPROTEC 5 7ST85 (CP300) (All versions >= V8.80 < V10.0), SIPROTEC 5 7ST85 (CP300) V9.6x (All versions < V9.68), SIPROTEC 5 7ST86 (CP300) (All versions < V10.0), SIPROTEC 5 7ST86 (CP300) V9.8x (All versions < V9.83), SIPROTEC 5 7SX82 (CP150) (All versions < V9.90), SIPROTEC 5 7SX85 (CP300) (All versions >= V8.80 < V9.90), SIPROTEC 5 7SY82 (CP150) (All versions < V9.90), SIPROTEC 5 7UM85 (CP300) (All versions >= V8.80 < V9.90), SIPROTEC 5 7UT82 (CP150) (All versions < V9.90), SIPROTEC 5 7UT85 (CP300) (All versions >= V8.80 < V9.90), SIPROTEC 5 7UT86 (CP300) (All versions >= V8.80 < V9.90), SIPROTEC 5 7UT87 (CP300) (All versions >= V8.80 < V9.90), SIPROTEC 5 7VE85 (CP300) (All versions >= V8.80 < V9.90), SIPROTEC 5 7VK87 (CP300) (All versions >= V8.80 < V9.90), SIPROTEC 5 7VU85 (CP300) (All versions < V9.90), SIPROTEC 5 Communication Module ETH-BA-2EL (Rev.2) (All versions < V9.90), SIPROTEC 5 Communication Module ETH-BA-2EL (Rev.2) V9.6 (All versions < V9.68), SIPROTEC 5 Communication Module ETH-BA-2EL (Rev.2) V9.8 (All versions < V9.83), SIPROTEC 5 Communication Module ETH-BB-2FO (Rev. 2) (All versions < V9.90), SIPROTEC 5 Communication Module ETH-BB-2FO (Rev. 2) V9.6 (All versions < V9.68), SIPROTEC 5 Communication Module ETH-BB-2FO (Rev. 2) V9.8 (All versions < V9.83), SIPROTEC 5 Communication Module ETH-BD-2FO (All versions >= V8.80 < V9.90), SIPROTEC 5 Communication Module ETH-BD-2FO V9.6 (All versions < V9.68), SIPROTEC 5 Communication Module ETH-BD-2FO V9.8 (All versions < V9.83), SIPROTEC 5 Compact 7SX800 (CP050) (All versions >= V9.50 < V9.90). Affected devices do not properly validate SNMP GET requests. This could allow an unauthenticated, remote attacker to retrieve sensitive information of the affected devices with SNMPv2 GET requests using default credentials.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "productcert@siemens.com",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+                "baseScore": 7.5,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "NONE"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2025-40742",
+        "published": "2025-07-08T11:15:30.923",
+        "lastModified": "2026-06-17T09:22:03.720",
+        "description": "A vulnerability has been identified in SIPROTEC 5 6MD84 (CP300) (All versions < V11.0), SIPROTEC 5 6MD85 (CP200) (All versions), SIPROTEC 5 6MD85 (CP300) (All versions < V11.0), SIPROTEC 5 6MD86 (CP200) (All versions), SIPROTEC 5 6MD86 (CP300) (All versions < V11.0), SIPROTEC 5 6MD89 (CP300) (All versions < V11.0), SIPROTEC 5 6MD89 (CP300) V9.6x (All versions < V11.0), SIPROTEC 5 6MU85 (CP300) (All versions < V11.0), SIPROTEC 5 7KE85 (CP200) (All versions), SIPROTEC 5 7KE85 (CP300) (All versions < V11.0), SIPROTEC 5 7SA82 (CP100) (All versions), SIPROTEC 5 7SA82 (CP150) (All versions < V11.0), SIPROTEC 5 7SA84 (CP200) (All versions), SIPROTEC 5 7SA86 (CP200) (All versions), SIPROTEC 5 7SA86 (CP300) (All versions < V11.0), SIPROTEC 5 7SA87 (CP200) (All versions), SIPROTEC 5 7SA87 (CP300) (All versions < V11.0), SIPROTEC 5 7SD82 (CP100) (All versions), SIPROTEC 5 7SD82 (CP150) (All versions < V11.0), SIPROTEC 5 7SD84 (CP200) (All versions), SIPROTEC 5 7SD86 (CP200) (All versions), SIPROTEC 5 7SD86 (CP300) (All versions < V11.0), SIPROTEC 5 7SD87 (CP200) (All versions), SIPROTEC 5 7SD87 (CP300) (All versions < V11.0), SIPROTEC 5 7SJ81 (CP100) (All versions), SIPROTEC 5 7SJ81 (CP150) (All versions < V11.0), SIPROTEC 5 7SJ82 (CP100) (All versions), SIPROTEC 5 7SJ82 (CP150) (All versions < V11.0), SIPROTEC 5 7SJ85 (CP200) (All versions), SIPROTEC 5 7SJ85 (CP300) (All versions < V11.0), SIPROTEC 5 7SJ86 (CP200) (All versions), SIPROTEC 5 7SJ86 (CP300) (All versions < V11.0), SIPROTEC 5 7SK82 (CP100) (All versions), SIPROTEC 5 7SK82 (CP150) (All versions < V11.0), SIPROTEC 5 7SK85 (CP200) (All versions), SIPROTEC 5 7SK85 (CP300) (All versions < V11.0), SIPROTEC 5 7SL82 (CP100) (All versions), SIPROTEC 5 7SL82 (CP150) (All versions < V11.0), SIPROTEC 5 7SL86 (CP200) (All versions), SIPROTEC 5 7SL86 (CP300) (All versions < V11.0), SIPROTEC 5 7SL87 (CP200) (All versions), SIPROTEC 5 7SL87 (CP300) (All versions < V11.0), SIPROTEC 5 7SS85 (CP200) (All versions), SIPROTEC 5 7SS85 (CP300) (All versions < V11.0), SIPROTEC 5 7ST85 (CP200) (All versions), SIPROTEC 5 7ST85 (CP300) (All versions < V11.0), SIPROTEC 5 7ST86 (CP300) (All versions < V11.0), SIPROTEC 5 7SX82 (CP150) (All versions < V11.0), SIPROTEC 5 7SX85 (CP300) (All versions < V11.0), SIPROTEC 5 7SY82 (CP150) (All versions < V11.0), SIPROTEC 5 7UM85 (CP300) (All versions < V11.0), SIPROTEC 5 7UT82 (CP100) (All versions), SIPROTEC 5 7UT82 (CP150) (All versions < V11.0), SIPROTEC 5 7UT85 (CP200) (All versions), SIPROTEC 5 7UT85 (CP300) (All versions < V11.0), SIPROTEC 5 7UT86 (CP200) (All versions), SIPROTEC 5 7UT86 (CP300) (All versions < V11.0), SIPROTEC 5 7UT87 (CP200) (All versions), SIPROTEC 5 7UT87 (CP300) (All versions < V11.0), SIPROTEC 5 7VE85 (CP300) (All versions < V11.0), SIPROTEC 5 7VK87 (CP200) (All versions), SIPROTEC 5 7VK87 (CP300) (All versions < V11.0), SIPROTEC 5 7VU85 (CP300) (All versions < V11.0), SIPROTEC 5 Compact 7SX800 (CP050) (All versions < V11.0). The affected devices include session identifiers in URL requests for certain functionalities. This could allow an attacker to retrieve sensitive session data from browser history, logs, or other storage mechanisms, potentially leading to unauthorized access.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "productcert@siemens.com",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N",
+                "baseScore": 5.3,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "NETWORK",
+                "attackComplexity": "HIGH",
+                "privilegesRequired": "NONE",
+                "userInteraction": "REQUIRED",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "NONE"
+              },
+              "exploitabilityScore": 1.6,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2024-52504",
+        "published": "2025-08-12T12:15:33.820",
+        "lastModified": "2026-06-17T08:07:20.793",
+        "description": "A vulnerability has been identified in SIPROTEC 4 6MD61 (All versions), SIPROTEC 4 6MD63 (All versions), SIPROTEC 4 6MD66 (All versions), SIPROTEC 4 6MD665 (All versions), SIPROTEC 4 7SA522 (All versions), SIPROTEC 4 7SA6 (All versions < V4.78), SIPROTEC 4 7SD5 (All versions < V4.78), SIPROTEC 4 7SD610 (All versions < V4.78), SIPROTEC 4 7SJ61 (All versions), SIPROTEC 4 7SJ62 (All versions), SIPROTEC 4 7SJ63 (All versions), SIPROTEC 4 7SJ64 (All versions), SIPROTEC 4 7SJ66 (All versions), SIPROTEC 4 7SS52 (All versions), SIPROTEC 4 7ST6 (All versions), SIPROTEC 4 7UM61 (All versions), SIPROTEC 4 7UM62 (All versions), SIPROTEC 4 7UT612 (All versions), SIPROTEC 4 7UT613 (All versions), SIPROTEC 4 7UT63 (All versions), SIPROTEC 4 7VE6 (All versions), SIPROTEC 4 7VK61 (All versions), SIPROTEC 4 7VU683 (All versions), SIPROTEC 4 Compact 7RW80 (All versions), SIPROTEC 4 Compact 7SD80 (All versions), SIPROTEC 4 Compact 7SJ80 (All versions), SIPROTEC 4 Compact 7SJ81 (All versions), SIPROTEC 4 Compact 7SK80 (All versions), SIPROTEC 4 Compact 7SK81 (All versions). Affected devices do not properly handle interrupted operations of file transfer. This could allow an unauthenticated remote attacker to cause a denial of service condition. To restore normal operations, the devices need to be restarted.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "productcert@siemens.com",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 7.5,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2025-40570",
+        "published": "2025-08-12T12:15:35.387",
+        "lastModified": "2026-06-17T09:21:45.657",
+        "description": "A vulnerability has been identified in SIPROTEC 5 6MD84 (CP300) (All versions < V10.0), SIPROTEC 5 6MD85 (CP300) (All versions >= V7.80 < V10.0), SIPROTEC 5 6MD86 (CP300) (All versions >= V7.80 < V10.0), SIPROTEC 5 6MD89 (CP300) (All versions >= V7.80 < V10.0), SIPROTEC 5 6MU85 (CP300) (All versions >= V7.80 < V10.0), SIPROTEC 5 7KE85 (CP300) (All versions >= V7.80 < V10.0), SIPROTEC 5 7SA82 (CP150) (All versions < V10.0), SIPROTEC 5 7SA86 (CP300) (All versions >= V7.80 < V10.0), SIPROTEC 5 7SA87 (CP300) (All versions >= V7.80 < V10.0), SIPROTEC 5 7SD82 (CP150) (All versions < V10.0), SIPROTEC 5 7SD86 (CP300) (All versions >= V7.80 < V10.0), SIPROTEC 5 7SD87 (CP300) (All versions >= V7.80 < V10.0), SIPROTEC 5 7SJ81 (CP150) (All versions < V10.0), SIPROTEC 5 7SJ82 (CP150) (All versions < V10.0), SIPROTEC 5 7SJ85 (CP300) (All versions >= V7.80 < V10.0), SIPROTEC 5 7SJ86 (CP300) (All versions >= V7.80 < V10.0), SIPROTEC 5 7SK82 (CP150) (All versions < V10.0), SIPROTEC 5 7SK85 (CP300) (All versions >= V7.80 < V10.0), SIPROTEC 5 7SL82 (CP150) (All versions < V10.0), SIPROTEC 5 7SL86 (CP300) (All versions >= V7.80 < V10.0), SIPROTEC 5 7SL87 (CP300) (All versions >= V7.80 < V10.0), SIPROTEC 5 7SS85 (CP300) (All versions >= V7.80 < V10.0), SIPROTEC 5 7ST85 (CP300) (All versions < V10.0), SIPROTEC 5 7ST86 (CP300) (All versions < V10.0), SIPROTEC 5 7SX82 (CP150) (All versions < V10.0), SIPROTEC 5 7SX85 (CP300) (All versions < V10.0), SIPROTEC 5 7SY82 (CP150) (All versions < V10.0), SIPROTEC 5 7UM85 (CP300) (All versions >= V7.80 < V10.0), SIPROTEC 5 7UT82 (CP150) (All versions < V10.0), SIPROTEC 5 7UT85 (CP300) (All versions >= V7.80 < V10.0), SIPROTEC 5 7UT86 (CP300) (All versions >= V7.80 < V10.0), SIPROTEC 5 7UT87 (CP300) (All versions >= V7.80 < V10.0), SIPROTEC 5 7VE85 (CP300) (All versions >= V7.80 < V10.0), SIPROTEC 5 7VK87 (CP300) (All versions >= V7.80 < V10.0), SIPROTEC 5 7VU85 (CP300) (All versions < V10.0), SIPROTEC 5 Compact 7SX800 (CP050) (All versions < V10.0). Affected devices do not properly limit the bandwidth for incoming network packets over their local USB port. This could allow an attacker with physical access to send specially crafted packets with high bandwidth to the affected devices thus forcing them to exhaust their memory and stop responding to any network traffic via the local USB port. Affected devices reset themselves automatically after a successful attack. The protection function is not affected of this vulnerability.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "productcert@siemens.com",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:P/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+                "baseScore": 2.4,
+                "baseSeverity": "LOW",
+                "attackVector": "PHYSICAL",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "LOW"
+              },
+              "exploitabilityScore": 0.9,
+              "impactScore": 1.4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2024-54017",
+        "published": "2026-05-12T10:16:40.120",
+        "lastModified": "2026-10-23T23:10:00.157",
+        "description": "A vulnerability has been identified in SIPROTEC 5 6MD84 (CP300) (All versions < V11.0), SIPROTEC 5 6MD85 (CP200) (All versions), SIPROTEC 5 6MD85 (CP300) (All versions >= V7.80 < V11.0), SIPROTEC 5 6MD86 (CP200) (All versions), SIPROTEC 5 6MD86 (CP300) (All versions >= V7.80 < V11.0), SIPROTEC 5 6MD89 (CP300) (All versions >= V7.80 < V11.0), SIPROTEC 5 6MU85 (CP300) (All versions >= V7.80 < V11.0), SIPROTEC 5 7KE85 (CP200) (All versions), SIPROTEC 5 7KE85 (CP300) (All versions >= V7.80 < V11.0), SIPROTEC 5 7SA82 (CP100) (All versions >= V7.80), SIPROTEC 5 7SA82 (CP150) (All versions < V11.0), SIPROTEC 5 7SA84 (CP200) (All versions), SIPROTEC 5 7SA86 (CP200) (All versions), SIPROTEC 5 7SA86 (CP300) (All versions >= V7.80 < V11.0), SIPROTEC 5 7SA87 (CP200) (All versions), SIPROTEC 5 7SA87 (CP300) (All versions >= V7.80 < V11.0), SIPROTEC 5 7SD82 (CP100) (All versions >= V7.80), SIPROTEC 5 7SD82 (CP150) (All versions < V11.0), SIPROTEC 5 7SD84 (CP200) (All versions), SIPROTEC 5 7SD86 (CP200) (All versions), SIPROTEC 5 7SD86 (CP300) (All versions >= V7.80 < V11.0), SIPROTEC 5 7SD87 (CP200) (All versions), SIPROTEC 5 7SD87 (CP300) (All versions >= V7.80 < V11.0), SIPROTEC 5 7SJ81 (CP100) (All versions >= V7.80), SIPROTEC 5 7SJ81 (CP150) (All versions < V11.0), SIPROTEC 5 7SJ82 (CP100) (All versions >= V7.80), SIPROTEC 5 7SJ82 (CP150) (All versions < V11.0), SIPROTEC 5 7SJ85 (CP200) (All versions), SIPROTEC 5 7SJ85 (CP300) (All versions >= V7.80 < V11.0), SIPROTEC 5 7SJ86 (CP200) (All versions), SIPROTEC 5 7SJ86 (CP300) (All versions >= V7.80 < V11.0), SIPROTEC 5 7SK82 (CP100) (All versions >= V7.80), SIPROTEC 5 7SK82 (CP150) (All versions < V11.0), SIPROTEC 5 7SK85 (CP200) (All versions), SIPROTEC 5 7SK85 (CP300) (All versions >= V7.80 < V11.0), SIPROTEC 5 7SL82 (CP100) (All versions >= V7.80), SIPROTEC 5 7SL82 (CP150) (All versions < V11.0), SIPROTEC 5 7SL86 (CP200) (All versions), SIPROTEC 5 7SL86 (CP300) (All versions >= V7.80 < V11.0), SIPROTEC 5 7SL87 (CP200) (All versions), SIPROTEC 5 7SL87 (CP300) (All versions >= V7.80 < V11.0), SIPROTEC 5 7SS85 (CP200) (All versions), SIPROTEC 5 7SS85 (CP300) (All versions >= V7.80 < V11.0), SIPROTEC 5 7ST85 (CP200) (All versions), SIPROTEC 5 7ST85 (CP300) (All versions >= V7.80 < V11.0), SIPROTEC 5 7ST86 (CP300) (All versions < V11.0), SIPROTEC 5 7SX82 (CP150) (All versions < V11.0), SIPROTEC 5 7SX85 (CP300) (All versions < V11.0), SIPROTEC 5 7SY82 (CP150) (All versions < V11.0), SIPROTEC 5 7UM85 (CP300) (All versions >= V7.80 < V11.0), SIPROTEC 5 7UT82 (CP100) (All versions >= V7.80), SIPROTEC 5 7UT82 (CP150) (All versions < V11.0), SIPROTEC 5 7UT85 (CP200) (All versions), SIPROTEC 5 7UT85 (CP300) (All versions >= V7.80 < V11.0), SIPROTEC 5 7UT86 (CP200) (All versions), SIPROTEC 5 7UT86 (CP300) (All versions >= V7.80 < V11.0), SIPROTEC 5 7UT87 (CP200) (All versions), SIPROTEC 5 7UT87 (CP300) (All versions >= V7.80 < V11.0), SIPROTEC 5 7VE85 (CP300) (All versions >= V7.80 < V11.0), SIPROTEC 5 7VK87 (CP200) (All versions), SIPROTEC 5 7VK87 (CP300) (All versions >= V7.80 < V11.0), SIPROTEC 5 7VU85 (CP300) (All versions < V11.0), SIPROTEC 5 Compact 7SX800 (CP050) (All versions < V11.0). Affected devices do not use  sufficiently random values to create session identifiers. This could allow an unauthenticated remote attacker to brute force a session identifier and gain read access to limited  information from the web server without authorization.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "productcert@siemens.com",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N",
+                "baseScore": 5.3,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "LOW",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "NONE"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 1.4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2025-40808",
+        "published": "2026-06-09T10:16:35.807",
+        "lastModified": "2026-07-23T08:10:00.137",
+        "description": "A vulnerability has been identified in SIPROTEC 5 6MD84 (CP300) (All versions), SIPROTEC 5 6MD85 (CP200) (All versions), SIPROTEC 5 6MD85 (CP300) (All versions), SIPROTEC 5 6MD86 (CP200) (All versions), SIPROTEC 5 6MD86 (CP300) (All versions), SIPROTEC 5 6MD89 (CP300) (All versions), SIPROTEC 5 6MU85 (CP300) (All versions), SIPROTEC 5 7KE85 (CP200) (All versions), SIPROTEC 5 7KE85 (CP300) (All versions), SIPROTEC 5 7SA82 (CP100) (All versions), SIPROTEC 5 7SA82 (CP150) (All versions), SIPROTEC 5 7SA86 (CP200) (All versions), SIPROTEC 5 7SA86 (CP300) (All versions), SIPROTEC 5 7SA87 (CP200) (All versions), SIPROTEC 5 7SA87 (CP300) (All versions), SIPROTEC 5 7SD82 (CP100) (All versions), SIPROTEC 5 7SD82 (CP150) (All versions), SIPROTEC 5 7SD86 (CP200) (All versions), SIPROTEC 5 7SD86 (CP300) (All versions), SIPROTEC 5 7SD87 (CP200) (All versions), SIPROTEC 5 7SD87 (CP300) (All versions), SIPROTEC 5 7SJ81 (CP100) (All versions), SIPROTEC 5 7SJ81 (CP150) (All versions), SIPROTEC 5 7SJ82 (CP100) (All versions), SIPROTEC 5 7SJ82 (CP150) (All versions), SIPROTEC 5 7SJ85 (CP200) (All versions), SIPROTEC 5 7SJ85 (CP300) (All versions), SIPROTEC 5 7SJ86 (CP200) (All versions), SIPROTEC 5 7SJ86 (CP300) (All versions), SIPROTEC 5 7SK82 (CP100) (All versions), SIPROTEC 5 7SK82 (CP150) (All versions), SIPROTEC 5 7SK85 (CP200) (All versions), SIPROTEC 5 7SK85 (CP300) (All versions), SIPROTEC 5 7SL82 (CP100) (All versions), SIPROTEC 5 7SL82 (CP150) (All versions), SIPROTEC 5 7SL86 (CP200) (All versions), SIPROTEC 5 7SL86 (CP300) (All versions), SIPROTEC 5 7SL87 (CP200) (All versions), SIPROTEC 5 7SL87 (CP300) (All versions), SIPROTEC 5 7SS85 (CP200) (All versions), SIPROTEC 5 7SS85 (CP300) (All versions), SIPROTEC 5 7ST85 (CP200) (All versions), SIPROTEC 5 7ST85 (CP300) (All versions), SIPROTEC 5 7ST86 (CP300) (All versions), SIPROTEC 5 7SX82 (CP150) (All versions), SIPROTEC 5 7SX85 (CP300) (All versions), SIPROTEC 5 7SY82 (CP150) (All versions), SIPROTEC 5 7UM85 (CP300) (All versions), SIPROTEC 5 7UT82 (CP100) (All versions), SIPROTEC 5 7UT82 (CP150) (All versions), SIPROTEC 5 7UT85 (CP200) (All versions), SIPROTEC 5 7UT85 (CP300) (All versions), SIPROTEC 5 7UT86 (CP200) (All versions), SIPROTEC 5 7UT86 (CP300) (All versions), SIPROTEC 5 7UT87 (CP200) (All versions), SIPROTEC 5 7UT87 (CP300) (All versions), SIPROTEC 5 7VE85 (CP300) (All versions), SIPROTEC 5 7VK87 (CP200) (All versions), SIPROTEC 5 7VK87 (CP300) (All versions), SIPROTEC 5 7VU85 (CP300) (All versions), SIPROTEC 5 Compact 7SX800 (CP050) (All versions). The affected application allows authenticated users to upload arbitrary files using DIGSI 5 protocol. This could allow an attacker to upload malicious configuration files, that could cause denial of service condition and potentially lead to code execution.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "productcert@siemens.com",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:A/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:H",
+                "baseScore": 6.1,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "ADJACENT_NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "HIGH",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 0.9,
+              "impactScore": 5.2
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "_note": "This file is a pruned projection of the raw NVD CVE API 2.0 response: only cve.id, cve.published, cve.lastModified, the English description, and cvssMetricV31/V30 are kept (dropped: non-English descriptions, configurations/CPE-match arrays, references, weaknesses, CISA KEV tags). These are exactly the fields used to compute the stats in data/vulnerabilities.json; nothing was altered or re-scored."
+}

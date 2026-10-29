@@ -1,159 +1,175 @@
 {
   "_meta": {
-    "description": "Per-node vulnerability scores derived from real CVE data for a representative real-world product of each node's component type. All base_score and exploitability_score values are copied verbatim from the NVD CVE API (https://services.nvd.nist.gov/rest/json/cves/2.0?cveId=<ID>), using the nvd@nist.gov-sourced CVSS entry on each CVE's NVD page. No score was invented or estimated.",
-    "formula": "node vulnerability = mean(exploitability_score for cves) / 3.9, clipped to [0.05, 0.95]. 3.9 is the maximum possible CVSS v3.x exploitability subscore (AV:N/AC:L/PR:N/UI:N).",
-    "retrieved": "2026-10-29"
+    "description": "Per-node vulnerability derived from an UNBIASED pull of CVEs for a representative real-world product of each node's component type, instead of hand-picked CVEs. For each node, every CVE published in the last 5 years against the product's NVD CPE (or, where no clean CPE exists, an NVD keyword search) was retrieved via the NVD CVE API, restricted to entries that carry a CVSS v3.x score. No CVE was hand-picked for this version.",
+    "formula": "derived_vulnerability = median(exploitability_score over all matching CVEs) / 3.9, clipped to [0.05, 0.95] ONLY if the raw value falls outside that range. 3.9 is the maximum possible CVSS v3.x exploitability subscore (AV:N/AC:L/PR:N/UI:N).",
+    "method": "NVD CVE API 2.0 (https://services.nvd.nist.gov/rest/json/cves/2.0), queried by virtualMatchString (CPE) or keywordSearch per node, all pages fetched, deduplicated by CVE ID, then filtered to published >= cutoff_date and having at least one cvssMetricV31/V30 entry. The 'Primary'-typed CVSS v3.x entry was used where present, otherwise the first available v3.x entry.",
+    "cutoff_date": "2021-10-30",
+    "retrieved": "2026-10-29",
+    "raw_data": "Full unfiltered API responses per node are saved under data/raw/<node>.json; the exact set of CVE IDs kept after filtering, per node, is in data/raw/_summary.json.",
+    "data_quality_flags": {
+      "historian_server": "Only n=2 CVEs matched after filtering (osisoft:pi_server, aveva:pi_server and osisoft:pi_data_archive CPEs together returned just 15 CVEs total over all time, 2 within the last 5 years). This median is NOT trustworthy as a population estimate - treat it as anecdotal. It also happens to land exactly at the 0.95 cap.",
+      "scada_server": "n=9 after filtering. Small sample; treat with moderate caution.",
+      "intelligent_electronic_device": "n=13 after filtering. Small sample; treat with moderate caution.",
+      "remote_terminal_unit": "median_normalized genuinely reaches 1.0 (median exploitability_score = 3.9, the CVSS v3.x ceiling) and is clipped to 0.95. With n=21, this is a real population result, not an artifact of a single outlier CVE - more than half of the matched Modicon/Modbus CVEs in the last 5 years are unauthenticated, network-exploitable (AV:N/AC:L/PR:N/UI:N).",
+      "engineering_workstation": "Product family is generic Microsoft Windows 10 (the OS layer of a 'Windows-based engineering workstation'), which is a much broader and noisier population (n=664) than the ICS-vendor-specific products used for the other nodes - most of these CVEs have nothing to do with ICS/OT specifically. Treat this node's number as representative of 'a Windows 10 host' in general, not of engineering-workstation-specific risk."
+    }
   },
   "nodes": {
     "corporate_network": {
-      "component_type": "Corporate VPN / firewall appliance (Fortinet FortiGate SSL-VPN)",
-      "cves": [
-        {
-          "id": "CVE-2022-42475",
-          "base_score": 9.8,
-          "exploitability_score": 3.9,
-          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2022-42475"
-        },
-        {
-          "id": "CVE-2023-27997",
-          "base_score": 9.8,
-          "exploitability_score": 3.9,
-          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2023-27997"
-        },
-        {
-          "id": "CVE-2018-13379",
-          "base_score": 9.8,
-          "exploitability_score": 3.9,
-          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2018-13379"
-        }
-      ],
-      "derived_vulnerability": 0.95
+      "component_type": "Fortinet FortiGate / FortiOS SSL-VPN",
+      "query": [{"virtualMatchString": "cpe:2.3:o:fortinet:fortios"}],
+      "retrieval_date": "2026-10-29",
+      "n_cves": 203,
+      "excluded_too_old": 76,
+      "excluded_no_cvss_v3": 0,
+      "median_exploitability_score": 2.8,
+      "min_exploitability_score": 0.3,
+      "max_exploitability_score": 3.9,
+      "iqr_exploitability_score": 1.05,
+      "median_normalized": 0.7179,
+      "capped": false,
+      "derived_vulnerability": 0.7179,
+      "legacy_famous_cves": {
+        "note": "Hand-picked in the previous version of this file; kept here only for comparison, not used by src/graph.py.",
+        "cves": [
+          {"id": "CVE-2022-42475", "base_score": 9.8, "exploitability_score": 3.9, "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2022-42475"},
+          {"id": "CVE-2023-27997", "base_score": 9.8, "exploitability_score": 3.9, "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2023-27997"},
+          {"id": "CVE-2018-13379", "base_score": 9.8, "exploitability_score": 3.9, "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2018-13379"}
+        ],
+        "derived_vulnerability": 0.95
+      }
     },
     "historian_server": {
-      "component_type": "Data historian server (AVEVA / OSIsoft PI Server, PI Data Archive, PI AF Server)",
-      "cves": [
-        {
-          "id": "CVE-2023-34348",
-          "base_score": 7.5,
-          "exploitability_score": 3.9,
-          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2023-34348"
-        },
-        {
-          "id": "CVE-2016-4518",
-          "base_score": 6.5,
-          "exploitability_score": 2.8,
-          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2016-4518"
-        },
-        {
-          "id": "CVE-2025-36539",
-          "base_score": 6.5,
-          "exploitability_score": 2.8,
-          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2025-36539"
-        }
+      "component_type": "AVEVA / OSIsoft PI Server (PI Server, PI Data Archive)",
+      "query": [
+        {"virtualMatchString": "cpe:2.3:a:osisoft:pi_server"},
+        {"virtualMatchString": "cpe:2.3:a:aveva:pi_server"},
+        {"virtualMatchString": "cpe:2.3:a:osisoft:pi_data_archive"}
       ],
-      "derived_vulnerability": 0.812
+      "retrieval_date": "2026-10-29",
+      "n_cves": 2,
+      "excluded_too_old": 13,
+      "excluded_no_cvss_v3": 0,
+      "median_exploitability_score": 3.9,
+      "min_exploitability_score": 3.9,
+      "max_exploitability_score": 3.9,
+      "iqr_exploitability_score": 0.0,
+      "median_normalized": 1.0,
+      "capped": true,
+      "derived_vulnerability": 0.95,
+      "low_confidence": true,
+      "legacy_famous_cves": {
+        "note": "Hand-picked in the previous version of this file; kept here only for comparison, not used by src/graph.py.",
+        "cves": [
+          {"id": "CVE-2023-34348", "base_score": 7.5, "exploitability_score": 3.9, "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2023-34348"},
+          {"id": "CVE-2016-4518", "base_score": 6.5, "exploitability_score": 2.8, "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2016-4518"},
+          {"id": "CVE-2025-36539", "base_score": 6.5, "exploitability_score": 2.8, "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2025-36539"}
+        ],
+        "derived_vulnerability": 0.812
+      }
     },
     "engineering_workstation": {
-      "component_type": "Windows-based engineering workstation (OS-level RCE/privilege-escalation CVEs historically exploited against ICS/OT engineering workstations)",
-      "cves": [
-        {
-          "id": "CVE-2017-0144",
-          "base_score": 8.8,
-          "exploitability_score": 2.8,
-          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2017-0144"
-        },
-        {
-          "id": "CVE-2021-34527",
-          "base_score": 8.8,
-          "exploitability_score": 2.8,
-          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2021-34527"
-        },
-        {
-          "id": "CVE-2020-1472",
-          "base_score": 10.0,
-          "exploitability_score": 3.9,
-          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2020-1472"
-        }
-      ],
-      "derived_vulnerability": 0.812
+      "component_type": "Windows-based engineering workstation (Microsoft Windows 10 OS)",
+      "query": [{"virtualMatchString": "cpe:2.3:o:microsoft:windows_10"}],
+      "retrieval_date": "2026-10-29",
+      "n_cves": 664,
+      "excluded_too_old": 3393,
+      "excluded_no_cvss_v3": 0,
+      "median_exploitability_score": 1.8,
+      "min_exploitability_score": 0.5,
+      "max_exploitability_score": 3.9,
+      "iqr_exploitability_score": 0.55,
+      "median_normalized": 0.4615,
+      "capped": false,
+      "derived_vulnerability": 0.4615,
+      "legacy_famous_cves": {
+        "note": "Hand-picked in the previous version of this file; kept here only for comparison, not used by src/graph.py.",
+        "cves": [
+          {"id": "CVE-2017-0144", "base_score": 8.8, "exploitability_score": 2.8, "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2017-0144"},
+          {"id": "CVE-2021-34527", "base_score": 8.8, "exploitability_score": 2.8, "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2021-34527"},
+          {"id": "CVE-2020-1472", "base_score": 10.0, "exploitability_score": 3.9, "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2020-1472"}
+        ],
+        "derived_vulnerability": 0.812
+      }
     },
     "scada_server": {
-      "component_type": "SCADA/HMI server (Siemens SIMATIC WinCC / PCS 7)",
-      "cves": [
-        {
-          "id": "CVE-2019-10922",
-          "base_score": 9.8,
-          "exploitability_score": 3.9,
-          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2019-10922"
-        },
-        {
-          "id": "CVE-2016-5743",
-          "base_score": 9.8,
-          "exploitability_score": 3.9,
-          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2016-5743"
-        },
-        {
-          "id": "CVE-2021-40358",
-          "base_score": 9.8,
-          "exploitability_score": 3.9,
-          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2021-40358"
-        }
-      ],
-      "derived_vulnerability": 0.95
+      "component_type": "Siemens SIMATIC WinCC SCADA/HMI server",
+      "query": [{"virtualMatchString": "cpe:2.3:a:siemens:simatic_wincc"}],
+      "retrieval_date": "2026-10-29",
+      "n_cves": 9,
+      "excluded_too_old": 21,
+      "excluded_no_cvss_v3": 0,
+      "median_exploitability_score": 2.8,
+      "min_exploitability_score": 1.8,
+      "max_exploitability_score": 3.1,
+      "iqr_exploitability_score": 1.0,
+      "median_normalized": 0.7179,
+      "capped": false,
+      "derived_vulnerability": 0.7179,
+      "legacy_famous_cves": {
+        "note": "Hand-picked in the previous version of this file; kept here only for comparison, not used by src/graph.py.",
+        "cves": [
+          {"id": "CVE-2019-10922", "base_score": 9.8, "exploitability_score": 3.9, "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2019-10922"},
+          {"id": "CVE-2016-5743", "base_score": 9.8, "exploitability_score": 3.9, "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2016-5743"},
+          {"id": "CVE-2021-40358", "base_score": 9.8, "exploitability_score": 3.9, "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2021-40358"}
+        ],
+        "derived_vulnerability": 0.95
+      }
     },
     "remote_terminal_unit": {
-      "component_type": "Modbus/DNP3 RTU (Schneider Electric Modicon controllers / Modbus protocol implementation)",
-      "cves": [
-        {
-          "id": "CVE-2017-6034",
-          "base_score": 9.8,
-          "exploitability_score": 3.9,
-          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2017-6034"
-        },
-        {
-          "id": "CVE-2017-6032",
-          "base_score": 5.3,
-          "exploitability_score": 3.9,
-          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2017-6032"
-        },
-        {
-          "id": "CVE-2022-45789",
-          "base_score": 9.8,
-          "exploitability_score": 3.9,
-          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2022-45789"
-        }
-      ],
-      "derived_vulnerability": 0.95
+      "component_type": "Schneider Electric Modicon RTU/PLC (Modbus)",
+      "query": [{"keywordSearch": "Modicon"}],
+      "retrieval_date": "2026-10-29",
+      "n_cves": 21,
+      "excluded_too_old": 120,
+      "excluded_no_cvss_v3": 0,
+      "median_exploitability_score": 3.9,
+      "min_exploitability_score": 2.2,
+      "max_exploitability_score": 3.9,
+      "iqr_exploitability_score": 0.0,
+      "median_normalized": 1.0,
+      "capped": true,
+      "derived_vulnerability": 0.95,
+      "legacy_famous_cves": {
+        "note": "Hand-picked in the previous version of this file; kept here only for comparison, not used by src/graph.py.",
+        "cves": [
+          {"id": "CVE-2017-6034", "base_score": 9.8, "exploitability_score": 3.9, "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2017-6034"},
+          {"id": "CVE-2017-6032", "base_score": 5.3, "exploitability_score": 3.9, "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2017-6032"},
+          {"id": "CVE-2022-45789", "base_score": 9.8, "exploitability_score": 3.9, "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2022-45789"}
+        ],
+        "derived_vulnerability": 0.95
+      }
     },
     "intelligent_electronic_device": {
-      "component_type": "Protection relay IED (Siemens SIPROTEC 5)",
-      "cves": [
-        {
-          "id": "CVE-2021-33719",
-          "base_score": 9.8,
-          "exploitability_score": 3.9,
-          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2021-33719"
-        },
-        {
-          "id": "CVE-2021-33720",
-          "base_score": 7.5,
-          "exploitability_score": 3.9,
-          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2021-33720"
-        },
-        {
-          "id": "CVE-2021-37206",
-          "base_score": 7.5,
-          "exploitability_score": 3.9,
-          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2021-37206"
-        }
-      ],
-      "derived_vulnerability": 0.95
+      "component_type": "Siemens SIPROTEC protection relay IED",
+      "query": [{"keywordSearch": "SIPROTEC"}],
+      "retrieval_date": "2026-10-29",
+      "n_cves": 13,
+      "excluded_too_old": 16,
+      "excluded_no_cvss_v3": 0,
+      "median_exploitability_score": 2.8,
+      "min_exploitability_score": 0.9,
+      "max_exploitability_score": 3.9,
+      "iqr_exploitability_score": 3.0,
+      "median_normalized": 0.7179,
+      "capped": false,
+      "derived_vulnerability": 0.7179,
+      "legacy_famous_cves": {
+        "note": "Hand-picked in the previous version of this file; kept here only for comparison, not used by src/graph.py.",
+        "cves": [
+          {"id": "CVE-2021-33719", "base_score": 9.8, "exploitability_score": 3.9, "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2021-33719"},
+          {"id": "CVE-2021-33720", "base_score": 7.5, "exploitability_score": 3.9, "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2021-33720"},
+          {"id": "CVE-2021-37206", "base_score": 7.5, "exploitability_score": 3.9, "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2021-37206"}
+        ],
+        "derived_vulnerability": 0.95
+      }
     },
     "physical_equipment": {
       "component_type": null,
-      "cves": [],
+      "query": [],
+      "n_cves": 0,
       "derived_vulnerability": null,
-      "note": "No CVE could be verified for this node. physical_equipment represents the end physical process asset (e.g. a circuit breaker or transformer) rather than networked software or firmware, so it has no CPE entry and no associated CVEs in NVD. Its vulnerability value is left hardcoded in src/graph.py instead of being derived from CVE data."
+      "note": "No CVE could be found for this node, in either the hand-picked or the unbiased pull. physical_equipment represents the end physical process asset (e.g. a circuit breaker or transformer) rather than networked software or firmware, so it has no CPE entry and no associated CVEs in NVD. Its vulnerability value is left hardcoded in src/graph.py instead of being derived from CVE data."
     }
   }
 }

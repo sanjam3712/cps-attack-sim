@@ -1,0 +1,1110 @@
+{
+  "node": "scada_server",
+  "component_type": "Siemens SIMATIC WinCC SCADA/HMI server",
+  "queries": [
+    {
+      "params": {
+        "virtualMatchString": "cpe:2.3:a:siemens:simatic_wincc"
+      },
+      "raw_count": 30
+    }
+  ],
+  "retrieved": "2026-10-29",
+  "vulnerabilities": [
+    {
+      "cve": {
+        "id": "CVE-2010-2772",
+        "published": "2010-07-22T05:43:58.250",
+        "lastModified": "2026-06-16T23:21:29.277",
+        "description": "Siemens Simatic WinCC and PCS 7 SCADA system uses a hard-coded password, which allows local users to access a back-end database and gain privileges, as demonstrated in the wild in July 2010 by the Stuxnet worm, a different vulnerability than CVE-2010-2568.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+                "baseScore": 7.8,
+                "baseSeverity": "HIGH",
+                "attackVector": "LOCAL",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "LOW",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 1.8,
+              "impactScore": 5.9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2014-8551",
+        "published": "2014-11-26T11:59:00.093",
+        "lastModified": "2026-06-17T00:16:55.313",
+        "description": "The WinCC server in Siemens SIMATIC WinCC 7.0 through SP3, 7.2 before Update 9, and 7.3 before Update 2; SIMATIC PCS 7 7.1 through SP4, 8.0 through SP2, and 8.1; and TIA Portal 13 before Update 6 allows remote attackers to execute arbitrary code via crafted packets.",
+        "metrics": {}
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2014-8552",
+        "published": "2014-11-26T11:59:01.373",
+        "lastModified": "2026-06-17T00:16:55.423",
+        "description": "The WinCC server in Siemens SIMATIC WinCC 7.0 through SP3, 7.2 before Update 9, and 7.3 before Update 2; SIMATIC PCS 7 7.1 through SP4, 8.0 through SP2, and 8.1; and TIA Portal 13 before Update 6 allows remote attackers to read arbitrary files via crafted packets.",
+        "metrics": {}
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2016-5743",
+        "published": "2016-07-22T15:59:00.147",
+        "lastModified": "2026-06-17T00:49:58.270",
+        "description": "Siemens SIMATIC WinCC before 7.3 Update 10 and 7.4 before Update 1, SIMATIC BATCH before 8.1 SP1 Update 9 as distributed in SIMATIC PCS 7 through 8.1 SP1, SIMATIC OpenPCS 7 before 8.1 Update 3 as distributed in SIMATIC PCS 7 through 8.1 SP1, SIMATIC OpenPCS 7 before 8.2 Update 1 as distributed in SIMATIC PCS 7 8.2, and SIMATIC WinCC Runtime Professional before 13 SP1 Update 9 allow remote attackers to execute arbitrary code via crafted packets.",
+        "metrics": {
+          "cvssMetricV30": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.0",
+                "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+                "baseScore": 9.8,
+                "baseSeverity": "CRITICAL",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 5.9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2016-5744",
+        "published": "2016-07-22T15:59:01.397",
+        "lastModified": "2026-06-17T00:49:58.390",
+        "description": "Siemens SIMATIC WinCC 7.0 through SP3 and 7.2 allows remote attackers to read arbitrary WinCC station files via crafted packets.",
+        "metrics": {
+          "cvssMetricV30": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.0",
+                "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+                "baseScore": 7.5,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "NONE"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2016-7165",
+        "published": "2016-11-15T19:30:02.797",
+        "lastModified": "2026-06-17T00:52:43.053",
+        "description": "A vulnerability has been identified in Primary Setup Tool (PST) (All versions < V4.2 HF1), SIMATIC IT Production Suite (All versions < V7.0 SP1 HFX 2), SIMATIC NET PC-Software (All versions < V14), SIMATIC PCS 7 V7.1 (All versions), SIMATIC PCS 7 V8.0 (All versions), SIMATIC PCS 7 V8.1 (All versions), SIMATIC PCS 7 V8.2 (All versions < V8.2 SP1), SIMATIC STEP 7 (TIA Portal) V13 (All versions < V13 SP2), SIMATIC STEP 7 V5.X (All versions < V5.5 SP4 HF11), SIMATIC WinCC (TIA Portal) Basic, Comfort, Advanced (All versions < V14), SIMATIC WinCC (TIA Portal) Professional V13 (All versions < V13 SP2), SIMATIC WinCC (TIA Portal) Professional V14 (All versions < V14 SP1), SIMATIC WinCC Runtime Professional V13 (All versions < V13 SP2), SIMATIC WinCC Runtime Professional V14 (All versions < V14 SP1), SIMATIC WinCC V7.0 SP2 and earlier versions (All versions < V7.0 SP2 Upd 12), SIMATIC WinCC V7.0 SP3 (All versions < V7.0 SP3 Upd 8), SIMATIC WinCC V7.2 (All versions < V7.2 Upd 14), SIMATIC WinCC V7.3 (All versions < V7.3 Upd 11), SIMATIC WinCC V7.4 (All versions < V7.4 SP1), SIMIT V9.0 (All versions < V9.0 SP1), SINEMA Remote Connect Client (All versions < V1.0 SP3), SINEMA Server (All versions < V13 SP2), SOFTNET Security Client V5.0 (All versions), Security Configuration Tool (SCT) (All versions < V4.3 HF1), TeleControl Server Basic (All versions < V3.0 SP2), WinAC RTX 2010 SP2 (All versions), WinAC RTX F 2010 SP2 (All versions). Unquoted service paths could allow local Microsoft Windows operating system users to escalate their privileges if the affected products are not installed under their default path (\"C:\\Program Files\\*\" or the localized equivalent).",
+        "metrics": {
+          "cvssMetricV30": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.0",
+                "vectorString": "CVSS:3.0/AV:L/AC:H/PR:H/UI:N/S:U/C:H/I:H/A:H",
+                "baseScore": 6.4,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "LOCAL",
+                "attackComplexity": "HIGH",
+                "privilegesRequired": "HIGH",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 0.5,
+              "impactScore": 5.9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2016-9160",
+        "published": "2016-12-17T03:59:00.263",
+        "lastModified": "2026-06-17T00:55:36.837",
+        "description": "A vulnerability in SIEMENS SIMATIC WinCC (All versions < SIMATIC WinCC V7.2) and SIEMENS SIMATIC PCS 7 (All versions < SIMATIC PCS 7 V8.0 SP1) could allow a remote attacker to crash an ActiveX component or leak parts of the application memory if a user is tricked into clicking on a malicious link under certain conditions.",
+        "metrics": {
+          "cvssMetricV30": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.0",
+                "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:N/A:H",
+                "baseScore": 8.1,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "REQUIRED",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 2.8,
+              "impactScore": 5.2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2017-6865",
+        "published": "2017-05-11T10:29:00.227",
+        "lastModified": "2026-06-17T01:23:14.273",
+        "description": "A vulnerability has been identified in Primary Setup Tool (PST) (All versions < V4.2 HF1), SIMATIC Automation Tool (All versions < V3.0), SIMATIC NET PC-Software (All versions < V14 SP1), SIMATIC PCS 7 V8.1 (All versions), SIMATIC PCS 7 V8.2 (All versions < V8.2 SP1), SIMATIC STEP 7 (TIA Portal) V13 (All versions < V13 SP2), SIMATIC STEP 7 (TIA Portal) V14 (All versions < V14 SP1), SIMATIC STEP 7 V5.X (All versions < V5.6), SIMATIC WinAC RTX 2010 SP2 (All versions), SIMATIC WinAC RTX F 2010 SP2 (All versions), SIMATIC WinCC (TIA Portal) V13 (All versions < V13 SP2), SIMATIC WinCC (TIA Portal) V14 (All versions < V14 SP1), SIMATIC WinCC V7.2 and prior (All versions), SIMATIC WinCC V7.3 (All versions < V7.3 Update 15), SIMATIC WinCC V7.4 (All versions < V7.4 SP1 Upd1), SIMATIC WinCC flexible 2008 (All versions < flexible 2008 SP5), SINAUT ST7CC (All versions installed in conjunction with SIMATIC WinCC < V7.3 Update 15), SINEMA Server (All versions < V14), SINUMERIK 808D Programming Tool (All versions < V4.7 SP4 HF2), SMART PC Access (All versions < V2.3), STEP 7 - Micro/WIN SMART (All versions < V2.3), Security Configuration Tool (SCT) (All versions < V5.0). Specially crafted PROFINET DCP broadcast packets sent to the affected products on a local Ethernet segment (Layer 2) could cause a Denial-of-Service condition of some services. The services require manual restart to recover.",
+        "metrics": {
+          "cvssMetricV30": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.0",
+                "vectorString": "CVSS:3.0/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 6.5,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "ADJACENT_NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 2.8,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2017-6867",
+        "published": "2017-05-11T10:29:00.260",
+        "lastModified": "2026-06-17T01:23:14.590",
+        "description": "A vulnerability was discovered in Siemens SIMATIC WinCC (V7.3 before Upd 11 and V7.4 before SP1), SIMATIC WinCC Runtime Professional (V13 before SP2 and V14 before SP1), SIMATIC WinCC (TIA Portal) Professional (V13 before SP2 and V14 before SP1) that could allow an authenticated, remote attacker who is member of the \"administrators\" group to crash services by sending specially crafted messages to the DCOM interface.",
+        "metrics": {
+          "cvssMetricV30": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.0",
+                "vectorString": "CVSS:3.0/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 4.9,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "HIGH",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 1.2,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2017-14023",
+        "published": "2017-11-06T22:29:00.270",
+        "lastModified": "2026-06-17T01:05:27.540",
+        "description": "An Improper Input Validation issue was discovered in Siemens SIMATIC PCS 7 V8.1 prior to V8.1 SP1 with WinCC V7.3 Upd 13, and V8.2 all versions. The improper input validation vulnerability has been identified, which may allow an authenticated remote attacker who is a member of the administrators group to crash services by sending specially crafted messages to the DCOM interface.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 4.9,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "HIGH",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 1.2,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2018-4832",
+        "published": "2018-04-24T17:29:00.227",
+        "lastModified": "2026-06-17T01:59:07.703",
+        "description": "A vulnerability has been identified in OpenPCS 7 V7.1 and earlier (All versions), OpenPCS 7 V8.0 (All versions), OpenPCS 7 V8.1 (All versions < V8.1 Upd5), OpenPCS 7 V8.2 (All versions), OpenPCS 7 V9.0 (All versions < V9.0 Upd1), SIMATIC BATCH V7.1 and earlier (All versions), SIMATIC BATCH V8.0 (All versions < V8.0 SP1 Upd21), SIMATIC BATCH V8.1 (All versions < V8.1 SP1 Upd16), SIMATIC BATCH V8.2 (All versions < V8.2 Upd10), SIMATIC BATCH V9.0 (All versions < V9.0 SP1), SIMATIC NET PC Software V14 (All versions < V14 SP1 Update 14), SIMATIC NET PC Software V15 (All versions < 15 SP1), SIMATIC PCS 7 V7.1 and earlier (All versions), SIMATIC PCS 7 V8.0 (All versions), SIMATIC PCS 7 V8.1 (All versions), SIMATIC PCS 7 V8.2 (All versions < V8.2 SP1), SIMATIC PCS 7 V9.0 (All versions < V9.0 SP1), SIMATIC Route Control V7.1 and earlier (All versions), SIMATIC Route Control V8.0 (All versions), SIMATIC Route Control V8.1 (All versions), SIMATIC Route Control V8.2 (All versions), SIMATIC Route Control V9.0 (All versions < V9.0 Upd1), SIMATIC WinCC Runtime Professional V13 (All versions < V13 SP2 Upd2), SIMATIC WinCC Runtime Professional V14 (All versions < V14 SP1 Upd5), SIMATIC WinCC V7.2 and earlier (All versions < WinCC 7.2 Upd 15), SIMATIC WinCC V7.3 (All versions < WinCC 7.3 Upd 16), SIMATIC WinCC V7.4 (All versions < V7.4 SP1 Upd 4), SPPA-T3000 Application Server (All versions < Service Pack R8.2 SP2). Specially crafted messages sent to the RPC service of the affected products could cause a Denial-of-Service condition on the remote and local communication functionality of the affected products. A reboot of the system is required to recover the remote and local communication functionality. Please note that an attacker needs to have network access to the Application Server in order to exploit this vulnerability. At the time of advisory publication no public exploitation of this security vulnerability was known.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 7.5,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2019-10916",
+        "published": "2019-05-14T20:29:02.293",
+        "lastModified": "2026-06-17T02:11:53.843",
+        "description": "A vulnerability has been identified in SIMATIC PCS 7 V8.0 and earlier (All versions), SIMATIC PCS 7 V8.1 (All versions < V8.1 with WinCC V7.3 Upd 19), SIMATIC PCS 7 V8.2 (All versions < V8.2 SP1 with WinCC V7.4 SP1 Upd11), SIMATIC PCS 7 V9.0 (All versions < V9.0 SP2 with WinCC V7.4 SP1 Upd11), SIMATIC WinCC (TIA Portal) V13 (All versions), SIMATIC WinCC (TIA Portal) V14 (All versions < V14 SP1 Upd 9), SIMATIC WinCC (TIA Portal) V15 (All versions < V15.1 Upd 3), SIMATIC WinCC Runtime Professional V13 (All versions), SIMATIC WinCC Runtime Professional V14 (All versions < V14.1 Upd 8), SIMATIC WinCC Runtime Professional V15 (All versions < V15.1 Upd 3), SIMATIC WinCC V7.2 and earlier (All versions), SIMATIC WinCC V7.3 (All versions < V7.3 Upd 19), SIMATIC WinCC V7.4 (All versions < V7.4 SP1 Upd 11), SIMATIC WinCC V7.5 (All versions < V7.5 Upd 3). An attacker with access to the project file could run arbitrary system commands with the privileges of the local database server. The vulnerability could be exploited by an attacker with access to the project file. The vulnerability does impact the confidentiality, integrity, and availability of the affected system. At the time of advisory publication no public exploitation of this security vulnerability was known.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+                "baseScore": 8.8,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "LOW",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 2.8,
+              "impactScore": 5.9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2019-10917",
+        "published": "2019-05-14T20:29:02.387",
+        "lastModified": "2026-06-17T02:11:54.003",
+        "description": "A vulnerability has been identified in SIMATIC PCS 7 V8.0 and earlier (All versions), SIMATIC PCS 7 V8.1 (All versions < V8.1 with WinCC V7.3 Upd 19), SIMATIC PCS 7 V8.2 (All versions < V8.2 SP1 with WinCC V7.4 SP1 Upd11), SIMATIC PCS 7 V9.0 (All versions < V9.0 SP2 with WinCC V7.4 SP1 Upd11), SIMATIC WinCC (TIA Portal) V13 (All versions), SIMATIC WinCC (TIA Portal) V14 (All versions < V14 SP1 Upd 9), SIMATIC WinCC (TIA Portal) V15 (All versions < V15.1 Upd 3), SIMATIC WinCC Runtime Professional V13 (All versions), SIMATIC WinCC Runtime Professional V14 (All versions < V14.1 Upd 8), SIMATIC WinCC Runtime Professional V15 (All versions < V15.1 Upd 3), SIMATIC WinCC V7.2 and earlier (All versions), SIMATIC WinCC V7.3 (All versions < V7.3 Upd 19), SIMATIC WinCC V7.4 (All versions < V7.4 SP1 Upd 11), SIMATIC WinCC V7.5 (All versions < V7.5 Upd 3). An attacker with local access to the project file could cause a Denial-of-Service condition on the affected product while the project file is loaded. Successful exploitation requires access to the project file. An attacker could use the vulnerability to compromise availability of the affected system. At the time of advisory publication no public exploitation of this security vulnerability was known.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 5.5,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "LOCAL",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "LOW",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 1.8,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2019-10918",
+        "published": "2019-05-14T20:29:02.483",
+        "lastModified": "2026-06-17T02:11:54.170",
+        "description": "A vulnerability has been identified in SIMATIC PCS 7 V8.0 and earlier (All versions), SIMATIC PCS 7 V8.1 (All versions < V8.1 with WinCC V7.3 Upd 19), SIMATIC PCS 7 V8.2 (All versions < V8.2 SP1 with WinCC V7.4 SP1 Upd11), SIMATIC PCS 7 V9.0 (All versions < V9.0 SP2 with WinCC V7.4 SP1 Upd11), SIMATIC WinCC (TIA Portal) V13 (All versions), SIMATIC WinCC (TIA Portal) V14 (All versions < V14 SP1 Upd 9), SIMATIC WinCC (TIA Portal) V15 (All versions < V15.1 Upd 3), SIMATIC WinCC Runtime Professional V13 (All versions), SIMATIC WinCC Runtime Professional V14 (All versions < V14.1 Upd 8), SIMATIC WinCC Runtime Professional V15 (All versions < V15.1 Upd 3), SIMATIC WinCC V7.2 and earlier (All versions), SIMATIC WinCC V7.3 (All versions < V7.3 Upd 19), SIMATIC WinCC V7.4 (All versions < V7.4 SP1 Upd 11), SIMATIC WinCC V7.5 (All versions < V7.5 Upd 3). An authenticatd attacker with network access to the DCOM interface could execute arbitrary commands with SYSTEM privileges. The vulnerability could be exploited by an attacker with network access to the affected system. Successful exploitation requires authentication with a low-privileged user account and no user interaction. An attacker could use the vulnerability to compromise confidentiality and integrity and availability of the affected system. At the time of advisory publication no public exploitation of this security vulnerability was known.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+                "baseScore": 8.8,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "LOW",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 2.8,
+              "impactScore": 5.9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2019-10922",
+        "published": "2019-05-14T20:29:02.763",
+        "lastModified": "2026-06-17T02:11:54.743",
+        "description": "A vulnerability has been identified in SIMATIC PCS 7 V8.0 and earlier (All versions), SIMATIC PCS 7 V8.1 and newer (All versions), SIMATIC WinCC V7.2 and earlier (All versions), SIMATIC WinCC V7.3 and newer (All versions). An attacker with network access to affected installations, which are configured without \"Encrypted Communication\", can execute arbitrary code. The security vulnerability could be exploited by an unauthenticated attacker with network access to the affected installation. No user interaction is required to exploit this security vulnerability. The vulnerability impacts confidentiality, integrity, and availability of the device. At the time of advisory publication no public exploitation of this security vulnerability was known.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+                "baseScore": 9.8,
+                "baseSeverity": "CRITICAL",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 5.9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2019-10935",
+        "published": "2019-07-11T22:15:11.797",
+        "lastModified": "2026-06-17T02:11:56.493",
+        "description": "A vulnerability has been identified in SIMATIC PCS 7 V8.0 and earlier (All versions), SIMATIC PCS 7 V8.1 (All versions < V8.1 with WinCC V7.3 Upd 19), SIMATIC PCS 7 V8.2 (All versions < V8.2 SP1 with WinCC V7.4 SP1 Upd 11), SIMATIC PCS 7 V9.0 (All versions < V9.0 SP2 with WinCC V7.4 SP1 Upd11), SIMATIC WinCC Professional (TIA Portal V13) (All versions), SIMATIC WinCC Professional (TIA Portal V14) (All versions < V14 SP1 Upd 9), SIMATIC WinCC Professional (TIA Portal V15) (All versions < V15.1 Upd 3), SIMATIC WinCC Runtime Professional V13 (All versions), SIMATIC WinCC Runtime Professional V14 (All versions < V14.1 Upd 8), SIMATIC WinCC Runtime Professional V15 (All versions < V15.1 Upd 3), SIMATIC WinCC V7.2 and earlier (All versions), SIMATIC WinCC V7.3 (All versions < V7.3 Upd 19), SIMATIC WinCC V7.4 (All versions < V7.4 SP1 Upd 11), SIMATIC WinCC V7.5 (All versions < V7.5 Upd 3). The SIMATIC WinCC DataMonitor web application of the affected products allows to upload arbitrary ASPX code. The security vulnerability could be exploited by an authenticated attacker with network access to the WinCC DataMonitor application. No user interaction is required to exploit this vulnerability. The vulnerability impacts confidentiality, integrity, and availability of the affected device. At the stage of publishing this security advisory no public exploitation is known.",
+        "metrics": {
+          "cvssMetricV30": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.0",
+                "vectorString": "CVSS:3.0/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+                "baseScore": 7.2,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "HIGH",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 1.2,
+              "impactScore": 5.9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2019-10929",
+        "published": "2019-08-13T19:15:14.860",
+        "lastModified": "2026-06-17T02:11:55.770",
+        "description": "A vulnerability has been identified in SIMATIC CP 1626 (All versions), SIMATIC ET 200SP Open Controller CPU 1515SP PC (incl. SIPLUS variants) (All versions), SIMATIC ET 200SP Open Controller CPU 1515SP PC2 (incl. SIPLUS variants) (All versions < V20.8), SIMATIC HMI Panel (incl. SIPLUS variants) (All versions), SIMATIC NET PC Software V14 (All versions < V14 SP1 Update 14), SIMATIC NET PC Software V15 (All versions), SIMATIC S7-1200 CPU family (incl. SIPLUS variants) (All versions < V4.4.0), SIMATIC S7-1500 CPU family (incl. related ET200 CPUs and SIPLUS variants) (All versions < V2.8.1), SIMATIC S7-1500 Software Controller (All versions < V20.8), SIMATIC S7-PLCSIM Advanced (All versions < V3.0), SIMATIC STEP 7 (TIA Portal) (All versions < V16), SIMATIC WinCC (TIA Portal) (All versions < V16), SIMATIC WinCC OA (All versions < V3.16 P013), SIMATIC WinCC Runtime Advanced (All versions < V16), SIMATIC WinCC Runtime Professional (All versions < V16), TIM 1531 IRC (incl. SIPLUS NET variants) (All versions < V2.1). Affected devices contain a message protection bypass vulnerability due to certain properties in the calculation used for integrity protection. This could allow an attacker in a Man-in-the-Middle position to modify network traffic sent on port 102/tcp to the affected devices.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N",
+                "baseScore": 5.9,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "NETWORK",
+                "attackComplexity": "HIGH",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "NONE"
+              },
+              "exploitabilityScore": 2.2,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2019-19282",
+        "published": "2020-03-10T20:15:18.960",
+        "lastModified": "2026-06-17T02:26:25.617",
+        "description": "A vulnerability has been identified in OpenPCS 7 V8.1 (All versions), OpenPCS 7 V8.2 (All versions), OpenPCS 7 V9.0 (All versions < V9.0 Upd3), SIMATIC BATCH V8.1 (All versions), SIMATIC BATCH V8.2 (All versions < V8.2 Upd12), SIMATIC BATCH V9.0 (All versions < V9.0 SP1 Upd5), SIMATIC NET PC Software V14 (All versions < V14 SP1 Update 14), SIMATIC NET PC Software V15 (All versions), SIMATIC NET PC Software V16 (All versions < V16 Update 1), SIMATIC PCS 7 V8.1 (All versions), SIMATIC PCS 7 V8.2 (All versions), SIMATIC PCS 7 V9.0 (All versions < V9.0 SP3), SIMATIC Route Control V8.1 (All versions), SIMATIC Route Control V8.2 (All versions), SIMATIC Route Control V9.0 (All versions < V9.0 Upd4), SIMATIC WinCC (TIA Portal) V13 (All versions < V13 SP2), SIMATIC WinCC (TIA Portal) V14 (All versions < V14 SP1 Update 10), SIMATIC WinCC (TIA Portal) V15.1 (All versions < V15.1 Update 5), SIMATIC WinCC (TIA Portal) V16 (All versions < V16 Update 1), SIMATIC WinCC V7.3 (All versions), SIMATIC WinCC V7.4 (All versions < V7.4 SP1 Update 14), SIMATIC WinCC V7.5 (All versions < V7.5 SP1 Update 1). Through specially crafted messages, when encrypted communication is enabled, an attacker with network access could use the vulnerability to compromise the availability of the system by causing a Denial-of-Service condition.\nSuccessful exploitation requires no system privileges and no user interaction.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "productcert@siemens.com",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 7.5,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 3.6
+            },
+            {
+              "source": "nvd@nist.gov",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 7.5,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2020-7580",
+        "published": "2020-06-10T17:15:12.347",
+        "lastModified": "2026-06-17T03:25:03.397",
+        "description": "A vulnerability has been identified in SIMATIC Automation Tool (All versions < V4 SP2), SIMATIC NET PC Software V14 (All versions < V14 SP1 Update 14), SIMATIC NET PC Software V15 (All versions), SIMATIC NET PC Software V16 (All versions < V16 Upd3), SIMATIC PCS neo (All versions < V3.0 SP1), SIMATIC ProSave (All versions < V17), SIMATIC S7-1500 Software Controller (All versions < V21.8), SIMATIC STEP 7 (TIA Portal) V13 (All versions < V13 SP2 Update 4), SIMATIC STEP 7 (TIA Portal) V14 (All versions < V14 SP1 Update 10), SIMATIC STEP 7 (TIA Portal) V15 (All versions < V15.1 Update 5), SIMATIC STEP 7 (TIA Portal) V16 (All versions < V16 Update 2), SIMATIC STEP 7 V5 (All versions < V5.6 SP2 HF3), SIMATIC WinCC OA V3.16 (All versions < V3.16 P018), SIMATIC WinCC OA V3.17 (All versions < V3.17 P003), SIMATIC WinCC Runtime Advanced (All versions < V16 Update 2), SIMATIC WinCC Runtime Professional V13 (All versions < V13 SP2 Update 4), SIMATIC WinCC Runtime Professional V14 (All versions < V14 SP1 Update 10), SIMATIC WinCC Runtime Professional V15 (All versions < V15.1 Update 5), SIMATIC WinCC Runtime Professional V16 (All versions < V16 Update 2), SIMATIC WinCC V7.4 (All versions < V7.4 SP1 Update 14), SIMATIC WinCC V7.5 (All versions < V7.5 SP1 Update 3), SINAMICS STARTER (All Versions < V5.4 HF2), SINAMICS Startdrive (All Versions < V16 Update 3), SINEC NMS (All versions < V1.0 SP2), SINEMA Server (All versions < V14 SP3), SINUMERIK ONE virtual (All Versions < V6.14), SINUMERIK Operate (All Versions < V6.14). A common component used by the affected applications regularly calls a helper binary with SYSTEM privileges while the call path is not quoted. This could allow a local attacker to execute arbitrary code with SYTEM privileges.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+                "baseScore": 6.7,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "LOCAL",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "HIGH",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 0.8,
+              "impactScore": 5.9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2020-10048",
+        "published": "2021-02-09T17:15:13.360",
+        "lastModified": "2026-06-17T02:47:15.240",
+        "description": "A vulnerability has been identified in SIMATIC PCS 7 (All versions), SIMATIC WinCC (All versions < V7.5 SP2). Due to an insecure password verification process, an attacker could bypass the password protection set on protected files, thus being granted access to the protected content, circumventing authentication.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+                "baseScore": 5.5,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "LOCAL",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "LOW",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "NONE"
+              },
+              "exploitabilityScore": 1.8,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2021-40142",
+        "published": "2021-08-27T07:15:08.630",
+        "lastModified": "2026-06-17T04:06:35.103",
+        "description": "In OPC Foundation Local Discovery Server (LDS) before 1.04.402.463, remote attackers can cause a denial of service (DoS) by sending carefully crafted messages that lead to Access of a Memory Location After the End of a Buffer.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "cve@mitre.org",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 7.5,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 3.6
+            },
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 7.5,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2021-40358",
+        "published": "2021-11-09T12:15:09.930",
+        "lastModified": "2026-06-17T04:06:47.527",
+        "description": "A vulnerability has been identified in SIMATIC PCS 7 V8.2 (All versions), SIMATIC PCS 7 V9.0 (All versions < V9.0 SP3 UC04), SIMATIC PCS 7 V9.1 (All versions < V9.1 SP1), SIMATIC WinCC V15 and earlier (All versions < V15 SP1 Update 7), SIMATIC WinCC V16 (All versions < V16 Update 5), SIMATIC WinCC V17 (All versions < V17 Update 2), SIMATIC WinCC V7.4 (All versions < V7.4 SP1 Update 19), SIMATIC WinCC V7.5 (All versions < V7.5 SP2 Update 5). Legitimate file operations on the web server of the affected systems do not properly neutralize special elements within the pathname. An attacker could then cause the pathname to resolve to a location outside of the restricted directory on the server and read, write or delete unexpected critical files.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "productcert@siemens.com",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:H/A:H",
+                "baseScore": 9.9,
+                "baseSeverity": "CRITICAL",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "LOW",
+                "userInteraction": "NONE",
+                "scope": "CHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 3.1,
+              "impactScore": 6.0
+            },
+            {
+              "source": "nvd@nist.gov",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+                "baseScore": 9.8,
+                "baseSeverity": "CRITICAL",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 5.9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2021-40359",
+        "published": "2021-11-09T12:15:09.987",
+        "lastModified": "2026-06-17T04:06:47.690",
+        "description": "A vulnerability has been identified in OpenPCS 7 V8.2 (All versions), OpenPCS 7 V9.0 (All versions < V9.0 Upd4), OpenPCS 7 V9.1 (All versions), SIMATIC BATCH V8.2 (All versions), SIMATIC BATCH V9.0 (All versions), SIMATIC BATCH V9.1 (All versions), SIMATIC NET PC Software V14 (All versions), SIMATIC NET PC Software V15 (All versions), SIMATIC NET PC Software V16 (All versions < V16 Update 6), SIMATIC NET PC Software V17 (All versions < V17 SP1), SIMATIC PCS 7 V8.2 (All versions), SIMATIC PCS 7 V9.0 (All versions < V9.0 SP3 UC04), SIMATIC PCS 7 V9.1 (All versions < V9.1 SP1), SIMATIC Route Control V8.2 (All versions), SIMATIC Route Control V9.0 (All versions), SIMATIC Route Control V9.1 (All versions), SIMATIC WinCC V15 and earlier (All versions < V15 SP1 Update 7), SIMATIC WinCC V16 (All versions < V16 Update 5), SIMATIC WinCC V17 (All versions < V17 Update 2), SIMATIC WinCC V7.4 (All versions < V7.4 SP1 Update 19), SIMATIC WinCC V7.5 (All versions < V7.5 SP2 Update 5). When downloading files, the affected systems do not properly neutralize special elements within the pathname. An attacker could then cause the pathname to resolve to a location outside of the restricted directory on the server and read unexpected critical files.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "productcert@siemens.com",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N",
+                "baseScore": 7.7,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "LOW",
+                "userInteraction": "NONE",
+                "scope": "CHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "NONE"
+              },
+              "exploitabilityScore": 3.1,
+              "impactScore": 4.0
+            },
+            {
+              "source": "nvd@nist.gov",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+                "baseScore": 7.5,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "NONE"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2021-40364",
+        "published": "2021-11-09T12:15:10.070",
+        "lastModified": "2026-06-17T04:06:48.067",
+        "description": "A vulnerability has been identified in SIMATIC PCS 7 V8.2 (All versions), SIMATIC PCS 7 V9.0 (All versions < V9.0 SP3 UC04), SIMATIC PCS 7 V9.1 (All versions < V9.1 SP1), SIMATIC WinCC V15 and earlier (All versions < V15 SP1 Update 7), SIMATIC WinCC V16 (All versions < V16 Update 5), SIMATIC WinCC V17 (All versions < V17 Update 2), SIMATIC WinCC V7.4 (All versions < V7.4 SP1 Update 19), SIMATIC WinCC V7.5 (All versions < V7.5 SP2 Update 5). The affected systems store sensitive information in log files. An attacker with access to the log files could publicly expose the information or reuse it to develop further attacks on the system.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "productcert@siemens.com",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+                "baseScore": 5.5,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "LOCAL",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "LOW",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "NONE"
+              },
+              "exploitabilityScore": 1.8,
+              "impactScore": 3.6
+            },
+            {
+              "source": "nvd@nist.gov",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+                "baseScore": 5.5,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "LOCAL",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "LOW",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "NONE"
+              },
+              "exploitabilityScore": 1.8,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2021-40360",
+        "published": "2022-02-09T16:15:13.813",
+        "lastModified": "2026-06-17T04:06:47.827",
+        "description": "A vulnerability has been identified in SIMATIC PCS 7 V8.2 (All versions), SIMATIC PCS 7 V9.0 (All versions), SIMATIC PCS 7 V9.1 (All versions < V9.1 SP1), SIMATIC WinCC V15 and earlier (All versions < V15 SP1 Update 7), SIMATIC WinCC V16 (All versions < V16 Update 5), SIMATIC WinCC V17 (All versions < V17 Update 2), SIMATIC WinCC V7.4 (All versions < V7.4 SP1 Update 19), SIMATIC WinCC V7.5 (All versions < V7.5 SP2 Update 6). The password hash of a local user account in the remote server could be granted via public API to a user on the affected system. An authenticated attacker could brute force the password hash and use it to login to the server.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+                "baseScore": 8.8,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "LOW",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 2.8,
+              "impactScore": 5.9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2021-40363",
+        "published": "2022-02-09T16:15:13.877",
+        "lastModified": "2026-06-17T04:06:47.940",
+        "description": "A vulnerability has been identified in SIMATIC PCS 7 V8.2 (All versions), SIMATIC PCS 7 V9.0 (All versions), SIMATIC PCS 7 V9.1 (All versions < V9.1 SP1), SIMATIC WinCC V15 and earlier (All versions < V15 SP1 Update 7), SIMATIC WinCC V16 (All versions < V16 Update 5), SIMATIC WinCC V17 (All versions < V17 Update 2), SIMATIC WinCC V17 (All versions <= V17 Update 4), SIMATIC WinCC V7.4 (All versions < V7.4 SP1 Update 19), SIMATIC WinCC V7.5 (All versions < V7.5 SP2 Update 6). The affected component stores the credentials of a local system account in a potentially publicly accessible project file using an outdated cipher algorithm. An attacker may use this to brute force the credentials and take over the system.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+                "baseScore": 7.8,
+                "baseSeverity": "HIGH",
+                "attackVector": "LOCAL",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "LOW",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 1.8,
+              "impactScore": 5.9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2022-24287",
+        "published": "2022-05-20T13:15:14.680",
+        "lastModified": "2026-06-17T04:31:32.960",
+        "description": "A vulnerability has been identified in SIMATIC PCS 7 V8.2 (All versions), SIMATIC PCS 7 V9.0 (All versions < V9.0 SP3 UC06), SIMATIC PCS 7 V9.1 (All versions < V9.1 SP1 UC01), SIMATIC WinCC Runtime Professional V16 and earlier (All versions), SIMATIC WinCC Runtime Professional V17 (All versions < V17 Upd4), SIMATIC WinCC V7.3 (All versions), SIMATIC WinCC V7.4 (All versions < V7.4 SP1 Update 21), SIMATIC WinCC V7.5 (All versions < V7.5 SP2 Update 8). A missing printer configuration on the host could allow an authenticated attacker to escape the WinCC Kiosk Mode.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "productcert@siemens.com",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+                "baseScore": 7.8,
+                "baseSeverity": "HIGH",
+                "attackVector": "LOCAL",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "LOW",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 1.8,
+              "impactScore": 5.9
+            },
+            {
+              "source": "nvd@nist.gov",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+                "baseScore": 7.8,
+                "baseSeverity": "HIGH",
+                "attackVector": "LOCAL",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "LOW",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 1.8,
+              "impactScore": 5.9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2023-28829",
+        "published": "2023-06-13T09:15:16.707",
+        "lastModified": "2026-10-23T23:10:00.157",
+        "description": "A vulnerability has been identified in SIMATIC NET PC Software V14 (All versions), SIMATIC NET PC Software V15 (All versions), SIMATIC PCS 7 V8.2 (All versions), SIMATIC PCS 7 V9.0 (All versions), SIMATIC PCS 7 V9.1 (All versions), SIMATIC WinCC (All versions < V8.0), SINAUT Software ST7sc (All versions). Before SIMATIC WinCC V8, legacy OPC services (OPC DA (Data Access), OPC HDA (Historical Data Access), and OPC AE (Alarms & Events)) were used per default. These\r\nservices were designed on top of the Windows ActiveX and DCOM mechanisms and do not implement state-of-the-art security mechanisms for authentication and encryption of contents.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "productcert@siemens.com",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:A/AC:H/PR:H/UI:N/S:U/C:L/I:L/A:L",
+                "baseScore": 3.9,
+                "baseSeverity": "LOW",
+                "attackVector": "ADJACENT_NETWORK",
+                "attackComplexity": "HIGH",
+                "privilegesRequired": "HIGH",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "LOW",
+                "integrityImpact": "LOW",
+                "availabilityImpact": "LOW"
+              },
+              "exploitabilityScore": 0.5,
+              "impactScore": 3.4
+            },
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H",
+                "baseScore": 8.8,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "LOW",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 2.8,
+              "impactScore": 5.9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2023-48363",
+        "published": "2024-02-13T09:15:45.763",
+        "lastModified": "2026-06-17T06:34:06.557",
+        "description": "A vulnerability has been identified in OpenPCS 7 V9.1 (All versions < V9.1 SP2 UC05), SIMATIC BATCH V9.1 (All versions < V9.1 SP2 UC05), SIMATIC PCS 7 V9.1 (All versions < V9.1 SP2 UC05), SIMATIC Route Control V9.1 (All versions < V9.1 SP2 UC05), SIMATIC WinCC Runtime Professional V18 (All versions < V18 Update 4), SIMATIC WinCC Runtime Professional V19 (All versions < V19 Update 2), SIMATIC WinCC V7.4 (All versions), SIMATIC WinCC V7.5 (All versions < V7.5 SP2 Update 15), SIMATIC WinCC V8.0 (All versions < V8.0 Update 4). The implementation of the RPC (Remote Procedure call) \r\ncommunication protocol in the affected products do not \r\nproperly handle certain unorganized RPC messages. An \r\nattacker could use this vulnerability to cause a denial of service \r\ncondition in the RPC server.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "productcert@siemens.com",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 6.5,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "ADJACENT_NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 2.8,
+              "impactScore": 3.6
+            },
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 6.5,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "ADJACENT_NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 2.8,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2023-48364",
+        "published": "2024-02-13T09:15:45.980",
+        "lastModified": "2026-06-17T06:34:06.720",
+        "description": "A vulnerability has been identified in OpenPCS 7 V9.1 (All versions < V9.1 SP2 UC05), SIMATIC BATCH V9.1 (All versions < V9.1 SP2 UC05), SIMATIC PCS 7 V9.1 (All versions < V9.1 SP2 UC05), SIMATIC Route Control V9.1 (All versions < V9.1 SP2 UC05), SIMATIC WinCC Runtime Professional V18 (All versions < V18 Update 4), SIMATIC WinCC Runtime Professional V19 (All versions < V19 Update 2), SIMATIC WinCC V7.4 (All versions), SIMATIC WinCC V7.5 (All versions < V7.5 SP2 Update 15), SIMATIC WinCC V8.0 (All versions < V8.0 Update 4). The implementation of the RPC (Remote Procedure call) communication protocol in the affected products do not properly handle certain malformed RPC messages. An attacker could use this vulnerability to cause a denial of service condition in the RPC server.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "productcert@siemens.com",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 6.5,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "ADJACENT_NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 2.8,
+              "impactScore": 3.6
+            },
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 6.5,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "ADJACENT_NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 2.8,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "_note": "This file is a pruned projection of the raw NVD CVE API 2.0 response: only cve.id, cve.published, cve.lastModified, the English description, and cvssMetricV31/V30 are kept (dropped: non-English descriptions, configurations/CPE-match arrays, references, weaknesses, CISA KEV tags). These are exactly the fields used to compute the stats in data/vulnerabilities.json; nothing was altered or re-scored."
+}
