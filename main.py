@@ -7,7 +7,7 @@ generates all visualizations under results/.
 
 from src.ctmc import build_ctmc_nodes
 from src.graph import build_smart_grid
-from src.optimization import optimize_defense
+from src.optimization import DEFAULT_N_RUNS, DEFAULT_SEED, optimize_defense, print_ranking
 from src.simulation import TARGET_NODE, run_monte_carlo
 from src.visualization import (
     RESULTS_DIR,
@@ -34,8 +34,10 @@ def main():
     ctmc_nodes = build_ctmc_nodes(graph)
     print(f"  Built CTMC models for {len(ctmc_nodes)} nodes")
 
-    print_header("3. Running Monte Carlo simulation (1000 runs)")
-    monte_carlo_result = run_monte_carlo(graph, ctmc_nodes, n_runs=1000, t_max=24)
+    print_header(f"3. Running Monte Carlo simulation ({DEFAULT_N_RUNS} runs, seed={DEFAULT_SEED})")
+    monte_carlo_result = run_monte_carlo(
+        graph, ctmc_nodes, n_runs=DEFAULT_N_RUNS, t_max=24, seed=DEFAULT_SEED
+    )
     baseline_probability = monte_carlo_result["probability_of_failure"]
     mean_time_to_failure = monte_carlo_result["mean_time_to_failure"]
     print(f"  P({TARGET_NODE} fails)       = {baseline_probability:.4f}")
@@ -43,10 +45,13 @@ def main():
         print(f"  Mean time to failure         = {mean_time_to_failure:.2f}h")
     else:
         print("  Mean time to failure         = N/A (no failures observed)")
-    print(f"  Failed runs                  = {len(monte_carlo_result['failure_times'])} / 1000")
+    print(f"  Failed runs                  = {len(monte_carlo_result['failure_times'])} / {DEFAULT_N_RUNS}")
 
-    print_header("4. Running defense optimization (budget=2)")
-    optimization_result = optimize_defense(graph, ctmc_nodes, budget=2, t_max=24, n_runs=500)
+    print_header("4. Running defense optimization (budget=2, target excluded - recommended)")
+    optimization_result = optimize_defense(
+        graph, ctmc_nodes, budget=2, t_max=24,
+        n_runs=DEFAULT_N_RUNS, seed=DEFAULT_SEED, excluded_nodes=[TARGET_NODE],
+    )
     best_nodes = optimization_result["best_nodes"]
     best_probability = optimization_result["best_probability"]
     improvement_pct = (
@@ -58,6 +63,30 @@ def main():
     print(f"  Best defended nodes          = {best_nodes}")
     print(f"  P({TARGET_NODE} fails) w/ defense = {best_probability:.4f}")
     print(f"  Improvement over baseline    = {improvement_pct:.2f}%")
+    print_ranking(
+        optimization_result["results_detailed"],
+        f"  Top 5 (budget=2, {TARGET_NODE} excluded):",
+    )
+
+    print_header(f"4b. Naive ranking (budget=2, {TARGET_NODE} DEFENDABLE - trivial, for comparison only)")
+    naive_result = optimize_defense(
+        graph, ctmc_nodes, budget=2, t_max=24,
+        n_runs=DEFAULT_N_RUNS, seed=DEFAULT_SEED, excluded_nodes=None,
+    )
+    print_ranking(
+        naive_result["results_detailed"],
+        f"  Top 5 (budget=2, {TARGET_NODE} defendable - NAIVE, includes trivial target-defense):",
+    )
+
+    print_header(f"4c. Defense optimization (budget=3, {TARGET_NODE} excluded)")
+    budget3_result = optimize_defense(
+        graph, ctmc_nodes, budget=3, t_max=24,
+        n_runs=DEFAULT_N_RUNS, seed=DEFAULT_SEED, excluded_nodes=[TARGET_NODE],
+    )
+    print_ranking(
+        budget3_result["results_detailed"],
+        f"  Top 5 (budget=3, {TARGET_NODE} excluded):",
+    )
 
     print_header("5. Summary")
     print(f"  Target node                  = {TARGET_NODE}")
@@ -74,8 +103,18 @@ def main():
     print("  Saved attack_propagation.png")
     plot_failure_distribution(monte_carlo_result)
     print("  Saved failure_distribution.png")
-    plot_defense_comparison(baseline_probability, optimization_result)
+    plot_defense_comparison(
+        baseline_probability, optimization_result,
+        title=f"Defense Resource Allocation Comparison (budget=2, {TARGET_NODE} excluded - recommended)",
+        filename="defense_comparison.png",
+    )
     print("  Saved defense_comparison.png")
+    plot_defense_comparison(
+        baseline_probability, naive_result,
+        title=f"Defense Resource Allocation Comparison (budget=2, {TARGET_NODE} defendable - NAIVE)",
+        filename="defense_comparison_naive.png",
+    )
+    print("  Saved defense_comparison_naive.png")
 
     print(f"\nDone. Results saved to {RESULTS_DIR}/")
 

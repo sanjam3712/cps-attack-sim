@@ -16,7 +16,7 @@ import numpy as np
 
 from src.ctmc import SECURE, COMPROMISED, FAILED, STATE_NAMES, build_ctmc_nodes
 from src.graph import build_smart_grid
-from src.optimization import optimize_defense
+from src.optimization import DEFAULT_N_RUNS, DEFAULT_SEED, optimize_defense
 from src.simulation import TARGET_NODE, run_attack_simulation, run_monte_carlo
 
 RESULTS_DIR = "results"
@@ -134,37 +134,59 @@ def plot_failure_distribution(monte_carlo_result):
     plt.close(fig)
 
 
-def plot_defense_comparison(baseline_probability, optimization_result):
+def plot_defense_comparison(
+    baseline_probability,
+    optimization_result,
+    title="Defense Resource Allocation Comparison",
+    filename="defense_comparison.png",
+):
     """Bar chart comparing failure probability across every defended-node
     combination tested during optimization, plus the undefended baseline.
 
+    Error bars show each combination's 95% Wilson CI (from
+    optimization_result["results_detailed"], when present) so the plot
+    reflects whether combinations are actually statistically
+    distinguishable, not just a bare point-estimate ranking.
+
     The best combination is highlighted green, the baseline red. Saves
-    to results/defense_comparison.png.
+    to results/<filename>.
     """
     os.makedirs(RESULTS_DIR, exist_ok=True)
 
     best_nodes = optimization_result["best_nodes"]
     results = sorted(optimization_result["results"], key=lambda item: item[1])
+    ci_by_combo = {
+        d["combo"]: (d["ci_low"], d["ci_high"])
+        for d in optimization_result.get("results_detailed", [])
+    }
 
     labels = ["Baseline\n(none)"]
     values = [baseline_probability]
     colors = ["red"]
+    yerr_low = [0.0]
+    yerr_high = [0.0]
 
     for combo, probability in results:
         labels.append("+".join(_abbreviate(n) for n in combo))
         values.append(probability)
         colors.append("green" if combo == best_nodes else "steelblue")
+        ci_low, ci_high = ci_by_combo.get(combo, (probability, probability))
+        yerr_low.append(probability - ci_low)
+        yerr_high.append(ci_high - probability)
 
     fig, ax = plt.subplots(figsize=(max(10, len(labels) * 0.5), 6))
-    ax.bar(range(len(values)), values, color=colors, edgecolor="black")
+    ax.bar(
+        range(len(values)), values, color=colors, edgecolor="black",
+        yerr=[yerr_low, yerr_high], capsize=3, ecolor="black",
+    )
     ax.set_xticks(range(len(labels)))
     ax.set_xticklabels(labels, rotation=90, fontsize=7)
     ax.set_ylabel(f"P({TARGET_NODE} fails)")
-    ax.set_title("Defense Resource Allocation Comparison")
+    ax.set_title(f"{title}\n(error bars = 95% Wilson CI)")
     ax.grid(True, axis="y", alpha=0.3)
 
     fig.tight_layout()
-    fig.savefig(os.path.join(RESULTS_DIR, "defense_comparison.png"), dpi=150)
+    fig.savefig(os.path.join(RESULTS_DIR, filename), dpi=150)
     plt.close(fig)
 
 
@@ -174,9 +196,14 @@ def run_all_plots():
     ctmc_nodes = build_ctmc_nodes(graph)
 
     simulation_result = run_attack_simulation(graph, ctmc_nodes, t_max=24, t_steps=100)
-    monte_carlo_result = run_monte_carlo(graph, ctmc_nodes, n_runs=1000, t_max=24)
+    monte_carlo_result = run_monte_carlo(
+        graph, ctmc_nodes, n_runs=DEFAULT_N_RUNS, t_max=24, seed=DEFAULT_SEED
+    )
     baseline_probability = monte_carlo_result["probability_of_failure"]
-    optimization_result = optimize_defense(graph, ctmc_nodes, budget=2, t_max=24, n_runs=500)
+    optimization_result = optimize_defense(
+        graph, ctmc_nodes, budget=2, t_max=24,
+        n_runs=DEFAULT_N_RUNS, seed=DEFAULT_SEED, excluded_nodes=[TARGET_NODE],
+    )
 
     plot_graph(graph)
     plot_attack_propagation(simulation_result)

@@ -19,6 +19,13 @@
         "virtualMatchString": "cpe:2.3:a:osisoft:pi_data_archive"
       },
       "raw_count": 11
+    },
+    {
+      "params": {
+        "keywordSearch": "PI System",
+        "keywordExactMatch": true
+      },
+      "raw_count": 15
     }
   ],
   "retrieved": "2026-10-29",
@@ -516,7 +523,335 @@
           ]
         }
       }
+    },
+    {
+      "cve": {
+        "id": "CVE-2016-8353",
+        "published": "2017-02-13T21:59:00.813",
+        "lastModified": "2026-06-17T00:54:12.353",
+        "description": "An issue was discovered in OSIsoft PI Web API 2015 R2 (Version 1.5.1). There is a weakness in this product that may allow an attacker to access the PI system without the proper permissions.",
+        "metrics": {
+          "cvssMetricV30": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.0",
+                "vectorString": "CVSS:3.0/AV:N/AC:L/PR:L/UI:N/S:C/C:L/I:L/A:N",
+                "baseScore": 6.4,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "LOW",
+                "userInteraction": "NONE",
+                "scope": "CHANGED",
+                "confidentialityImpact": "LOW",
+                "integrityImpact": "LOW",
+                "availabilityImpact": "NONE"
+              },
+              "exploitabilityScore": 3.1,
+              "impactScore": 2.7
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2018-7500",
+        "published": "2018-03-14T18:29:00.500",
+        "lastModified": "2026-06-17T02:03:15.223",
+        "description": "A Permissions, Privileges, and Access Controls issue was discovered in OSIsoft PI Web API versions 2017 R2 and prior. Privileges may be escalated, giving attackers access to the PI System via the service account.",
+        "metrics": {
+          "cvssMetricV30": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.0",
+                "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+                "baseScore": 9.8,
+                "baseSeverity": "CRITICAL",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 3.9,
+              "impactScore": 5.9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2017-9641",
+        "published": "2018-05-25T15:29:00.210",
+        "lastModified": "2026-06-17T01:28:38.517",
+        "description": "PI Coresight 2016 R2 contains a cross-site request forgery vulnerability that may allow access to the PI system. OSIsoft recommends that users upgrade to PI Vision 2017 or greater to mitigate this vulnerability.",
+        "metrics": {
+          "cvssMetricV30": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.0",
+                "vectorString": "CVSS:3.0/AV:N/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+                "baseScore": 8.8,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "REQUIRED",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 2.8,
+              "impactScore": 5.9
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2019-18244",
+        "published": "2020-01-15T19:15:13.440",
+        "lastModified": "2026-06-17T02:24:41.360",
+        "description": "In OSIsoft PI System multiple products and versions, a local attacker could view sensitive information in log files when service accounts are customized during installation or upgrade of PI Vision. The update fixes a previously reported issue.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N",
+                "baseScore": 4.7,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "LOCAL",
+                "attackComplexity": "HIGH",
+                "privilegesRequired": "LOW",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "NONE"
+              },
+              "exploitabilityScore": 1.0,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2020-10602",
+        "published": "2020-07-24T23:15:11.753",
+        "lastModified": "2026-06-17T02:48:04.807",
+        "description": "In OSIsoft PI System multiple products and versions, an authenticated remote attacker could crash PI Network Manager due to a race condition. This can result in blocking connections and queries to PI Data Archive.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:N/A:H",
+                "baseScore": 5.3,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "NETWORK",
+                "attackComplexity": "HIGH",
+                "privilegesRequired": "LOW",
+                "userInteraction": "NONE",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "NONE",
+                "integrityImpact": "NONE",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 1.6,
+              "impactScore": 3.6
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2020-10614",
+        "published": "2020-07-25T00:15:12.127",
+        "lastModified": "2026-06-17T02:48:06.150",
+        "description": "In OSIsoft PI System multiple products and versions, an authenticated remote attacker with write access to PI Vision databases could inject code into a display. Unauthorized information disclosure, deletion, or modification is possible if a victim views the infected display.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:H/UI:R/S:C/C:L/I:L/A:N",
+                "baseScore": 4.8,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "HIGH",
+                "userInteraction": "REQUIRED",
+                "scope": "CHANGED",
+                "confidentialityImpact": "LOW",
+                "integrityImpact": "LOW",
+                "availabilityImpact": "NONE"
+              },
+              "exploitabilityScore": 1.7,
+              "impactScore": 2.7
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2021-43551",
+        "published": "2021-11-17T19:15:09.100",
+        "lastModified": "2026-06-17T04:11:07.210",
+        "description": "A remote attacker with write access to PI Vision could inject code into a display. Unauthorized information disclosure, modification, or deletion is possible if a victim views or interacts with the infected display using Microsoft Internet Explorer. The impact affects PI System data and other data accessible with victim's user permissions.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "ics-cert@hq.dhs.gov",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:C/C:H/I:L/A:N",
+                "baseScore": 6.5,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "NETWORK",
+                "attackComplexity": "HIGH",
+                "privilegesRequired": "LOW",
+                "userInteraction": "REQUIRED",
+                "scope": "CHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "LOW",
+                "availabilityImpact": "NONE"
+              },
+              "exploitabilityScore": 1.3,
+              "impactScore": 4.7
+            },
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:C/C:L/I:L/A:N",
+                "baseScore": 5.4,
+                "baseSeverity": "MEDIUM",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "LOW",
+                "userInteraction": "REQUIRED",
+                "scope": "CHANGED",
+                "confidentialityImpact": "LOW",
+                "integrityImpact": "LOW",
+                "availabilityImpact": "NONE"
+              },
+              "exploitabilityScore": 2.3,
+              "impactScore": 2.7
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2020-25163",
+        "published": "2022-04-18T17:15:12.230",
+        "lastModified": "2026-06-17T03:06:29.213",
+        "description": "A remote attacker with write access to PI ProcessBook files could inject code that is imported into OSIsoft PI Vision 2020 versions prior to 3.5.0. Unauthorized information disclosure, modification, or deletion is also possible if a victim views or interacts with the infected display. This vulnerability affects PI System data and other data accessible with victim\u2019s user permissions.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "ics-cert@hq.dhs.gov",
+              "type": "Secondary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:C/C:H/I:H/A:N",
+                "baseScore": 7.7,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "HIGH",
+                "privilegesRequired": "LOW",
+                "userInteraction": "REQUIRED",
+                "scope": "CHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "NONE"
+              },
+              "exploitabilityScore": 1.3,
+              "impactScore": 5.8
+            },
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:H/I:H/A:N",
+                "baseScore": 7.3,
+                "baseSeverity": "HIGH",
+                "attackVector": "NETWORK",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "LOW",
+                "userInteraction": "REQUIRED",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "NONE"
+              },
+              "exploitabilityScore": 2.1,
+              "impactScore": 5.2
+            }
+          ]
+        }
+      }
+    },
+    {
+      "cve": {
+        "id": "CVE-2024-3467",
+        "published": "2024-06-12T21:15:50.617",
+        "lastModified": "2026-06-17T07:44:19.563",
+        "description": "There is a vulnerability in AVEVA PI Asset Framework Client that could allow malicious code to execute on the PI System Explorer environment under the privileges of an interactive user that was socially engineered to import XML supplied by an attacker.",
+        "metrics": {
+          "cvssMetricV31": [
+            {
+              "source": "nvd@nist.gov",
+              "type": "Primary",
+              "cvssData": {
+                "version": "3.1",
+                "vectorString": "CVSS:3.1/AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H",
+                "baseScore": 7.8,
+                "baseSeverity": "HIGH",
+                "attackVector": "LOCAL",
+                "attackComplexity": "LOW",
+                "privilegesRequired": "NONE",
+                "userInteraction": "REQUIRED",
+                "scope": "UNCHANGED",
+                "confidentialityImpact": "HIGH",
+                "integrityImpact": "HIGH",
+                "availabilityImpact": "HIGH"
+              },
+              "exploitabilityScore": 1.8,
+              "impactScore": 5.9
+            }
+          ]
+        }
+      }
     }
   ],
-  "_note": "This file is a pruned projection of the raw NVD CVE API 2.0 response: only cve.id, cve.published, cve.lastModified, the English description, and cvssMetricV31/V30 are kept (dropped: non-English descriptions, configurations/CPE-match arrays, references, weaknesses, CISA KEV tags). These are exactly the fields used to compute the stats in data/vulnerabilities.json; nothing was altered or re-scored."
+  "_note": "This file is a pruned projection of the raw NVD CVE API 2.0 response: only cve.id, cve.published, cve.lastModified, the English description, and cvssMetricV31/V30 are kept (dropped: non-English descriptions, configurations/CPE-match arrays, references, weaknesses, CISA KEV tags). Query set is the union of the osisoft/aveva CPE matches and an NVD keywordSearch='PI System' with keywordExactMatch=true (the bare keyword, without exact-match, returned 1022 results that were overwhelmingly unrelated to AVEVA/OSIsoft PI System on manual sampling, so it was not used)."
 }
