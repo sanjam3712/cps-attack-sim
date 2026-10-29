@@ -1,0 +1,159 @@
+{
+  "_meta": {
+    "description": "Per-node vulnerability scores derived from real CVE data for a representative real-world product of each node's component type. All base_score and exploitability_score values are copied verbatim from the NVD CVE API (https://services.nvd.nist.gov/rest/json/cves/2.0?cveId=<ID>), using the nvd@nist.gov-sourced CVSS entry on each CVE's NVD page. No score was invented or estimated.",
+    "formula": "node vulnerability = mean(exploitability_score for cves) / 3.9, clipped to [0.05, 0.95]. 3.9 is the maximum possible CVSS v3.x exploitability subscore (AV:N/AC:L/PR:N/UI:N).",
+    "retrieved": "2026-10-29"
+  },
+  "nodes": {
+    "corporate_network": {
+      "component_type": "Corporate VPN / firewall appliance (Fortinet FortiGate SSL-VPN)",
+      "cves": [
+        {
+          "id": "CVE-2022-42475",
+          "base_score": 9.8,
+          "exploitability_score": 3.9,
+          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2022-42475"
+        },
+        {
+          "id": "CVE-2023-27997",
+          "base_score": 9.8,
+          "exploitability_score": 3.9,
+          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2023-27997"
+        },
+        {
+          "id": "CVE-2018-13379",
+          "base_score": 9.8,
+          "exploitability_score": 3.9,
+          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2018-13379"
+        }
+      ],
+      "derived_vulnerability": 0.95
+    },
+    "historian_server": {
+      "component_type": "Data historian server (AVEVA / OSIsoft PI Server, PI Data Archive, PI AF Server)",
+      "cves": [
+        {
+          "id": "CVE-2023-34348",
+          "base_score": 7.5,
+          "exploitability_score": 3.9,
+          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2023-34348"
+        },
+        {
+          "id": "CVE-2016-4518",
+          "base_score": 6.5,
+          "exploitability_score": 2.8,
+          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2016-4518"
+        },
+        {
+          "id": "CVE-2025-36539",
+          "base_score": 6.5,
+          "exploitability_score": 2.8,
+          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2025-36539"
+        }
+      ],
+      "derived_vulnerability": 0.812
+    },
+    "engineering_workstation": {
+      "component_type": "Windows-based engineering workstation (OS-level RCE/privilege-escalation CVEs historically exploited against ICS/OT engineering workstations)",
+      "cves": [
+        {
+          "id": "CVE-2017-0144",
+          "base_score": 8.8,
+          "exploitability_score": 2.8,
+          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2017-0144"
+        },
+        {
+          "id": "CVE-2021-34527",
+          "base_score": 8.8,
+          "exploitability_score": 2.8,
+          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2021-34527"
+        },
+        {
+          "id": "CVE-2020-1472",
+          "base_score": 10.0,
+          "exploitability_score": 3.9,
+          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2020-1472"
+        }
+      ],
+      "derived_vulnerability": 0.812
+    },
+    "scada_server": {
+      "component_type": "SCADA/HMI server (Siemens SIMATIC WinCC / PCS 7)",
+      "cves": [
+        {
+          "id": "CVE-2019-10922",
+          "base_score": 9.8,
+          "exploitability_score": 3.9,
+          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2019-10922"
+        },
+        {
+          "id": "CVE-2016-5743",
+          "base_score": 9.8,
+          "exploitability_score": 3.9,
+          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2016-5743"
+        },
+        {
+          "id": "CVE-2021-40358",
+          "base_score": 9.8,
+          "exploitability_score": 3.9,
+          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2021-40358"
+        }
+      ],
+      "derived_vulnerability": 0.95
+    },
+    "remote_terminal_unit": {
+      "component_type": "Modbus/DNP3 RTU (Schneider Electric Modicon controllers / Modbus protocol implementation)",
+      "cves": [
+        {
+          "id": "CVE-2017-6034",
+          "base_score": 9.8,
+          "exploitability_score": 3.9,
+          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2017-6034"
+        },
+        {
+          "id": "CVE-2017-6032",
+          "base_score": 5.3,
+          "exploitability_score": 3.9,
+          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2017-6032"
+        },
+        {
+          "id": "CVE-2022-45789",
+          "base_score": 9.8,
+          "exploitability_score": 3.9,
+          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2022-45789"
+        }
+      ],
+      "derived_vulnerability": 0.95
+    },
+    "intelligent_electronic_device": {
+      "component_type": "Protection relay IED (Siemens SIPROTEC 5)",
+      "cves": [
+        {
+          "id": "CVE-2021-33719",
+          "base_score": 9.8,
+          "exploitability_score": 3.9,
+          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2021-33719"
+        },
+        {
+          "id": "CVE-2021-33720",
+          "base_score": 7.5,
+          "exploitability_score": 3.9,
+          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2021-33720"
+        },
+        {
+          "id": "CVE-2021-37206",
+          "base_score": 7.5,
+          "exploitability_score": 3.9,
+          "source_url": "https://nvd.nist.gov/vuln/detail/CVE-2021-37206"
+        }
+      ],
+      "derived_vulnerability": 0.95
+    },
+    "physical_equipment": {
+      "component_type": null,
+      "cves": [],
+      "derived_vulnerability": null,
+      "note": "No CVE could be verified for this node. physical_equipment represents the end physical process asset (e.g. a circuit breaker or transformer) rather than networked software or firmware, so it has no CPE entry and no associated CVEs in NVD. Its vulnerability value is left hardcoded in src/graph.py instead of being derived from CVE data."
+    }
+  }
+}
