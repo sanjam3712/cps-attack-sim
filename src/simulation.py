@@ -27,6 +27,13 @@ FAILURE_TIME_THRESHOLDS_HOURS = (3, 6, 12, 24)
 def run_attack_simulation(graph, ctmc_nodes, t_max=24, t_steps=100, rng=None):
     """Simulate attack propagation across the graph from t=0 to t_max.
 
+    The attacker's entry point is drawn per run from
+    graph.graph["entry_points"] (a {node_name: probability} map set by
+    src.graph.build_smart_grid), falling back to ENTRY_POINT with
+    probability 1 for graphs that don't set it. This lets a "multi_entry"
+    topology variant start the attack at different nodes across runs
+    instead of always the same one.
+
     Returns a dict with 'time', 'node_states' (per-node state arrays,
     0=SECURE, 1=COMPROMISED, 2=FAILED), and
     'physical_equipment_failure_time' (first time physical_equipment
@@ -39,8 +46,15 @@ def run_attack_simulation(graph, ctmc_nodes, t_max=24, t_steps=100, rng=None):
     time = np.linspace(0, t_max, t_steps + 1)
     node_names = list(graph.nodes())
 
+    entry_points = graph.graph.get("entry_points") or {ENTRY_POINT: 1.0}
+    entry_names = list(entry_points.keys())
+    entry_point = (
+        entry_names[0] if len(entry_names) == 1
+        else rng.choice(entry_names, p=list(entry_points.values()))
+    )
+
     current_states = {name: SECURE for name in node_names}
-    current_states[ENTRY_POINT] = COMPROMISED
+    current_states[entry_point] = COMPROMISED
 
     node_states = {name: np.zeros(t_steps + 1, dtype=int) for name in node_names}
     for name in node_names:

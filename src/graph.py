@@ -65,22 +65,77 @@ EDGES = [
 ]
 
 
-def build_smart_grid():
+VARIANTS = ("baseline", "redundant", "flat", "multi_entry")
+
+DEFAULT_ENTRY_POINTS = {"corporate_network": 1.0}
+
+
+def build_smart_grid(variant="baseline"):
     """Build and return the directed smart grid attack graph.
 
-    Each node carries `vulnerability` and `criticality` attributes.
-    Each edge carries a `propagation_probability` attribute, set to
-    the vulnerability of the downstream (target) node, reflecting how
-    easily an attacker can compromise that target once it is reachable.
+    variant selects the topology, to test whether findings (e.g. the
+    SCADA chokepoint) are artifacts of the hand-drawn baseline:
+      "baseline" (default): the original topology.
+      "redundant": adds a second SCADA server (scada_backup), fed by
+        historian_server and engineering_workstation and feeding RTU and
+        IED - a redundant control path alongside scada_server, copying
+        its vulnerability/criticality.
+      "flat": baseline plus direct engineering_workstation -> RTU and
+        engineering_workstation -> IED edges, modeling a common real
+        misconfiguration that bypasses SCADA.
+      "multi_entry": baseline topology, but the attacker's entry point is
+        corporate_network or engineering_workstation (a remote vendor
+        VPN), chosen 50/50 per simulation run instead of always
+        corporate_network.
+
+    Each node carries `vulnerability` and `criticality` attributes. Each
+    edge carries a `propagation_probability` attribute, set to the
+    vulnerability of the downstream (target) node, reflecting how easily
+    an attacker can compromise that target once it is reachable.
+
+    graph.graph["variant"] records which variant was built, and
+    graph.graph["entry_points"] maps possible attacker start nodes to
+    their selection probability (consumed by
+    src.simulation.run_attack_simulation).
     """
+    if variant not in VARIANTS:
+        raise ValueError(f"Unknown variant '{variant}'; expected one of {VARIANTS}")
+
     graph = nx.DiGraph()
 
-    for node, attrs in NODES.items():
+    node_attrs = dict(NODES)
+    if variant == "redundant":
+        node_attrs["scada_backup"] = dict(NODES["scada_server"])
+
+    for node, attrs in node_attrs.items():
         graph.add_node(node, **attrs)
 
-    for source, target in EDGES:
+    edges = list(EDGES)
+    if variant == "redundant":
+        edges += [
+            ("historian_server", "scada_backup"),
+            ("engineering_workstation", "scada_backup"),
+            ("scada_backup", "remote_terminal_unit"),
+            ("scada_backup", "intelligent_electronic_device"),
+        ]
+    elif variant == "flat":
+        edges += [
+            ("engineering_workstation", "remote_terminal_unit"),
+            ("engineering_workstation", "intelligent_electronic_device"),
+        ]
+
+    for source, target in edges:
         propagation_probability = graph.nodes[target]["vulnerability"]
         graph.add_edge(source, target, propagation_probability=propagation_probability)
+
+    graph.graph["variant"] = variant
+    if variant == "multi_entry":
+        graph.graph["entry_points"] = {
+            "corporate_network": 0.5,
+            "engineering_workstation": 0.5,
+        }
+    else:
+        graph.graph["entry_points"] = dict(DEFAULT_ENTRY_POINTS)
 
     return graph
 
