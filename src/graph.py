@@ -8,6 +8,7 @@ propagation simulation.
 """
 
 import json
+import random
 from pathlib import Path
 
 import networkx as nx
@@ -65,9 +66,93 @@ EDGES = [
 ]
 
 
-VARIANTS = ("baseline", "redundant", "flat", "multi_entry")
+VARIANTS = ("baseline", "redundant", "flat", "multi_entry", "large_layered", "large_random")
 
 DEFAULT_ENTRY_POINTS = {"corporate_network": 1.0}
+
+# ~15-node synthetic topologies (IT -> DMZ -> control -> field -> target),
+# used to test whether the min-cut/simulation agreement seen on the small
+# hand-drawn graphs survives a graph large enough that most budget-3
+# combinations are NOT vertex cuts (see src/mincut_null_and_large.py).
+LARGE_LAYER_SIZES = (4, 3, 4, 3)
+LARGE_LAYER_PREFIXES = ("it", "dmz", "ctrl", "field")
+LARGE_LAYER_CRITICALITY = {"it": 0.2, "dmz": 0.35, "ctrl": 0.75, "field": 0.8}
+LARGE_LAYERED_SEED = 123
+LARGE_RANDOM_SEED = 7
+
+
+def _sample_vulnerabilities(rng, n):
+    """Draw n vulnerability values (with replacement) from the real,
+    CVE-derived per-node values in data/vulnerabilities.json (excluding
+    physical_equipment, which has no CVE-derived value)."""
+    pool = [v for node, v in load_node_vulnerabilities().items() if node != "physical_equipment"]
+    return rng.choices(pool, k=n)
+
+
+def _generate_layered_edges(rng, layers, fanout_range):
+    """Connect layer i to layer i+1: the entry (layers[0][0]) fans out to
+    the rest of its own layer (lateral movement within the IT zone), then
+    each node in layer i links to a random fanout_range-sized sample of
+    layer i+1, topped up so every layer i+1 node has >=1 incoming edge
+    (no orphaned nodes). Returns (edges, entry_node_name)."""
+    edges = []
+    entry = layers[0][0]
+    for other in layers[0][1:]:
+        edges.append((entry, other))
+
+    for i in range(len(layers) - 1):
+        upper, lower = layers[i], layers[i + 1]
+        incoming = {node: 0 for node in lower}
+        for u in upper:
+            k = min(rng.randint(*fanout_range), len(lower))
+            for t in rng.sample(lower, k):
+                edges.append((u, t))
+                incoming[t] += 1
+        for node, count in incoming.items():
+            if count == 0:
+                edges.append((rng.choice(upper), node))
+
+    return edges, entry
+
+
+def _build_large_topology(seed, fanout_range, bypass_layer_pairs=()):
+    """Build a layered ~15-node topology (node_attrs, edges, entry).
+
+    bypass_layer_pairs adds extra edges that skip directly from layers[i]
+    to layers[j] (i<j, non-adjacent), weakening any single-layer
+    chokepoint - used by "large_random" to make the graph messier than
+    the purely layer-by-layer "large_layered" variant.
+    """
+    rng = random.Random(seed)
+    layers = [
+        [f"{prefix}_{i + 1}" for i in range(size)]
+        for prefix, size in zip(LARGE_LAYER_PREFIXES, LARGE_LAYER_SIZES)
+    ]
+    edges, entry = _generate_layered_edges(rng, layers, fanout_range)
+
+    for i, j in bypass_layer_pairs:
+        for _ in range(rng.randint(1, 3)):
+            edges.append((rng.choice(layers[i]), rng.choice(layers[j])))
+
+    field_layer = layers[-1]
+    for node in field_layer:
+        edges.append((node, "physical_equipment"))
+    edges = list(dict.fromkeys(edges))
+
+    all_nodes = [node for layer in layers for node in layer]
+    vulnerabilities = _sample_vulnerabilities(rng, len(all_nodes))
+
+    node_attrs = {}
+    for layer, prefix in zip(layers, LARGE_LAYER_PREFIXES):
+        criticality = LARGE_LAYER_CRITICALITY[prefix]
+        for node in layer:
+            node_attrs[node] = {
+                "vulnerability": vulnerabilities[all_nodes.index(node)],
+                "criticality": criticality,
+            }
+    node_attrs["physical_equipment"] = dict(NODES["physical_equipment"])
+
+    return node_attrs, edges, entry
 
 
 def build_smart_grid(variant="baseline"):
@@ -87,6 +172,13 @@ def build_smart_grid(variant="baseline"):
         corporate_network or engineering_workstation (a remote vendor
         VPN), chosen 50/50 per simulation run instead of always
         corporate_network.
+      "large_layered": a synthetic ~15-node topology (IT -> DMZ ->
+        control -> field -> physical_equipment, 3-4 nodes per layer,
+        single entry node) with random inter-layer edges (fixed seed) and
+        vulnerabilities sampled from the real per-node CVE distributions.
+      "large_random": like "large_layered", but with a wider per-node
+        fanout and extra edges that skip directly from one layer to a
+        non-adjacent one, weakening any single-layer chokepoint.
 
     Each node carries `vulnerability` and `criticality` attributes. Each
     edge carries a `propagation_probability` attribute, set to the
@@ -102,6 +194,24 @@ def build_smart_grid(variant="baseline"):
         raise ValueError(f"Unknown variant '{variant}'; expected one of {VARIANTS}")
 
     graph = nx.DiGraph()
+
+    if variant in ("large_layered", "large_random"):
+        if variant == "large_layered":
+            node_attrs, edges, entry = _build_large_topology(LARGE_LAYERED_SEED, fanout_range=(1, 2))
+        else:
+            node_attrs, edges, entry = _build_large_topology(
+                LARGE_RANDOM_SEED, fanout_range=(1, 3), bypass_layer_pairs=[(0, 2), (1, 3)],
+            )
+
+        for node, attrs in node_attrs.items():
+            graph.add_node(node, **attrs)
+        for source, target in edges:
+            propagation_probability = graph.nodes[target]["vulnerability"]
+            graph.add_edge(source, target, propagation_probability=propagation_probability)
+
+        graph.graph["variant"] = variant
+        graph.graph["entry_points"] = {entry: 1.0}
+        return graph
 
     node_attrs = dict(NODES)
     if variant == "redundant":

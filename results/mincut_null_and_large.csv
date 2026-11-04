@@ -1,0 +1,87 @@
+section,variant,budget,reduction,metric,n_candidates,n_combos_total,n_combos_cut,fraction_cut,expected_chance_matches,n_cut_combos,spearman_corr,spearman_pvalue,min_cut_size,predicted_min_cuts,sim_best_combo,mean_hops_of_winner,is_cut,match_status,notes
+null_model,baseline,2,,,5,10,6,0.6,3.6,,,,,,,,,,covers 6 of the original sweep's 48 cells
+null_model,baseline,3,,,5,10,10,1.0,6.0,,,,,,,,,,covers 6 of the original sweep's 48 cells
+null_model,redundant,2,,,6,15,3,0.2,1.2,,,,,,,,,,covers 6 of the original sweep's 48 cells
+null_model,redundant,3,,,6,20,12,0.6,3.6,,,,,,,,,,covers 6 of the original sweep's 48 cells
+null_model,flat,2,,,5,10,3,0.3,1.8,,,,,,,,,,covers 6 of the original sweep's 48 cells
+null_model,flat,3,,,5,10,8,0.8,4.8,,,,,,,,,,covers 6 of the original sweep's 48 cells
+null_model,multi_entry,2,,,4,6,4,0.6667,4.0,,,,,,,,,,covers 6 of the original sweep's 48 cells
+null_model,multi_entry,3,,,4,4,4,1.0,6.0,,,,,,,,,,covers 6 of the original sweep's 48 cells
+spearman,baseline,2,0.5,p_fail_6h,,10,,,,6,0.3881,0.4471,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,baseline,2,0.5,p_fail_24h,,10,,,,6,0.971,0.0012,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,baseline,2,0.5,mean_ttf,,10,,,,6,-0.1471,0.7809,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,baseline,2,0.9,p_fail_6h,,10,,,,6,0.1471,0.7809,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,baseline,2,0.9,p_fail_24h,,10,,,,6,0.5885,0.2192,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,baseline,2,0.9,mean_ttf,,10,,,,6,-0.2648,0.6121,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,baseline,3,0.5,p_fail_6h,,10,,,,10,0.142,0.6955,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,baseline,3,0.5,p_fail_24h,,10,,,,10,0.8497,0.0019,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,baseline,3,0.5,mean_ttf,,10,,,,10,-0.2643,0.4605,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,baseline,3,0.9,p_fail_6h,,10,,,,10,0.2077,0.5648,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,baseline,3,0.9,p_fail_24h,,10,,,,10,0.2077,0.5648,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,baseline,3,0.9,mean_ttf,,10,,,,10,-0.1322,0.7159,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,redundant,2,0.5,p_fail_6h,,15,,,,3,1.0,0.0,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,redundant,2,0.5,p_fail_24h,,15,,,,3,0.5,0.6667,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,redundant,2,0.5,mean_ttf,,15,,,,3,-1.0,0.0,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,redundant,2,0.9,p_fail_6h,,15,,,,3,1.0,0.0,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,redundant,2,0.9,p_fail_24h,,15,,,,3,1.0,0.0,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,redundant,2,0.9,mean_ttf,,15,,,,3,-0.5,0.6667,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,redundant,3,0.5,p_fail_6h,,20,,,,12,0.7,0.0113,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,redundant,3,0.5,p_fail_24h,,20,,,,12,0.7497,0.005,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,redundant,3,0.5,mean_ttf,,20,,,,12,-0.4367,0.1558,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,redundant,3,0.9,p_fail_6h,,20,,,,12,0.6489,0.0224,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,redundant,3,0.9,p_fail_24h,,20,,,,12,0.9608,0.0,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,redundant,3,0.9,mean_ttf,,20,,,,12,0.1456,0.6517,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,flat,2,0.5,p_fail_6h,,10,,,,3,1.0,0.0,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,flat,2,0.5,p_fail_24h,,10,,,,3,1.0,0.0,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,flat,2,0.5,mean_ttf,,10,,,,3,-0.5,0.6667,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,flat,2,0.9,p_fail_6h,,10,,,,3,1.0,0.0,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,flat,2,0.9,p_fail_24h,,10,,,,3,1.0,0.0,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,flat,2,0.9,mean_ttf,,10,,,,3,-0.5,0.6667,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,flat,3,0.5,p_fail_6h,,10,,,,8,0.5477,0.1599,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,flat,3,0.5,p_fail_24h,,10,,,,8,0.8265,0.0114,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,flat,3,0.5,mean_ttf,,10,,,,8,-0.4825,0.2259,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,flat,3,0.9,p_fail_6h,,10,,,,8,0.7609,0.0283,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,flat,3,0.9,p_fail_24h,,10,,,,8,0.9129,0.0015,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,flat,3,0.9,mean_ttf,,10,,,,8,-0.2999,0.4704,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,multi_entry,2,0.5,p_fail_6h,,6,,,,4,1.0,0.0,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,multi_entry,2,0.5,p_fail_24h,,6,,,,4,0.9487,0.0513,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,multi_entry,2,0.5,mean_ttf,,6,,,,4,-0.9487,0.0513,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,multi_entry,2,0.9,p_fail_6h,,6,,,,4,0.3162,0.6838,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,multi_entry,2,0.9,p_fail_24h,,6,,,,4,0.9487,0.0513,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,multi_entry,2,0.9,mean_ttf,,6,,,,4,-0.3162,0.6838,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,multi_entry,3,0.5,p_fail_6h,,4,,,,4,0.3162,0.6838,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,multi_entry,3,0.5,p_fail_24h,,4,,,,4,0.9487,0.0513,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,multi_entry,3,0.5,mean_ttf,,4,,,,4,-0.6325,0.3675,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,multi_entry,3,0.9,p_fail_6h,,4,,,,4,0.3162,0.6838,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,multi_entry,3,0.9,p_fail_24h,,4,,,,4,0.3162,0.6838,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+spearman,multi_entry,3,0.9,mean_ttf,,4,,,,4,-0.3162,0.6838,,,,,,,corr between metric_value and mean hop-distance of cut nodes from entry; n/a if <3 cut combos or all same hop distance
+null_model_large,large_layered,2,,,13,78,0,0.0,,,,,3,"{dmz_2,it_3,it_4} | {ctrl_3,it_3,it_4} | {dmz_2,dmz_3,it_3} | {ctrl_3,dmz_3,it_3} | {dmz_1,dmz_2,dmz_3} | {ctrl_3,dmz_1,dmz_3} | {dmz_2,field_2,field_3} | {ctrl_3,field_2,field_3} | {field_1,field_2,field_3}",,,,,
+large_sweep,large_layered,2,0.5,p_fail_6h,,,,,,,,,3,"{dmz_2,it_3,it_4} | {ctrl_3,it_3,it_4} | {dmz_2,dmz_3,it_3} | {ctrl_3,dmz_3,it_3} | {dmz_1,dmz_2,dmz_3} | {ctrl_3,dmz_1,dmz_3} | {dmz_2,field_2,field_3} | {ctrl_3,field_2,field_3} | {field_1,field_2,field_3}",ctrl_1+dmz_2,2.0,False,partial_overlap,
+large_sweep,large_layered,2,0.5,mean_ttf,,,,,,,,,3,"{dmz_2,it_3,it_4} | {ctrl_3,it_3,it_4} | {dmz_2,dmz_3,it_3} | {ctrl_3,dmz_3,it_3} | {dmz_1,dmz_2,dmz_3} | {ctrl_3,dmz_1,dmz_3} | {dmz_2,field_2,field_3} | {ctrl_3,field_2,field_3} | {field_1,field_2,field_3}",ctrl_1+field_3,3.0,False,partial_overlap,
+large_sweep,large_layered,2,0.9,p_fail_6h,,,,,,,,,3,"{dmz_2,it_3,it_4} | {ctrl_3,it_3,it_4} | {dmz_2,dmz_3,it_3} | {ctrl_3,dmz_3,it_3} | {dmz_1,dmz_2,dmz_3} | {ctrl_3,dmz_1,dmz_3} | {dmz_2,field_2,field_3} | {ctrl_3,field_2,field_3} | {field_1,field_2,field_3}",dmz_2+it_3,1.0,False,partial_overlap,
+large_sweep,large_layered,2,0.9,mean_ttf,,,,,,,,,3,"{dmz_2,it_3,it_4} | {ctrl_3,it_3,it_4} | {dmz_2,dmz_3,it_3} | {ctrl_3,dmz_3,it_3} | {dmz_1,dmz_2,dmz_3} | {ctrl_3,dmz_1,dmz_3} | {dmz_2,field_2,field_3} | {ctrl_3,field_2,field_3} | {field_1,field_2,field_3}",ctrl_3+it_3,1.5,False,partial_overlap,
+null_model_large,large_layered,3,,,13,286,9,0.0315,,,,,3,"{dmz_2,it_3,it_4} | {ctrl_3,it_3,it_4} | {dmz_2,dmz_3,it_3} | {ctrl_3,dmz_3,it_3} | {dmz_1,dmz_2,dmz_3} | {ctrl_3,dmz_1,dmz_3} | {dmz_2,field_2,field_3} | {ctrl_3,field_2,field_3} | {field_1,field_2,field_3}",,,,,
+large_sweep,large_layered,3,0.5,p_fail_6h,,,,,,,,,3,"{dmz_2,it_3,it_4} | {ctrl_3,it_3,it_4} | {dmz_2,dmz_3,it_3} | {ctrl_3,dmz_3,it_3} | {dmz_1,dmz_2,dmz_3} | {ctrl_3,dmz_1,dmz_3} | {dmz_2,field_2,field_3} | {ctrl_3,field_2,field_3} | {field_1,field_2,field_3}",field_1+field_2+field_3,3.333,True,exact_match,
+large_sweep,large_layered,3,0.5,mean_ttf,,,,,,,,,3,"{dmz_2,it_3,it_4} | {ctrl_3,it_3,it_4} | {dmz_2,dmz_3,it_3} | {ctrl_3,dmz_3,it_3} | {dmz_1,dmz_2,dmz_3} | {ctrl_3,dmz_1,dmz_3} | {dmz_2,field_2,field_3} | {ctrl_3,field_2,field_3} | {field_1,field_2,field_3}",dmz_2+field_2+field_3,2.667,True,exact_match,
+large_sweep,large_layered,3,0.9,p_fail_6h,,,,,,,,,3,"{dmz_2,it_3,it_4} | {ctrl_3,it_3,it_4} | {dmz_2,dmz_3,it_3} | {ctrl_3,dmz_3,it_3} | {dmz_1,dmz_2,dmz_3} | {ctrl_3,dmz_1,dmz_3} | {dmz_2,field_2,field_3} | {ctrl_3,field_2,field_3} | {field_1,field_2,field_3}",ctrl_3+field_2+field_3,3.0,True,exact_match,
+large_sweep,large_layered,3,0.9,mean_ttf,,,,,,,,,3,"{dmz_2,it_3,it_4} | {ctrl_3,it_3,it_4} | {dmz_2,dmz_3,it_3} | {ctrl_3,dmz_3,it_3} | {dmz_1,dmz_2,dmz_3} | {ctrl_3,dmz_1,dmz_3} | {dmz_2,field_2,field_3} | {ctrl_3,field_2,field_3} | {field_1,field_2,field_3}",field_1+field_2+field_3,3.333,True,exact_match,
+null_model_large,large_layered,4,,,13,715,108,0.151,,,,,3,"{dmz_2,it_3,it_4} | {ctrl_3,it_3,it_4} | {dmz_2,dmz_3,it_3} | {ctrl_3,dmz_3,it_3} | {dmz_1,dmz_2,dmz_3} | {ctrl_3,dmz_1,dmz_3} | {dmz_2,field_2,field_3} | {ctrl_3,field_2,field_3} | {field_1,field_2,field_3}",,,,,
+large_sweep,large_layered,4,0.5,p_fail_6h,,,,,,,,,3,"{dmz_2,it_3,it_4} | {ctrl_3,it_3,it_4} | {dmz_2,dmz_3,it_3} | {ctrl_3,dmz_3,it_3} | {dmz_1,dmz_2,dmz_3} | {ctrl_3,dmz_1,dmz_3} | {dmz_2,field_2,field_3} | {ctrl_3,field_2,field_3} | {field_1,field_2,field_3}",dmz_1+dmz_2+field_1+it_3,1.75,False,partial_overlap,
+large_sweep,large_layered,4,0.5,mean_ttf,,,,,,,,,3,"{dmz_2,it_3,it_4} | {ctrl_3,it_3,it_4} | {dmz_2,dmz_3,it_3} | {ctrl_3,dmz_3,it_3} | {dmz_1,dmz_2,dmz_3} | {ctrl_3,dmz_1,dmz_3} | {dmz_2,field_2,field_3} | {ctrl_3,field_2,field_3} | {field_1,field_2,field_3}",dmz_1+field_2+field_3+it_3,2.5,False,partial_overlap,
+large_sweep,large_layered,4,0.9,p_fail_6h,,,,,,,,,3,"{dmz_2,it_3,it_4} | {ctrl_3,it_3,it_4} | {dmz_2,dmz_3,it_3} | {ctrl_3,dmz_3,it_3} | {dmz_1,dmz_2,dmz_3} | {ctrl_3,dmz_1,dmz_3} | {dmz_2,field_2,field_3} | {ctrl_3,field_2,field_3} | {field_1,field_2,field_3}",dmz_2+field_3+it_3+it_4,1.5,True,superset_match,
+large_sweep,large_layered,4,0.9,mean_ttf,,,,,,,,,3,"{dmz_2,it_3,it_4} | {ctrl_3,it_3,it_4} | {dmz_2,dmz_3,it_3} | {ctrl_3,dmz_3,it_3} | {dmz_1,dmz_2,dmz_3} | {ctrl_3,dmz_1,dmz_3} | {dmz_2,field_2,field_3} | {ctrl_3,field_2,field_3} | {field_1,field_2,field_3}",ctrl_3+dmz_2+dmz_3+it_3,1.5,True,superset_match,
+null_model_large,large_random,2,,,13,78,0,0.0,,,,,3,"{field_1,field_2,field_3}",,,,,
+large_sweep,large_random,2,0.5,p_fail_6h,,,,,,,,,3,"{field_1,field_2,field_3}",dmz_1+it_4,1.0,False,no_match,
+large_sweep,large_random,2,0.5,mean_ttf,,,,,,,,,3,"{field_1,field_2,field_3}",ctrl_2+ctrl_4,2.0,False,no_match,
+large_sweep,large_random,2,0.9,p_fail_6h,,,,,,,,,3,"{field_1,field_2,field_3}",field_2+field_3,3.0,False,partial_overlap,
+large_sweep,large_random,2,0.9,mean_ttf,,,,,,,,,3,"{field_1,field_2,field_3}",field_2+field_3,3.0,False,partial_overlap,
+null_model_large,large_random,3,,,13,286,1,0.0035,,,,,3,"{field_1,field_2,field_3}",,,,,
+large_sweep,large_random,3,0.5,p_fail_6h,,,,,,,,,3,"{field_1,field_2,field_3}",ctrl_1+ctrl_2+ctrl_4,2.0,False,no_match,
+large_sweep,large_random,3,0.5,mean_ttf,,,,,,,,,3,"{field_1,field_2,field_3}",ctrl_1+ctrl_2+ctrl_4,2.0,False,no_match,
+large_sweep,large_random,3,0.9,p_fail_6h,,,,,,,,,3,"{field_1,field_2,field_3}",field_1+field_2+field_3,3.0,True,exact_match,
+large_sweep,large_random,3,0.9,mean_ttf,,,,,,,,,3,"{field_1,field_2,field_3}",field_1+field_2+field_3,3.0,True,exact_match,
+null_model_large,large_random,4,,,13,715,20,0.028,,,,,3,"{field_1,field_2,field_3}",,,,,
+large_sweep,large_random,4,0.5,p_fail_6h,,,,,,,,,3,"{field_1,field_2,field_3}",ctrl_2+dmz_1+field_1+field_3,2.25,False,partial_overlap,
+large_sweep,large_random,4,0.5,mean_ttf,,,,,,,,,3,"{field_1,field_2,field_3}",ctrl_1+dmz_1+field_3+it_4,1.75,False,partial_overlap,
+large_sweep,large_random,4,0.9,p_fail_6h,,,,,,,,,3,"{field_1,field_2,field_3}",ctrl_1+ctrl_2+dmz_3+field_2,2.25,True,partial_overlap,
+large_sweep,large_random,4,0.9,mean_ttf,,,,,,,,,3,"{field_1,field_2,field_3}",ctrl_1+ctrl_2+ctrl_4+dmz_3,2.0,True,no_match,
