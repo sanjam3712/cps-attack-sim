@@ -6,6 +6,8 @@ results interactively. Does not change any simulation logic - it just
 drives the existing src.* functions and renders their output.
 """
 
+import csv
+import io
 import json
 import math
 from pathlib import Path
@@ -18,14 +20,10 @@ from src.ctmc import build_ctmc_nodes
 from src.graph import build_graph_from_config, validate_system_config
 from src.optimization import optimize_defense
 from src.simulation import run_attack_simulation, run_monte_carlo
-from src.stats import intervals_overlap
-from src.visualization import (
-    plot_attack_propagation,
-    plot_defense_comparison,
-    plot_failure_distribution,
-    plot_graph,
-)
-from views.common import CONFIGS_DIR, is_illustrative
+from src.stats import intervals_overlap, wilson_confidence_interval
+from src.visualization import plot_attack_propagation, plot_failure_distribution
+from views.charts import plotly_defense_comparison, plotly_failure_over_time, plotly_graph
+from views.common import CONFIGS_DIR, build_insight, is_illustrative, page_header, terms_expander
 
 MAX_COMBOS_BEFORE_WARNING = 300
 
@@ -68,8 +66,10 @@ def run_pipeline(config_json, system_name, budget, reduction, n_runs, horizon, s
     return graph, monte_carlo_result, optimization_result, simulation_result
 
 
-st.title("CPS Attack Simulation")
-st.caption("Model cyberattack propagation through a cyber-physical system and find the best defense allocation.")
+page_header(
+    "CPS Attack Simulation",
+    "Model cyberattack propagation through a cyber-physical system and find the best defense allocation.",
+)
 
 st.sidebar.header("System")
 
@@ -82,10 +82,15 @@ if "preselect_config" in st.session_state:
         st.session_state["config_select"] = pending
 
 selected_name = st.sidebar.selectbox(
-    "Config file", config_names, index=0 if config_names else None, key="config_select"
+    "Config file", config_names, index=0 if config_names else None, key="config_select",
+    help="Pick a system topology from configs/. Each one defines its own nodes, edges, entry points and target.",
 )
 
-uploaded = st.sidebar.file_uploader("Upload your own config (optional)", type=["json"])
+uploaded = st.sidebar.file_uploader(
+    "Upload your own config (optional)", type=["json"],
+    help="Upload a JSON file in the same {nodes, edges, entry_points, target} format as the bundled configs "
+    "(see the README for the schema). Overrides the config file picked above.",
+)
 
 config = None
 system_name = None
@@ -122,7 +127,11 @@ node_names = list(config["nodes"].keys())
 target_name = config["target"]
 
 st.sidebar.header("Parameters")
-budget = st.sidebar.slider("Defense budget (nodes defended)", 1, 4, 2)
+budget = st.sidebar.slider(
+    "Defense budget (nodes defended)", 1, 4, 2,
+    help="How many different nodes the defender can harden at once. Every combination of this "
+    "many nodes is evaluated and ranked.",
+)
 include_target = st.sidebar.checkbox(
     "Include the target node as defendable (naive)", value=False,
     help="Defending the target node directly is a trivial result, not a propagation defense.",
@@ -139,10 +148,28 @@ if n_combos > MAX_COMBOS_BEFORE_WARNING:
     )
     suggested_default_runs = 500
 
-reduction = st.sidebar.slider("Defense strength (compromise-rate reduction)", 0.1, 0.9, 0.5, step=0.1)
-n_runs = st.sidebar.slider("Monte Carlo runs", 500, 5000, suggested_default_runs, step=100)
-horizon = st.sidebar.slider("Time horizon (hours)", 6, 48, 24, step=1)
-seed = st.sidebar.number_input("Random seed", value=42, step=1)
+reduction = st.sidebar.slider(
+    "Defense strength (compromise-rate reduction)", 0.1, 0.9, 0.5, step=0.1,
+    help="How much hardening cuts a defended node's compromise rate. 0.5 means a defended "
+    "node is compromised about half as fast as it would be undefended.",
+)
+n_runs = st.sidebar.slider(
+    "Monte Carlo runs", 500, 5000, suggested_default_runs, step=100,
+    help="Number of simulated attacks per combination. More runs give tighter confidence "
+    "intervals but take longer to compute.",
+)
+horizon = st.sidebar.slider(
+    "Time horizon (hours)", 6, 48, 24, step=1,
+    help="How many hours into the future the simulation looks. A short horizon asks "
+    "\"could this fail soon?\"; a long horizon asks \"will this eventually fail?\".",
+)
+seed = st.sidebar.number_input(
+    "Random seed", value=42, step=1,
+    help="Random-number seed. The same seed and settings always reproduce the same result; "
+    "change it to see results under a different random draw.",
+)
+
+terms_expander(st.sidebar)
 
 run_clicked = st.sidebar.button("Run simulation", type="primary")
 
@@ -175,36 +202,68 @@ params = st.session_state["result_params"]
 target = graph.graph["target"]
 
 baseline_probability = monte_carlo_result["probability_of_failure"]
+baseline_ci_low, baseline_ci_high = wilson_confidence_interval(baseline_probability, params["n_runs"])
 mean_ttf = monte_carlo_result["mean_time_to_failure"]
 best_nodes = optimization_result["best_nodes"]
 best_probability = optimization_result["best_probability"]
-baseline_p6h = monte_carlo_result["p_fail_by_t"].get(6, {}).get("p")
 best_entry = optimization_result["results_detailed"][0]
-best_p6h = best_entry["p_fail_by_t"].get(6, {}).get("p")
+best_mean_ttf = best_entry["mean_time_to_failure"]
+
+thresholds_available = sorted(monte_carlo_result["p_fail_by_t"].keys())
+long_t = 24 if 24 in monte_carlo_result["p_fail_by_t"] else thresholds_available[-1]
+short_t = 6 if 6 in monte_carlo_result["p_fail_by_t"] else thresholds_available[0]
+
+baseline_long = monte_carlo_result["p_fail_by_t"][long_t]["p"]
+best_long = best_entry["p_fail_by_t"][long_t]["p"]
+baseline_short = monte_carlo_result["p_fail_by_t"][short_t]["p"]
+best_short = best_entry["p_fail_by_t"][short_t]["p"]
+
+top5 = optimization_result["results_detailed"][:5]
+ci_overlap_top2 = False
+if len(top5) >= 2:
+    ci_overlap_top2 = intervals_overlap(
+        (top5[0]["ci_low"], top5[0]["ci_high"]), (top5[1]["ci_low"], top5[1]["ci_high"])
+    )
 
 st.subheader(f"Results - {params['system_name']} (target: {target})")
 
-cols = st.columns(5)
-cols[0].metric(f"Baseline P(fail within {params['horizon']}h)", f"{baseline_probability:.4f}")
-cols[1].metric(
-    "Mean time to failure",
-    f"{mean_ttf:.2f}h" if mean_ttf is not None else "N/A",
-)
-cols[2].metric("Best defended nodes", ", ".join(best_nodes) if best_nodes else "(none)")
-cols[3].metric(f"P(fail) with best defense", f"{best_probability:.4f}")
-cols[4].metric(
-    "P(fail by 6h): baseline -> best",
-    f"{baseline_p6h:.4f} -> {best_p6h:.4f}" if baseline_p6h is not None and best_p6h is not None else "N/A",
+st.info(
+    build_insight(
+        defended_nodes=best_nodes,
+        baseline_long=baseline_long, best_long=best_long,
+        baseline_short=baseline_short, best_short=best_short,
+        long_label=f"{long_t}h failure", short_label=f"{short_t}h failure",
+        ci_overlap=ci_overlap_top2,
+    )
 )
 
-tab_graph, tab_propagation, tab_distribution, tab_comparison = st.tabs(
-    ["System graph", "Attack propagation", "Failure-time distribution", "Defense comparison"]
+id_cols = st.columns(3)
+id_cols[0].metric("Best defended nodes", ", ".join(best_nodes) if best_nodes else "(none)")
+id_cols[1].metric("Mean time to failure (baseline)", f"{mean_ttf:.2f}h" if mean_ttf is not None else "N/A")
+id_cols[2].metric(
+    "Mean time to failure (best defense)",
+    f"{best_mean_ttf:.2f}h" if best_mean_ttf is not None else "N/A",
+)
+
+delta_cols = st.columns(4)
+delta_cols[0].metric(f"Baseline P(fail by {long_t}h)", f"{baseline_long:.4f}")
+delta_cols[1].metric(
+    f"Best defense P(fail by {long_t}h)", f"{best_long:.4f}",
+    delta=f"{best_long - baseline_long:+.4f}", delta_color="inverse",
+)
+delta_cols[2].metric(f"Baseline P(fail by {short_t}h)", f"{baseline_short:.4f}")
+delta_cols[3].metric(
+    f"Best defense P(fail by {short_t}h)", f"{best_short:.4f}",
+    delta=f"{best_short - baseline_short:+.4f}", delta_color="inverse",
+)
+
+tab_graph, tab_propagation, tab_distribution, tab_comparison, tab_over_time = st.tabs(
+    ["System graph", "Attack propagation", "Failure-time distribution", "Defense comparison", "Failure over time"]
 )
 
 with tab_graph:
-    fig = plot_graph(graph)
-    st.pyplot(fig)
-    plt.close(fig)
+    fig = plotly_graph(graph, entry_points=graph.graph.get("entry_points"), target=target)
+    st.plotly_chart(fig, width='stretch')
 
 with tab_propagation:
     fig = plot_attack_propagation(simulation_result)
@@ -217,18 +276,78 @@ with tab_distribution:
     plt.close(fig)
 
 with tab_comparison:
-    fig = plot_defense_comparison(
-        baseline_probability, optimization_result, target_node=target,
-        title=f"Defense Resource Allocation Comparison (budget={params['budget']}, target "
-        f"{'defendable (naive)' if params['include_target'] else 'excluded'})",
-        filename="defense_comparison_app.png",
+    results_sorted = sorted(optimization_result["results"], key=lambda item: item[1])
+    ci_by_combo = {
+        d["combo"]: (d["ci_low"], d["ci_high"]) for d in optimization_result.get("results_detailed", [])
+    }
+    comparison_entries = [
+        dict(label="Baseline\n(none)", probability=baseline_probability,
+             ci_low=baseline_ci_low, ci_high=baseline_ci_high, kind="baseline")
+    ]
+    for combo, probability in results_sorted:
+        ci_low, ci_high = ci_by_combo.get(combo, (probability, probability))
+        comparison_entries.append(dict(
+            label=" + ".join(combo), probability=probability, ci_low=ci_low, ci_high=ci_high,
+            kind="best" if combo == best_nodes else "other",
+        ))
+
+    comparison_title = (
+        f"Defense Resource Allocation Comparison (budget={params['budget']}, target "
+        f"{'defendable (naive)' if params['include_target'] else 'excluded'})"
     )
-    st.pyplot(fig)
-    plt.close(fig)
+    comparison_fig = plotly_defense_comparison(comparison_entries, target_node=target, title=comparison_title)
+    st.plotly_chart(comparison_fig, width='stretch')
+
+    dl_cols = st.columns(2)
+
+    csv_buffer = io.StringIO()
+    writer = csv.writer(csv_buffer)
+    writer.writerow(["defended_nodes", f"probability_of_failure_by_{params['horizon']}h", "ci_low", "ci_high"])
+    writer.writerow(["(baseline - none)", baseline_probability, baseline_ci_low, baseline_ci_high])
+    for combo, probability in results_sorted:
+        ci_low, ci_high = ci_by_combo.get(combo, (probability, probability))
+        writer.writerow([" + ".join(combo), probability, ci_low, ci_high])
+    dl_cols[0].download_button(
+        "Download all combinations (CSV)", data=csv_buffer.getvalue().encode("utf-8"),
+        file_name=f"{params['system_name']}_defense_combinations.csv", mime="text/csv",
+    )
+
+    png_bytes = comparison_fig.to_image(format="png", scale=2)
+    dl_cols[1].download_button(
+        "Download this chart (PNG)", data=png_bytes,
+        file_name=f"{params['system_name']}_defense_comparison.png", mime="image/png",
+    )
+
+with tab_over_time:
+    over_time_fig = plotly_failure_over_time(
+        [
+            dict(
+                label="Baseline (no defense)", color="#DC2626", band_color="rgba(220,38,38,0.15)",
+                thresholds=thresholds_available,
+                p=[monte_carlo_result["p_fail_by_t"][t]["p"] for t in thresholds_available],
+                ci_low=[monte_carlo_result["p_fail_by_t"][t]["ci_low"] for t in thresholds_available],
+                ci_high=[monte_carlo_result["p_fail_by_t"][t]["ci_high"] for t in thresholds_available],
+            ),
+            dict(
+                label=f"Best defense ({' + '.join(best_nodes)})" if best_nodes else "Best defense",
+                color="#16A34A", band_color="rgba(22,163,74,0.15)",
+                thresholds=thresholds_available,
+                p=[best_entry["p_fail_by_t"][t]["p"] for t in thresholds_available],
+                ci_low=[best_entry["p_fail_by_t"][t]["ci_low"] for t in thresholds_available],
+                ci_high=[best_entry["p_fail_by_t"][t]["ci_high"] for t in thresholds_available],
+            ),
+        ],
+        target_node=target,
+        title="Baseline vs best defense: failure probability over time",
+    )
+    st.plotly_chart(over_time_fig, width='stretch')
+    st.caption(
+        "Defenses mainly delay failure rather than preventing it outright: both curves tend to "
+        "converge toward similar failure probability at the longest horizon."
+    )
 
 st.subheader(f"Top 5 defense combinations (P(fail within {params['horizon']}h), 95% CI)")
 
-top5 = optimization_result["results_detailed"][:5]
 table_rows = [
     {
         "Rank": i + 1,
@@ -241,8 +360,5 @@ table_rows = [
 ]
 st.table(table_rows)
 
-if len(top5) >= 2:
-    ci_1 = (top5[0]["ci_low"], top5[0]["ci_high"])
-    ci_2 = (top5[1]["ci_low"], top5[1]["ci_high"])
-    if intervals_overlap(ci_1, ci_2):
-        st.warning("Top two combinations' 95% confidence intervals overlap - not statistically distinguishable.")
+if ci_overlap_top2:
+    st.warning("Top two combinations' 95% confidence intervals overlap - not statistically distinguishable.")

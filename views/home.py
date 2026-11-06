@@ -3,9 +3,9 @@ gallery of the available system configs."""
 
 import streamlit as st
 
-from views.common import config_summary, list_configs, preselect_config
+from views.common import config_summary, list_configs, page_header, preselect_config
 
-st.title("CPS Attack Simulation")
+page_header("CPS Attack Simulation")
 
 st.write(
     "This tool models how a cyberattack spreads through a cyber-physical system - from an "
