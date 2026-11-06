@@ -17,7 +17,7 @@ import numpy as np
 from src.ctmc import SECURE, COMPROMISED, FAILED, STATE_NAMES, build_ctmc_nodes
 from src.graph import build_smart_grid
 from src.optimization import DEFAULT_N_RUNS, DEFAULT_SEED, optimize_defense, rank_by_metric
-from src.simulation import TARGET_NODE, run_attack_simulation, run_monte_carlo
+from src.simulation import run_attack_simulation, run_monte_carlo
 
 RESULTS_DIR = "results"
 
@@ -96,7 +96,7 @@ def plot_attack_propagation(simulation_result):
     plt.close(fig)
 
 
-def plot_failure_distribution(monte_carlo_result):
+def plot_failure_distribution(monte_carlo_result, target_node="target"):
     """Plot a histogram of Monte Carlo failure times with the mean marked.
 
     Saves to results/failure_distribution.png.
@@ -124,7 +124,7 @@ def plot_failure_distribution(monte_carlo_result):
     ax.set_xlabel("Time to failure (hours)")
     ax.set_ylabel("Number of runs")
     ax.set_title(
-        f"Distribution of {TARGET_NODE} Failure Times "
+        f"Distribution of {target_node} Failure Times "
         f"(P(failure)={monte_carlo_result['probability_of_failure']:.3f})"
     )
     ax.grid(True, alpha=0.3)
@@ -137,6 +137,7 @@ def plot_failure_distribution(monte_carlo_result):
 def plot_defense_comparison(
     baseline_probability,
     optimization_result,
+    target_node="target",
     title="Defense Resource Allocation Comparison",
     filename="defense_comparison.png",
 ):
@@ -181,7 +182,7 @@ def plot_defense_comparison(
     )
     ax.set_xticks(range(len(labels)))
     ax.set_xticklabels(labels, rotation=90, fontsize=7)
-    ax.set_ylabel(f"P({TARGET_NODE} fails)")
+    ax.set_ylabel(f"P({target_node} fails)")
     ax.set_title(f"{title}\n(error bars = 95% Wilson CI)")
     ax.grid(True, axis="y", alpha=0.3)
 
@@ -246,6 +247,7 @@ def run_all_plots():
     """Run the full simulation pipeline and generate all four plots."""
     graph = build_smart_grid()
     ctmc_nodes = build_ctmc_nodes(graph)
+    target = graph.graph["target"]
 
     simulation_result = run_attack_simulation(graph, ctmc_nodes, t_max=24, t_steps=100)
     monte_carlo_result = run_monte_carlo(
@@ -254,13 +256,13 @@ def run_all_plots():
     baseline_probability = monte_carlo_result["probability_of_failure"]
     optimization_result = optimize_defense(
         graph, ctmc_nodes, budget=2, t_max=24,
-        n_runs=DEFAULT_N_RUNS, seed=DEFAULT_SEED, excluded_nodes=[TARGET_NODE],
+        n_runs=DEFAULT_N_RUNS, seed=DEFAULT_SEED, excluded_nodes=[target],
     )
 
     plot_graph(graph)
     plot_attack_propagation(simulation_result)
-    plot_failure_distribution(monte_carlo_result)
-    plot_defense_comparison(baseline_probability, optimization_result)
+    plot_failure_distribution(monte_carlo_result, target_node=target)
+    plot_defense_comparison(baseline_probability, optimization_result, target_node=target)
 
     print(f"Saved 4 plots to {RESULTS_DIR}/")
 

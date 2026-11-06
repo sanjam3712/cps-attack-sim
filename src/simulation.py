@@ -14,8 +14,12 @@ from src.ctmc import SECURE, COMPROMISED, FAILED, build_ctmc_nodes
 from src.graph import build_smart_grid
 from src.stats import wilson_confidence_interval
 
-ENTRY_POINT = "corporate_network"
-TARGET_NODE = "physical_equipment"
+from src.graph import TARGET_NODE as DEFAULT_TARGET_NODE
+from src.graph import DEFAULT_ENTRY_POINTS
+
+# Fallbacks for graphs that don't set graph.graph["target"] / ["entry_points"].
+ENTRY_POINT = next(iter(DEFAULT_ENTRY_POINTS))
+TARGET_NODE = DEFAULT_TARGET_NODE
 
 # Horizons (hours) at which P(physical_equipment fails by t) is reported,
 # in addition to the overall P(fail by t_max). A run's failure (if any)
@@ -52,6 +56,7 @@ def run_attack_simulation(graph, ctmc_nodes, t_max=24, t_steps=100, rng=None):
         entry_names[0] if len(entry_names) == 1
         else rng.choice(entry_names, p=list(entry_points.values()))
     )
+    target_node = graph.graph.get("target", TARGET_NODE)
 
     current_states = {name: SECURE for name in node_names}
     current_states[entry_point] = COMPROMISED
@@ -61,7 +66,7 @@ def run_attack_simulation(graph, ctmc_nodes, t_max=24, t_steps=100, rng=None):
         node_states[name][0] = current_states[name]
 
     physical_equipment_failure_time = (
-        0.0 if current_states[TARGET_NODE] == FAILED else None
+        0.0 if current_states[target_node] == FAILED else None
     )
 
     for step in range(1, t_steps + 1):
@@ -103,7 +108,7 @@ def run_attack_simulation(graph, ctmc_nodes, t_max=24, t_steps=100, rng=None):
 
         if (
             physical_equipment_failure_time is None
-            and current_states[TARGET_NODE] == FAILED
+            and current_states[target_node] == FAILED
         ):
             physical_equipment_failure_time = t
 

@@ -1,0 +1,31 @@
+{
+  "_meta": {
+    "description": "ILLUSTRATIVE EXAMPLE ONLY - a water treatment plant topology (remote access -> IT/HMI -> PLC -> actuators -> physical tank). Unlike configs/substation.json, the vulnerability and criticality values below are NOT derived from CVE data - they are illustrative placeholder estimates chosen to produce a plausible attack graph, meant to demonstrate the config format on a second system. Replace them with real CVE-derived or site-specific risk scores before drawing any conclusions from this config."
+  },
+  "nodes": {
+    "remote_access": {"vulnerability": 0.65, "criticality": 0.2},
+    "engineering_workstation": {"vulnerability": 0.45, "criticality": 0.4},
+    "hmi": {"vulnerability": 0.55, "criticality": 0.5},
+    "historian": {"vulnerability": 0.4, "criticality": 0.3},
+    "plc": {"vulnerability": 0.7, "criticality": 0.8},
+    "pump_controller": {"vulnerability": 0.6, "criticality": 0.75},
+    "chemical_doser": {"vulnerability": 0.6, "criticality": 0.85},
+    "physical_tank": {"vulnerability": 0.2, "criticality": 1.0}
+  },
+  "edges": [
+    ["remote_access", "engineering_workstation"],
+    ["remote_access", "hmi"],
+    ["engineering_workstation", "historian"],
+    ["engineering_workstation", "plc"],
+    ["hmi", "plc"],
+    ["historian", "plc"],
+    ["plc", "pump_controller"],
+    ["plc", "chemical_doser"],
+    ["pump_controller", "physical_tank"],
+    ["chemical_doser", "physical_tank"]
+  ],
+  "entry_points": {
+    "remote_access": 1.0
+  },
+  "target": "physical_tank"
+}

@@ -1,0 +1,28 @@
+{
+  "_meta": {
+    "description": "Reproduces the original hardcoded baseline smart-grid substation graph (src/graph.py build_smart_grid(variant='baseline')) exactly, as a portable system config. vulnerability values are copied from data/vulnerabilities.json derived_vulnerability (CVE-derived; physical_equipment uses the documented hardcoded fallback of 0.2, since it has no CVEs). criticality values are copied from the hand-set CRITICALITY dict in src/graph.py."
+  },
+  "nodes": {
+    "corporate_network": {"vulnerability": 0.7179, "criticality": 0.2},
+    "historian_server": {"vulnerability": 0.5641, "criticality": 0.4},
+    "engineering_workstation": {"vulnerability": 0.4615, "criticality": 0.5},
+    "scada_server": {"vulnerability": 0.7179, "criticality": 0.8},
+    "remote_terminal_unit": {"vulnerability": 0.95, "criticality": 0.7},
+    "intelligent_electronic_device": {"vulnerability": 0.95, "criticality": 0.8},
+    "physical_equipment": {"vulnerability": 0.2, "criticality": 1.0}
+  },
+  "edges": [
+    ["corporate_network", "historian_server"],
+    ["corporate_network", "engineering_workstation"],
+    ["historian_server", "scada_server"],
+    ["engineering_workstation", "scada_server"],
+    ["scada_server", "remote_terminal_unit"],
+    ["scada_server", "intelligent_electronic_device"],
+    ["remote_terminal_unit", "physical_equipment"],
+    ["intelligent_electronic_device", "physical_equipment"]
+  ],
+  "entry_points": {
+    "corporate_network": 1.0
+  },
+  "target": "physical_equipment"
+}

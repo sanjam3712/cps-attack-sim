@@ -79,3 +79,52 @@ comparison — they are no longer used to compute `derived_vulnerability`.
 
 `criticality` for every node remains hand-set in `src/graph.py` and is not derived from
 CVE data.
+
+## Run on your own system
+
+The simulation is system-agnostic: any CPS topology can be modeled by writing a JSON
+config instead of editing code. Run it with:
+
+```
+python main.py --system configs/your_system.json --budget 2 --reduction 0.5 --n-runs 5000 --seed 42
+```
+
+- `--system`: path to the config (default `configs/substation.json`)
+- `--budget`: number of nodes the defender can harden at once
+- `--reduction`: fractional cut to a defended node's compromise rate (0.5 = halved)
+- `--n-runs` / `--seed`: Monte Carlo run count and RNG seed
+
+### Config format
+
+```json
+{
+  "nodes": {
+    "node_name": {"vulnerability": 0.0, "criticality": 0.0}
+  },
+  "edges": [
+    ["source_node", "target_node"]
+  ],
+  "entry_points": {
+    "node_name": 1.0
+  },
+  "target": "node_name"
+}
+```
+
+- `nodes`: every node in the graph, with `vulnerability` (compromise likelihood, 0-1)
+  and `criticality` (failure likelihood once compromised, 0-1).
+- `edges`: directed attack-propagation edges `[source, target]`. Each edge's
+  propagation probability is set to the target node's `vulnerability`.
+- `entry_points`: node(s) the attacker starts from, with selection probability per
+  Monte Carlo run (probabilities should sum to 1).
+- `target`: the node whose failure probability is tracked and reported.
+
+Two example configs are included:
+
+- `configs/substation.json` — the original hand-built smart-grid substation topology,
+  with CVE-derived vulnerability scores (see the data source section above).
+- `configs/water_plant.json` — an **illustrative** water-treatment-plant example (8
+  nodes: remote access, engineering workstation, HMI, historian, PLC, pump controller,
+  chemical doser, and the physical tank). Its `vulnerability`/`criticality` values are
+  placeholder estimates, not CVE-derived — it exists to demonstrate the config format on
+  a second system, not to support real conclusions.

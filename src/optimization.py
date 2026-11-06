@@ -24,7 +24,7 @@ import itertools
 
 from src.ctmc import build_ctmc_nodes
 from src.graph import build_smart_grid
-from src.simulation import TARGET_NODE, run_monte_carlo
+from src.simulation import run_monte_carlo
 from src.stats import intervals_overlap, wilson_confidence_interval
 
 DEFAULT_SEED = 42
@@ -66,7 +66,7 @@ def evaluate_combinations(
     of any ranking metric.
 
     excluded_nodes: node names that are not allowed to be defended
-    (e.g. pass [TARGET_NODE] to exclude physical_equipment, since
+    (e.g. pass [graph.graph["target"]] to exclude the target node, since
     "defend the target itself" is a trivial result, not a propagation
     defense). Defaults to no exclusions for backward compatibility.
 
@@ -259,19 +259,20 @@ def print_ranking(results_detailed, title, top_n=5):
 if __name__ == "__main__":
     smart_grid = build_smart_grid()
     ctmc_nodes = build_ctmc_nodes(smart_grid)
+    target = smart_grid.graph["target"]
 
     baseline = run_monte_carlo(
         smart_grid, ctmc_nodes, n_runs=DEFAULT_N_RUNS, t_max=24, seed=DEFAULT_SEED
     )
     baseline_probability = baseline["probability_of_failure"]
     print(
-        f"Baseline P({TARGET_NODE} fails), no defense = {baseline_probability:.4f} "
+        f"Baseline P({target} fails), no defense = {baseline_probability:.4f} "
         f"(n_runs={DEFAULT_N_RUNS}, seed={DEFAULT_SEED})"
     )
     for threshold, stats in baseline["p_fail_by_t"].items():
         print(f"  P(fail by {threshold}h) = {stats['p']:.4f}  95% CI=[{stats['ci_low']:.4f}, {stats['ci_high']:.4f}]")
 
-    # Budget=2, physical_equipment DEFENDABLE (naive ranking - includes the
+    # Budget=2, target DEFENDABLE (naive ranking - includes the
     # trivial "defend the target itself" result).
     result_incl = optimize_defense(
         smart_grid, ctmc_nodes, budget=2, t_max=24,
@@ -279,34 +280,34 @@ if __name__ == "__main__":
     )
     print_ranking(
         result_incl["results_detailed"],
-        f"Budget=2, {TARGET_NODE} DEFENDABLE (naive ranking, includes trivial target-defense):",
+        f"Budget=2, {target} DEFENDABLE (naive ranking, includes trivial target-defense):",
     )
 
-    # Budget=2, physical_equipment EXCLUDED (recommended - only propagation
+    # Budget=2, target EXCLUDED (recommended - only propagation
     # defenses are compared).
     result_excl = optimize_defense(
         smart_grid, ctmc_nodes, budget=2, t_max=24,
-        n_runs=DEFAULT_N_RUNS, seed=DEFAULT_SEED, excluded_nodes=[TARGET_NODE],
+        n_runs=DEFAULT_N_RUNS, seed=DEFAULT_SEED, excluded_nodes=[target],
     )
     print_ranking(
         result_excl["results_detailed"],
-        f"Budget=2, {TARGET_NODE} EXCLUDED (recommended):",
+        f"Budget=2, {target} EXCLUDED (recommended):",
     )
 
-    # Budget=3, physical_equipment EXCLUDED.
+    # Budget=3, target EXCLUDED.
     result_b3 = optimize_defense(
         smart_grid, ctmc_nodes, budget=3, t_max=24,
-        n_runs=DEFAULT_N_RUNS, seed=DEFAULT_SEED, excluded_nodes=[TARGET_NODE],
+        n_runs=DEFAULT_N_RUNS, seed=DEFAULT_SEED, excluded_nodes=[target],
     )
     print_ranking(
         result_b3["results_detailed"],
-        f"Budget=3, {TARGET_NODE} EXCLUDED:",
+        f"Budget=3, {target} EXCLUDED:",
     )
 
     for label, result in (
-        (f"Budget=2, {TARGET_NODE} DEFENDABLE", result_incl),
-        (f"Budget=2, {TARGET_NODE} EXCLUDED", result_excl),
-        (f"Budget=3, {TARGET_NODE} EXCLUDED", result_b3),
+        (f"Budget=2, {target} DEFENDABLE", result_incl),
+        (f"Budget=2, {target} EXCLUDED", result_excl),
+        (f"Budget=3, {target} EXCLUDED", result_b3),
     ):
         best_probability = result["best_probability"]
         improvement_pct = (

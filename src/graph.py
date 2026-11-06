@@ -15,6 +15,9 @@ import networkx as nx
 
 VULNERABILITY_DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "vulnerabilities.json"
 
+# The physical/process asset every topology in this module attacks toward.
+TARGET_NODE = "physical_equipment"
+
 # Criticality stays hardcoded; vulnerability is loaded from VULNERABILITY_DATA_PATH.
 CRITICALITY = {
     "corporate_network": 0.2,
@@ -211,6 +214,7 @@ def build_smart_grid(variant="baseline"):
 
         graph.graph["variant"] = variant
         graph.graph["entry_points"] = {entry: 1.0}
+        graph.graph["target"] = TARGET_NODE
         return graph
 
     node_attrs = dict(NODES)
@@ -246,6 +250,43 @@ def build_smart_grid(variant="baseline"):
         }
     else:
         graph.graph["entry_points"] = dict(DEFAULT_ENTRY_POINTS)
+
+    graph.graph["target"] = TARGET_NODE
+    return graph
+
+
+def load_system(path):
+    """Build and return a directed attack graph from a system config file.
+
+    The config is a JSON object with:
+      "nodes": {node_name: {"vulnerability": float, "criticality": float}},
+      "edges": [[source, target], ...],
+      "entry_points": {node_name: probability},
+      "target": node_name (the node whose failure the simulation tracks).
+
+    Each edge's `propagation_probability` is set to the vulnerability of
+    its downstream (target) node, same convention as build_smart_grid.
+    Sets graph.graph["target"] and graph.graph["entry_points"] from the
+    config, and graph.graph["system"] to the config file's stem.
+    """
+    with open(path, encoding="utf-8") as f:
+        config = json.load(f)
+
+    graph = nx.DiGraph()
+    for node, attrs in config["nodes"].items():
+        graph.add_node(
+            node,
+            vulnerability=attrs["vulnerability"],
+            criticality=attrs["criticality"],
+        )
+
+    for source, target in config["edges"]:
+        propagation_probability = graph.nodes[target]["vulnerability"]
+        graph.add_edge(source, target, propagation_probability=propagation_probability)
+
+    graph.graph["system"] = Path(path).stem
+    graph.graph["entry_points"] = dict(config["entry_points"])
+    graph.graph["target"] = config["target"]
 
     return graph
 
