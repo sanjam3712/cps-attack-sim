@@ -1,0 +1,31 @@
+{
+  "_meta": {
+    "description": "ILLUSTRATIVE EXAMPLE ONLY - a smart-factory topology (IT network -> MES/engineering -> PLC -> robot/safety controllers -> conveyor -> production line). The vulnerability and criticality values below are placeholder estimates, not real vulnerability data - they exist to demonstrate the config format on another kind of CPS, not to support real conclusions."
+  },
+  "nodes": {
+    "it_network": {"vulnerability": 0.7, "criticality": 0.2},
+    "mes_server": {"vulnerability": 0.5, "criticality": 0.4},
+    "engineering_workstation": {"vulnerability": 0.45, "criticality": 0.4},
+    "plc": {"vulnerability": 0.65, "criticality": 0.75},
+    "robot_controller": {"vulnerability": 0.55, "criticality": 0.7},
+    "conveyor_drive": {"vulnerability": 0.5, "criticality": 0.6},
+    "safety_controller": {"vulnerability": 0.6, "criticality": 0.85},
+    "production_line": {"vulnerability": 0.2, "criticality": 1.0}
+  },
+  "edges": [
+    ["it_network", "mes_server"],
+    ["it_network", "engineering_workstation"],
+    ["mes_server", "plc"],
+    ["engineering_workstation", "plc"],
+    ["plc", "robot_controller"],
+    ["plc", "safety_controller"],
+    ["robot_controller", "conveyor_drive"],
+    ["safety_controller", "conveyor_drive"],
+    ["conveyor_drive", "production_line"],
+    ["robot_controller", "production_line"]
+  ],
+  "entry_points": {
+    "it_network": 1.0
+  },
+  "target": "production_line"
+}

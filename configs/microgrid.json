@@ -1,0 +1,31 @@
+{
+  "_meta": {
+    "description": "ILLUSTRATIVE EXAMPLE ONLY - a microgrid topology (energy management system -> SCADA interface -> DER controller -> solar inverter / battery management system -> protection relay or load controller -> grid stability). The vulnerability and criticality values below are placeholder estimates, not real vulnerability data - they exist to demonstrate the config format on another kind of CPS, not to support real conclusions."
+  },
+  "nodes": {
+    "energy_management_system": {"vulnerability": 0.6, "criticality": 0.2},
+    "scada_interface": {"vulnerability": 0.55, "criticality": 0.4},
+    "der_controller": {"vulnerability": 0.5, "criticality": 0.6},
+    "solar_inverter": {"vulnerability": 0.45, "criticality": 0.5},
+    "battery_management_system": {"vulnerability": 0.5, "criticality": 0.6},
+    "protection_relay": {"vulnerability": 0.6, "criticality": 0.85},
+    "load_controller": {"vulnerability": 0.5, "criticality": 0.7},
+    "grid_stability": {"vulnerability": 0.2, "criticality": 1.0}
+  },
+  "edges": [
+    ["energy_management_system", "scada_interface"],
+    ["energy_management_system", "der_controller"],
+    ["scada_interface", "der_controller"],
+    ["der_controller", "solar_inverter"],
+    ["der_controller", "battery_management_system"],
+    ["der_controller", "load_controller"],
+    ["solar_inverter", "protection_relay"],
+    ["battery_management_system", "protection_relay"],
+    ["protection_relay", "grid_stability"],
+    ["load_controller", "grid_stability"]
+  ],
+  "entry_points": {
+    "energy_management_system": 1.0
+  },
+  "target": "grid_stability"
+}

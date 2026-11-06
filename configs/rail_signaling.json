@@ -1,0 +1,31 @@
+{
+  "_meta": {
+    "description": "ILLUSTRATIVE EXAMPLE ONLY - a rail signaling topology (operations center -> communications network / maintenance terminal -> interlocking server -> trackside/signal controllers -> point machine -> train movement). The vulnerability and criticality values below are placeholder estimates, not real vulnerability data - they exist to demonstrate the config format on another kind of CPS, not to support real conclusions."
+  },
+  "nodes": {
+    "operations_center": {"vulnerability": 0.65, "criticality": 0.2},
+    "communications_network": {"vulnerability": 0.55, "criticality": 0.4},
+    "maintenance_terminal": {"vulnerability": 0.5, "criticality": 0.3},
+    "interlocking_server": {"vulnerability": 0.6, "criticality": 0.85},
+    "trackside_controller": {"vulnerability": 0.55, "criticality": 0.7},
+    "signal_controller": {"vulnerability": 0.6, "criticality": 0.75},
+    "point_machine": {"vulnerability": 0.5, "criticality": 0.8},
+    "train_movement": {"vulnerability": 0.2, "criticality": 1.0}
+  },
+  "edges": [
+    ["operations_center", "communications_network"],
+    ["operations_center", "maintenance_terminal"],
+    ["communications_network", "interlocking_server"],
+    ["maintenance_terminal", "interlocking_server"],
+    ["interlocking_server", "trackside_controller"],
+    ["interlocking_server", "signal_controller"],
+    ["trackside_controller", "point_machine"],
+    ["signal_controller", "point_machine"],
+    ["point_machine", "train_movement"],
+    ["signal_controller", "train_movement"]
+  ],
+  "entry_points": {
+    "operations_center": 1.0
+  },
+  "target": "train_movement"
+}

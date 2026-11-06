@@ -82,8 +82,8 @@ CVE data.
 
 ## Run the app
 
-An interactive Streamlit UI (`app.py`) wraps the same simulation and optimization code
-with sliders and plots, so results can be explored without editing code or re-running
+An interactive Streamlit UI wraps the same simulation and optimization code with
+sliders and plots, so results can be explored without editing code or re-running
 `main.py` for every parameter change:
 
 ```
@@ -91,14 +91,28 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-In the sidebar: pick a config from `configs/` (or upload your own JSON config in the
-same format - it's validated on upload, with a clear error if something's missing or
-malformed), set the defense budget, defense strength, Monte Carlo run count, time
-horizon and seed, then click **Run simulation**. Results are cached, so re-running with
-identical settings is instant. The page shows summary metric cards, the system graph,
-an example attack-propagation trace, the failure-time distribution, a defense
-comparison bar chart with 95% CI error bars, and a table of the top 5 defense
-combinations (flagging when the top two are not statistically distinguishable).
+It's a multi-page app (`app.py` is just the entry point that registers the pages below
+via `st.navigation`; the actual page logic lives under `views/`):
+
+- **Home** (`views/home.py`) — project overview, a 4-step "how it works", key findings,
+  and a gallery card for every system in `configs/` (with an "Open in simulator" button
+  that jumps straight to the Simulator with that system preselected), plus a
+  "Limitations" expander.
+- **Guided Demo** (`views/demo.py`) — a 4-step walkthrough of the smart-grid substation
+  (graph → one example attack → baseline vs. best defense over time → top-5 defended
+  combinations) that loads instantly from precomputed results in
+  `results/demo_substation.json` instead of re-running Monte Carlo on every page view.
+  See `scripts/make_demo.py` to regenerate that file. A "Try it yourself" button jumps
+  to the Simulator with the substation preselected.
+- **Simulator** (`views/simulator.py`) — the original interactive page: pick a config
+  from `configs/` (or upload your own JSON config in the same format - it's validated
+  on upload, with a clear error if something's missing or malformed), set the defense
+  budget, defense strength, Monte Carlo run count, time horizon and seed, then click
+  **Run simulation**. Results are cached, so re-running with identical settings is
+  instant. The page shows summary metric cards, the system graph, an example
+  attack-propagation trace, the failure-time distribution, a defense comparison bar
+  chart with 95% CI error bars, and a table of the top 5 defense combinations (flagging
+  when the top two are not statistically distinguishable).
 
 ## Run on your own system
 
@@ -139,12 +153,27 @@ python main.py --system configs/your_system.json --budget 2 --reduction 0.5 --n-
   Monte Carlo run (probabilities should sum to 1).
 - `target`: the node whose failure probability is tracked and reported.
 
-Two example configs are included:
+Six example configs are included:
 
 - `configs/substation.json` — the original hand-built smart-grid substation topology,
   with CVE-derived vulnerability scores (see the data source section above).
-- `configs/water_plant.json` — an **illustrative** water-treatment-plant example (8
-  nodes: remote access, engineering workstation, HMI, historian, PLC, pump controller,
-  chemical doser, and the physical tank). Its `vulnerability`/`criticality` values are
-  placeholder estimates, not CVE-derived — it exists to demonstrate the config format on
-  a second system, not to support real conclusions.
+- `configs/water_plant.json`, `configs/smart_factory.json`, `configs/oil_gas_pipeline.json`,
+  `configs/rail_signaling.json`, `configs/microgrid.json` — **illustrative** examples (8-10
+  nodes each) covering other kinds of cyber-physical systems (water treatment, factory
+  automation, pipeline SCADA, rail signaling, and a microgrid). Their
+  `vulnerability`/`criticality` values are placeholder estimates, not CVE-derived (each
+  has an `_meta.description` saying so) — they exist to demonstrate the config format on
+  more systems, not to support real conclusions.
+
+## App structure
+
+```
+app.py                       entry point: registers pages, hands off to st.navigation
+views/
+  home.py                    Home page
+  demo.py                    Guided Demo page (reads results/demo_substation.json)
+  simulator.py               Simulator page (the original interactive UI)
+  common.py                  shared app-level helpers (listing configs, page navigation)
+scripts/
+  make_demo.py               regenerates results/demo_substation.json
+```

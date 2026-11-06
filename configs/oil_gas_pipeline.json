@@ -1,0 +1,31 @@
+{
+  "_meta": {
+    "description": "ILLUSTRATIVE EXAMPLE ONLY - an oil & gas pipeline topology (corporate network -> SCADA master/historian -> communications gateway -> compressor station RTU / valve controller -> pressure sensor network -> pipeline segment). The vulnerability and criticality values below are placeholder estimates, not real vulnerability data - they exist to demonstrate the config format on another kind of CPS, not to support real conclusions."
+  },
+  "nodes": {
+    "corporate_network": {"vulnerability": 0.7, "criticality": 0.2},
+    "historian": {"vulnerability": 0.45, "criticality": 0.3},
+    "scada_master": {"vulnerability": 0.6, "criticality": 0.8},
+    "communications_gateway": {"vulnerability": 0.55, "criticality": 0.5},
+    "compressor_station_rtu": {"vulnerability": 0.65, "criticality": 0.75},
+    "valve_controller": {"vulnerability": 0.6, "criticality": 0.7},
+    "pressure_sensor_network": {"vulnerability": 0.4, "criticality": 0.5},
+    "pipeline_segment": {"vulnerability": 0.2, "criticality": 1.0}
+  },
+  "edges": [
+    ["corporate_network", "scada_master"],
+    ["corporate_network", "historian"],
+    ["historian", "communications_gateway"],
+    ["scada_master", "communications_gateway"],
+    ["communications_gateway", "compressor_station_rtu"],
+    ["communications_gateway", "valve_controller"],
+    ["compressor_station_rtu", "pressure_sensor_network"],
+    ["valve_controller", "pressure_sensor_network"],
+    ["pressure_sensor_network", "pipeline_segment"],
+    ["compressor_station_rtu", "pipeline_segment"]
+  ],
+  "entry_points": {
+    "corporate_network": 1.0
+  },
+  "target": "pipeline_segment"
+}

@@ -1,0 +1,191 @@
+{
+  "system_name": "substation",
+  "target": "physical_equipment",
+  "seed": 42,
+  "n_runs": 5000,
+  "budget": 2,
+  "horizon": 24,
+  "target_excluded": true,
+  "baseline": {
+    "probability_of_failure": 0.904,
+    "mean_time_to_failure": 8.98879646017699,
+    "p_fail_by_t": {
+      "3": {
+        "p": 0.0388,
+        "ci_low": 0.033791558410704255,
+        "ci_high": 0.04451656986341645
+      },
+      "6": {
+        "p": 0.2984,
+        "ci_low": 0.28587612259929146,
+        "ci_high": 0.31123341482495565
+      },
+      "12": {
+        "p": 0.7014,
+        "ci_low": 0.6885643006266571,
+        "ci_high": 0.7139264690298739
+      },
+      "24": {
+        "p": 0.904,
+        "ci_low": 0.8955215903620776,
+        "ci_high": 0.9118581064663164
+      }
+    }
+  },
+  "defenses": {
+    "0.5": {
+      "reduction": 0.5,
+      "best_nodes": [
+        "historian_server",
+        "engineering_workstation"
+      ],
+      "probability_of_failure": 0.8438,
+      "p_fail_by_t": {
+        "3": {
+          "p": 0.0172,
+          "ci_low": 0.013949219247445802,
+          "ci_high": 0.021192073750701364
+        },
+        "6": {
+          "p": 0.2078,
+          "ci_low": 0.19678026763861922,
+          "ci_high": 0.21926837737807225
+        },
+        "12": {
+          "p": 0.613,
+          "ci_low": 0.5994176864927817,
+          "ci_high": 0.6264088128676354
+        },
+        "24": {
+          "p": 0.8438,
+          "ci_low": 0.833473560598096,
+          "ci_high": 0.8535985675444827
+        }
+      },
+      "top5": [
+        {
+          "combo": [
+            "historian_server",
+            "engineering_workstation"
+          ],
+          "probability_of_failure": 0.8438,
+          "ci_low": 0.833473560598096,
+          "ci_high": 0.8535985675444827
+        },
+        {
+          "combo": [
+            "historian_server",
+            "scada_server"
+          ],
+          "probability_of_failure": 0.8562,
+          "ci_low": 0.8462005259077082,
+          "ci_high": 0.8656525632266331
+        },
+        {
+          "combo": [
+            "engineering_workstation",
+            "scada_server"
+          ],
+          "probability_of_failure": 0.8642,
+          "ci_low": 0.8544243819032877,
+          "ci_high": 0.8734164239999327
+        },
+        {
+          "combo": [
+            "historian_server",
+            "remote_terminal_unit"
+          ],
+          "probability_of_failure": 0.877,
+          "ci_low": 0.8676058225229919,
+          "ci_high": 0.885815330210435
+        },
+        {
+          "combo": [
+            "corporate_network",
+            "historian_server"
+          ],
+          "probability_of_failure": 0.879,
+          "ci_low": 0.8696682075755938,
+          "ci_high": 0.887749874350053
+        }
+      ]
+    },
+    "0.9": {
+      "reduction": 0.9,
+      "best_nodes": [
+        "historian_server",
+        "scada_server"
+      ],
+      "probability_of_failure": 0.5458,
+      "p_fail_by_t": {
+        "3": {
+          "p": 0.0048,
+          "ci_low": 0.003227780878929331,
+          "ci_high": 0.007132551127455243
+        },
+        "6": {
+          "p": 0.043,
+          "ci_low": 0.03771925108777711,
+          "ci_high": 0.04898242849000511
+        },
+        "12": {
+          "p": 0.206,
+          "ci_low": 0.19501770082952072,
+          "ci_high": 0.2174337079141729
+        },
+        "24": {
+          "p": 0.5458,
+          "ci_low": 0.5319693196798916,
+          "ci_high": 0.5595603588219411
+        }
+      },
+      "top5": [
+        {
+          "combo": [
+            "historian_server",
+            "scada_server"
+          ],
+          "probability_of_failure": 0.5458,
+          "ci_low": 0.5319693196798916,
+          "ci_high": 0.5595603588219411
+        },
+        {
+          "combo": [
+            "engineering_workstation",
+            "scada_server"
+          ],
+          "probability_of_failure": 0.5502,
+          "ci_low": 0.5363776907649762,
+          "ci_high": 0.56394523195974
+        },
+        {
+          "combo": [
+            "scada_server",
+            "remote_terminal_unit"
+          ],
+          "probability_of_failure": 0.5696,
+          "ci_low": 0.5558276222783326,
+          "ci_high": 0.5832655136109154
+        },
+        {
+          "combo": [
+            "historian_server",
+            "engineering_workstation"
+          ],
+          "probability_of_failure": 0.5732,
+          "ci_low": 0.5594392388118837,
+          "ci_high": 0.5868483696233601
+        },
+        {
+          "combo": [
+            "scada_server",
+            "intelligent_electronic_device"
+          ],
+          "probability_of_failure": 0.5842,
+          "ci_low": 0.5704793375922729,
+          "ci_high": 0.5977913814001797
+        }
+      ]
+    }
+  }
+}
