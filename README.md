@@ -80,6 +80,26 @@ comparison — they are no longer used to compute `derived_vulnerability`.
 `criticality` for every node remains hand-set in `src/graph.py` and is not derived from
 CVE data.
 
+## Run the app
+
+An interactive Streamlit UI (`app.py`) wraps the same simulation and optimization code
+with sliders and plots, so results can be explored without editing code or re-running
+`main.py` for every parameter change:
+
+```
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+In the sidebar: pick a config from `configs/` (or upload your own JSON config in the
+same format - it's validated on upload, with a clear error if something's missing or
+malformed), set the defense budget, defense strength, Monte Carlo run count, time
+horizon and seed, then click **Run simulation**. Results are cached, so re-running with
+identical settings is instant. The page shows summary metric cards, the system graph,
+an example attack-propagation trace, the failure-time distribution, a defense
+comparison bar chart with 95% CI error bars, and a table of the top 5 defense
+combinations (flagging when the top two are not statistically distinguishable).
+
 ## Run on your own system
 
 The simulation is system-agnostic: any CPS topology can be modeled by writing a JSON

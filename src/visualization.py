@@ -3,7 +3,10 @@
 Plotting utilities (networkx/matplotlib) for visualizing the smart
 grid graph, attack propagation over time, Monte Carlo failure-time
 distribution, and the effects of defense resource optimization. Every
-plot function saves its figure as a PNG under results/.
+plot function saves its figure as a PNG under results/ and returns the
+Figure object (e.g. for st.pyplot(fig) in app.py), without closing it -
+callers that don't need the Figure (e.g. main.py) can just ignore the
+return value.
 """
 
 import os
@@ -59,7 +62,7 @@ def plot_graph(graph):
 
     fig.tight_layout()
     fig.savefig(os.path.join(RESULTS_DIR, "graph.png"), dpi=150)
-    plt.close(fig)
+    return fig
 
 
 def plot_attack_propagation(simulation_result):
@@ -93,7 +96,7 @@ def plot_attack_propagation(simulation_result):
 
     fig.tight_layout()
     fig.savefig(os.path.join(RESULTS_DIR, "attack_propagation.png"), dpi=150)
-    plt.close(fig)
+    return fig
 
 
 def plot_failure_distribution(monte_carlo_result, target_node="target"):
@@ -131,7 +134,7 @@ def plot_failure_distribution(monte_carlo_result, target_node="target"):
 
     fig.tight_layout()
     fig.savefig(os.path.join(RESULTS_DIR, "failure_distribution.png"), dpi=150)
-    plt.close(fig)
+    return fig
 
 
 def plot_defense_comparison(
@@ -188,7 +191,7 @@ def plot_defense_comparison(
 
     fig.tight_layout()
     fig.savefig(os.path.join(RESULTS_DIR, filename), dpi=150)
-    plt.close(fig)
+    return fig
 
 
 def plot_sensitivity_heatmap(
@@ -259,10 +262,13 @@ def run_all_plots():
         n_runs=DEFAULT_N_RUNS, seed=DEFAULT_SEED, excluded_nodes=[target],
     )
 
-    plot_graph(graph)
-    plot_attack_propagation(simulation_result)
-    plot_failure_distribution(monte_carlo_result, target_node=target)
-    plot_defense_comparison(baseline_probability, optimization_result, target_node=target)
+    for fig in (
+        plot_graph(graph),
+        plot_attack_propagation(simulation_result),
+        plot_failure_distribution(monte_carlo_result, target_node=target),
+        plot_defense_comparison(baseline_probability, optimization_result, target_node=target),
+    ):
+        plt.close(fig)
 
     print(f"Saved 4 plots to {RESULTS_DIR}/")
 

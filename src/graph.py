@@ -255,6 +255,91 @@ def build_smart_grid(variant="baseline"):
     return graph
 
 
+def validate_system_config(config):
+    """Validate a system config dict (see load_system for the format).
+
+    Raises ValueError with a human-readable message on the first problem
+    found. Returns None on success.
+    """
+    if not isinstance(config, dict):
+        raise ValueError("Config must be a JSON object")
+
+    missing = [k for k in ("nodes", "edges", "entry_points", "target") if k not in config]
+    if missing:
+        raise ValueError(f"Config is missing required key(s): {', '.join(missing)}")
+
+    nodes = config["nodes"]
+    if not isinstance(nodes, dict) or not nodes:
+        raise ValueError("'nodes' must be a non-empty object of {name: {vulnerability, criticality}}")
+
+    for name, attrs in nodes.items():
+        if not isinstance(attrs, dict):
+            raise ValueError(f"Node '{name}' must be an object with 'vulnerability' and 'criticality'")
+        for field in ("vulnerability", "criticality"):
+            if field not in attrs:
+                raise ValueError(f"Node '{name}' is missing '{field}'")
+            value = attrs[field]
+            if not isinstance(value, (int, float)) or isinstance(value, bool) or not (0 <= value <= 1):
+                raise ValueError(f"Node '{name}' has {field}={value!r}; expected a number in [0, 1]")
+
+    edges = config["edges"]
+    if not isinstance(edges, list) or not edges:
+        raise ValueError("'edges' must be a non-empty list of [source, target] pairs")
+    for edge in edges:
+        if not isinstance(edge, (list, tuple)) or len(edge) != 2:
+            raise ValueError(f"Edge {edge!r} must be a [source, target] pair")
+        source, target = edge
+        for node in (source, target):
+            if node not in nodes:
+                raise ValueError(f"Edge {edge!r} references unknown node '{node}'")
+
+    entry_points = config["entry_points"]
+    if not isinstance(entry_points, dict) or not entry_points:
+        raise ValueError("'entry_points' must be a non-empty object of {node_name: probability}")
+    for node, prob in entry_points.items():
+        if node not in nodes:
+            raise ValueError(f"entry_points references unknown node '{node}'")
+        if not isinstance(prob, (int, float)) or isinstance(prob, bool) or not (0 <= prob <= 1):
+            raise ValueError(f"entry_points['{node}']={prob!r}; expected a probability in [0, 1]")
+    total_prob = sum(entry_points.values())
+    if abs(total_prob - 1.0) > 1e-6:
+        raise ValueError(f"entry_points probabilities must sum to 1.0 (got {total_prob})")
+
+    target = config["target"]
+    if target not in nodes:
+        raise ValueError(f"target '{target}' is not in 'nodes'")
+
+
+def build_graph_from_config(config, system_name=None):
+    """Build and return a directed attack graph from a parsed config dict.
+
+    See load_system for the config format. Raises ValueError (via
+    validate_system_config) with a clear message if the config is
+    invalid. graph.graph["meta"] is set to config.get("_meta", {}), so
+    callers can check e.g. for an "ILLUSTRATIVE" marker.
+    """
+    validate_system_config(config)
+
+    graph = nx.DiGraph()
+    for node, attrs in config["nodes"].items():
+        graph.add_node(
+            node,
+            vulnerability=attrs["vulnerability"],
+            criticality=attrs["criticality"],
+        )
+
+    for source, target in config["edges"]:
+        propagation_probability = graph.nodes[target]["vulnerability"]
+        graph.add_edge(source, target, propagation_probability=propagation_probability)
+
+    graph.graph["system"] = system_name or "config"
+    graph.graph["entry_points"] = dict(config["entry_points"])
+    graph.graph["target"] = config["target"]
+    graph.graph["meta"] = config.get("_meta", {})
+
+    return graph
+
+
 def load_system(path):
     """Build and return a directed attack graph from a system config file.
 
@@ -272,23 +357,7 @@ def load_system(path):
     with open(path, encoding="utf-8") as f:
         config = json.load(f)
 
-    graph = nx.DiGraph()
-    for node, attrs in config["nodes"].items():
-        graph.add_node(
-            node,
-            vulnerability=attrs["vulnerability"],
-            criticality=attrs["criticality"],
-        )
-
-    for source, target in config["edges"]:
-        propagation_probability = graph.nodes[target]["vulnerability"]
-        graph.add_edge(source, target, propagation_probability=propagation_probability)
-
-    graph.graph["system"] = Path(path).stem
-    graph.graph["entry_points"] = dict(config["entry_points"])
-    graph.graph["target"] = config["target"]
-
-    return graph
+    return build_graph_from_config(config, system_name=Path(path).stem)
 
 
 def print_graph_info(graph):
